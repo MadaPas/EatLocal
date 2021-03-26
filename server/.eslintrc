@@ -1,0 +1,6 @@
+{
+    "extends": "salt",
+    "rules": {
+      // Overrides here
+    }
+  }

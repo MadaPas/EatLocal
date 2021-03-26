@@ -4,8 +4,10 @@
   "description": "Final project -- SALT Bootcamp --",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "test": "mocha --exit './{,!(node_modules)/**}/*.spec.js'",
+    "start": "nodemon app",
+    "lint": "eslint '**/*.js'",
+    "lint-watch": "nodemon --exec 'npm run lint --silent'"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,9 @@
     "Express",
     "Node",
     "MongoDB",
-    "API"
+    "API",
+    "TDD",
+    "Mocha"
   ],
   "author": "Mobsters-4-justice",
   "license": "ISC",
@@ -31,5 +35,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "eslint-config-salt": "^1.1.0",
+    "mocha": "^8.3.2"
   }
 }
