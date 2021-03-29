@@ -1,93 +1,108 @@
 /* eslint-disable no-console */
+require('dotenv').config();
 const express = require('express');
-const session = require('express-session');
-const mustacheExpress = require('mustache-express');
-const path = require('path');
-const { ExpressOIDC } = require('@okta/oidc-middleware');
+const OktaJwtVerifier = require('@okta/jwt-verifier');
+const cors = require('cors');
+
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const routes = require('./routes/index.js');
 const { connectDB } = require('./db/index');
 
-const templateDir = path.join(__dirname, '.', 'common', 'views');
-const frontendDir = path.join(__dirname, '.', 'common', 'assets');
+const app = express();
 
-const routes = require('./routes/index.js');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-module.exports = function WebServer(config, extraOidcOptions, homePageTemplateName) {
-  const oidc = new ExpressOIDC({
-    issuer: config.oidc.issuer,
-    client_id: config.oidc.clientId,
-    client_secret: config.oidc.clientSecret,
-    appBaseUrl: config.oidc.appBaseUrl,
-    scope: config.oidc.scope,
-    testing: config.oidc.testing,
-    ...extraOidcOptions || {},
-  });
+app.get('/', async (req, res) => {
+  res.send('Our API is running...');
+});
 
-  const app = express();
+app.use('/api', routes);
 
-  app.use(session({
-    secret: 'this-should-be-very-random',
-    resave: true,
-    saveUninitialized: false,
-  }));
+const sampleConfig = require('./config');
 
-  // Provide the configuration to the view layer because we show it on the homepage
-  const displayConfig = {
+const oktaJwtVerifier = new OktaJwtVerifier({
+  clientId: sampleConfig.resourceServer.oidc.clientId,
+  issuer: sampleConfig.resourceServer.oidc.issuer,
+  assertClaims: sampleConfig.resourceServer.assertClaims,
+  testing: sampleConfig.resourceServer.oidc.testing,
+});
 
-    ...config.oidc,
-    clientSecret: `****${config.oidc.clientSecret.substr(config.oidc.clientSecret.length - 4, 4)}`,
-  };
+/**
+ * A simple middleware that asserts valid access tokens and sends 401 responses
+ * if the token is not present or fails validation.  If the token is valid its
+ * contents are attached to req.jwt
+ */
+const authenticationRequired = (req, res, next) => {
+  const authHeader = req.headers.authorization || '';
+  console.log(authHeader);
+  const match = authHeader.match(/Bearer (.+)/);
 
-  app.locals.oidcConfig = displayConfig;
+  if (!match) {
+    res.status(401);
+    return next('Unauthorized');
+  }
 
-  // This server uses mustache templates located in views/ and css assets in assets/
-  app.use('/assets', express.static(frontendDir));
-  app.engine('mustache', mustacheExpress());
-  app.set('view engine', 'mustache');
-  app.set('views', templateDir);
-
-  app.use(oidc.router);
-
-  app.get('/auth', (req, res) => {
-    const template = homePageTemplateName || 'home';
-    const userinfo = req.userContext && req.userContext.userinfo;
-    res.render(template, {
-      isLoggedIn: !!userinfo,
-      userinfo,
+  const accessToken = match[1];
+  const audience = sampleConfig.resourceServer.assertClaims.aud;
+  return oktaJwtVerifier.verifyAccessToken(accessToken, audience)
+    .then(jwt => {
+      req.jwt = jwt;
+      next();
+    })
+    .catch(err => {
+      res.status(401).send(err.message);
     });
-  });
-
-  app.get('/profile', oidc.ensureAuthenticated(), (req, res) => {
-    // Convert the userinfo object into an attribute array, for rendering with mustache
-    const userinfo = req.userContext && req.userContext.userinfo;
-    const attributes = Object.entries(userinfo);
-    res.render('profile', {
-      isLoggedIn: !!userinfo,
-      userinfo,
-      attributes,
-    });
-  });
-
-  app.get('/', async (req, res) => {
-    res.send('Our API is running...');
-  });
-
-  app.use('/api', oidc.ensureAuthenticated(), routes);
-
-  connectDB();
-
-  oidc.on('ready', () => {
-    app.listen(config.port, () => console.log(`App started on port ${config.port}`));
-  });
-
-  oidc.on('error', err => {
-    console.error('OIDC ERROR: ', err);
-  });
-
-  oidc.on('SIGINT', () => {
-    mongoose.connection.close(() => {
-      console.log('MongoDB: Connection closed.');
-      oidc.exit(0);
-    });
-  });
 };
+
+/**
+ * For local testing only!  Enables CORS for all domains
+ */
+app.use(cors());
+
+app.get('/hello', (req, res) => {
+  res.json({
+    message: 'Hello!  There\'s not much to see here :)',
+  });
+});
+
+/**
+ * An example route that requires a valid access token for authentication, it
+ * will echo the contents of the access token if the middleware successfully
+ * validated the token.
+ */
+app.get('/secure', authenticationRequired, (req, res) => res.json(req.jwt));
+
+/**
+ * Another example route that requires a valid access token for
+ *authentication, and
+ * print some messages for the user if they are authenticated
+ */
+app.get('/api/messages', authenticationRequired, (req, res) => {
+  res.json({
+    messages: [
+      {
+        date: new Date(),
+        text: 'I am a robot.',
+      },
+      {
+        date: new Date(new Date().getTime() - 1000 * 60 * 60),
+        text: 'Hello, world!',
+      },
+    ],
+  });
+});
+
+connectDB().then(async () => {
+  app.listen(sampleConfig.resourceServer.port, () => {
+    console.log(`Resource Server Ready on port ${sampleConfig.resourceServer.port}`);
+  });
+});
+
+process.on('SIGINT', () => {
+  mongoose.connection.close(() => {
+    console.log('MongoDB: Connection closed.');
+    process.exit(0);
+  });
+});
