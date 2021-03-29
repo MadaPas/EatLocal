@@ -72,7 +72,7 @@ module.exports = function WebServer(config, extraOidcOptions, homePageTemplateNa
     res.send('Our API is running...');
   });
 
-  app.use('/api', routes);
+  app.use('/api', oidc.ensureAuthenticated(), routes);
 
   connectDB();
 
