@@ -1,30 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
+import { Container } from 'semantic-ui-react';
+import config from './config';
+import Home from './components/Home';
+import Messages from './components/Messages';
+import Navbar from './components/Navbar';
+import Profile from './components/Profile';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const oktaAuth = new OktaAuth(config.oidc);
 
+const App = () => (
+  <Router>
+    <Security oktaAuth={oktaAuth}>
+      <Navbar />
+      <Container text style={{ marginTop: '7em' }}>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login/callback" component={LoginCallback} />
+          <SecureRoute path="/messages" component={Messages} />
+          <SecureRoute path="/profile" component={Profile} />
+        </Switch>
+      </Container>
+    </Security>
+  </Router>
+);
 export default App;
