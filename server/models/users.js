@@ -18,25 +18,17 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
-      type: String,
-      required: true,
-      select: false,
-    },
     address: {
       street: {
         type: String,
-        required: true,
         select: false,
       },
       postalCode: {
         type: Number,
-        required: true,
         select: false,
       },
       city: {
         type: String,
-        required: true,
         select: false,
       },
     },

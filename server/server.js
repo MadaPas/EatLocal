@@ -14,16 +14,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-/**
+/**n
  * For local testing only!  Enables CORS for all domains
  */
 app.use(cors());
-
-app.get('/', async (req, res) => {
-  res.send('Our API is running...');
-});
-
-app.use('/api', routes);
 
 const config = require('./config');
 
@@ -41,7 +35,6 @@ const oktaJwtVerifier = new OktaJwtVerifier({
  */
 const authenticationRequired = (req, res, next) => {
   const authHeader = req.headers.authorization || '';
-  // console.log(authHeader);
   const match = authHeader.match(/Bearer (.+)/);
 
   if (!match) {
@@ -57,9 +50,16 @@ const authenticationRequired = (req, res, next) => {
       next();
     })
     .catch(err => {
+      console.log(err.message, '##');
       res.status(401).send(err.message);
     });
 };
+
+app.get('/', async (req, res) => {
+  res.send('Our API is running...');
+});
+
+app.use('/api', authenticationRequired, routes);
 
 app.get('/hello', (req, res) => {
   res.json({
