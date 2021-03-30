@@ -6,7 +6,6 @@ import { Header, Icon, Table } from 'semantic-ui-react';
 const Profile = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
-
   useEffect(() => {
     if (!authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info

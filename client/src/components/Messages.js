@@ -1,20 +1,22 @@
 /* eslint-disable max-len */
 import { useOktaAuth } from '@okta/okta-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Header, Icon, Message, Table,
 } from 'semantic-ui-react';
 
 import config from '../config';
+import { LoggedInContext } from '../context/LoggedIn';
 
 const Messages = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [messages, setMessages] = useState(null);
   const [messageFetchFailed, setMessageFetchFailed] = useState(false);
-
+  const { setLoggedIn } = useContext(LoggedInContext);
   // fetch messages
   useEffect(() => {
     if (authState.isAuthenticated) {
+      setLoggedIn(authState);
       const accessToken = oktaAuth.getAccessToken();
       fetch(config.resourceServer.messagesUrl, {
         headers: {
@@ -50,7 +52,7 @@ const Messages = () => {
         });
     }
   }, [authState]);
-
+  console.log(authState);
   const possibleErrors = [
     'You\'ve downloaded one of our resource server examples, and it\'s running on port 8001.',
     'Your resource server example is using the same Okta authorization server (issuer) that you have configured this React application to use.',

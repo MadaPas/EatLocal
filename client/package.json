@@ -8,6 +8,7 @@
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

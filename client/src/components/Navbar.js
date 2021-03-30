@@ -7,7 +7,6 @@ import {
 
 const Navbar = () => {
   const { authState, oktaAuth } = useOktaAuth();
-
   const login = async () => oktaAuth.signInWithRedirect();
   const logout = async () => oktaAuth.signOut();
 
