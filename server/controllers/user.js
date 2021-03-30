@@ -11,9 +11,10 @@ const getUser = (req, res) => {
   // if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
   //   return res.status(404).json('Wrong user id format. Try again.');
   // }
-  console.log(req.headers.user);
-  
-  return User.find({ okta_id: req.params.okta_id }, (err, user) => {
+  // console.log(req.headers.user);
+  console.log(req.body.okta_id)
+  console.log(req.body)
+  return User.find({ okta_id: req.body.okta_id }, (err, user) => {
     if (!user || user.length === 0) {
       return res.status(404).json('No user found. Try again.');
     }
@@ -25,22 +26,13 @@ const getUser = (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-
+  console.log(req, 'body');
   const { okta_id, email, first_name, last_name } = req.body;
   
   const userExists = await User.findOne({ okta_id });
 
   if (userExists) {
-    return res.status(400).json({
-      message: 'This user already exists',
-      user: {
-        okta_id: userExists.okta_id,
-        firstName: userExists.first_name,
-        lastName: userExists.last_name,
-        email: userExists.email,
-      }
-
-    });
+    return res.status(400).json('This user already exists');
     // throw new Error('User already exists.');
   }
 

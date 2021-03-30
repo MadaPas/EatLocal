@@ -60,6 +60,9 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api', authenticationRequired, routes);
+// app.use('/api', (req, res) => {
+//   console.log(req.body, 'api');
+// });
 
 app.get('/hello', (req, res) => {
   res.json({

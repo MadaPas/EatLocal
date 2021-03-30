@@ -5,38 +5,49 @@ export const LoggedInContext = createContext();
 
 export const LoggedInProvider = props => {
   const { children } = props;
-
   const [loggedIn, setLoggedIn] = useState();
-
-  // const themeToggle = () => {
-  //   localStorage.setItem('toDoListTheme', JSON.stringify(theme === 'light' ? 'dark' : 'light'));
-  //   return theme === 'light' ? setTheme('dark') : setTheme('light');
-  // };
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     if (loggedIn) {
       const userInfo = loggedIn.accessToken.claims;
       const userObj = {
-        sub: userInfo.sub,
-        id: userInfo.uid,
+        okta_id: userInfo.uid,
+        email: userInfo.sub,
+        first_name: userInfo.first_name,
+        last_name: userInfo.last_name,
       };
-
-      fetch(`http://localhost:8001/api/users/${userObj.id}`, {
-        headers: {
-          Authorization: `Bearer ${loggedIn.accessToken}`,
-        },
-      }).then(response => {
-        console.log('Backend response: ', response);
-      });
-      console.log(loggedIn, userInfo, userObj, 'in loggedIn.js');
+      const fetchData = async () => {
+        try {
+          const userResponse = await fetch('http://localhost:8001/api/users/user', {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+            },
+            method: 'POST',
+            body: JSON.stringify(userObj),
+          });
+          const user = await userResponse.json();
+          if (userResponse.status === 404) {
+            const userRegistration = await fetch('http://localhost:8001/api/users/register', {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+              },
+              method: 'POST',
+              body: JSON.stringify(userObj),
+            });
+            const newUser = await userRegistration.json();
+            setUserData([newUser]);
+          } else {
+            setUserData([user]);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
     }
-    // if (authState.isAuthenticated) {
-    //   const accessToken = oktaAuth.getAccessToken();
-    // fetch(config.resourceServer.messagesUrl, {
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //   },
-    // })
     //     .then(response => {
     //       if (!response.ok) {
     //         return Promise.reject();
@@ -44,28 +55,15 @@ export const LoggedInProvider = props => {
     //       return response.json();
     //     })
     //     .then(data => {
-    //       let index = 0;
-    //       const formattedMessages = data.messages.map(message => {
-    //         const date = new Date(message.date);
-    //         const day = date.toLocaleDateString();
-    //         const time = date.toLocaleTimeString();
-    //         index += 1;
-    //         return {
-    //           date: `${day} ${time}`,
-    //           text: message.text,
-    //           id: `message-${index}`,
-    //         };
-    //       });
-    //       setMessages(formattedMessages);
-    //       setMessageFetchFailed(false);
+    //       console.log(data, 'DATA');
+    //       setUserData([data]);
     //     })
     //     .catch(err => {
-    //       setMessageFetchFailed(true);
-    //       /* eslint-disable no-console */
     //       console.error(err);
     //     });
-    // }
+    //   console.log(loggedIn, userInfo, userObj, 'in loggedIn.js');
   }, [loggedIn]);
+  console.log(userData, 'test');
 
   return (
     <LoggedInContext.Provider value={{ setLoggedIn }}>
