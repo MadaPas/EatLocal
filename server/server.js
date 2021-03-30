@@ -14,6 +14,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/**
+ * For local testing only!  Enables CORS for all domains
+ */
+app.use(cors());
+
 app.get('/', async (req, res) => {
   res.send('Our API is running...');
 });
@@ -55,11 +60,6 @@ const authenticationRequired = (req, res, next) => {
       res.status(401).send(err.message);
     });
 };
-
-/**
- * For local testing only!  Enables CORS for all domains
- */
-app.use(cors());
 
 app.get('/hello', (req, res) => {
   res.json({

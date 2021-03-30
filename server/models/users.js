@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
   {
+    okta_id: {
+      type: String,
+    },
     first_name: {
       type: String,
       required: true,

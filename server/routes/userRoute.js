@@ -5,6 +5,6 @@ const { getAllUsers, getUser } = require('../controllers/user');
 
 router.get('/', getAllUsers);
 
-router.get('/:id', getUser);
+router.get('/:okta_id', getUser);
 
 module.exports = router;
