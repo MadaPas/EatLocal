@@ -2,6 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const fs = require('fs');
 
+// Specify that the env variables are coming from testenv
 const TESTENV = path.resolve(__dirname, 'testenv');
 if (fs.existsSync(TESTENV)) {
   const envConfig = dotenv.parse(fs.readFileSync(TESTENV));

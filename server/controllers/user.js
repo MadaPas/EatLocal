@@ -9,11 +9,11 @@ const getAllUsers = async (req, res) => {
 
 const getUser = (req, res) => {
   if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-    return res.status(404).json('No user found');
+    return res.status(404).json('Wrong user id format. Try again.');
   }
   return User.findById(req.params.id, (err, user) => {
-    if (user.length === 0) {
-      return res.status(404).json('No user found');
+    if (!user || user.length === 0) {
+      return res.status(404).json('No user found. Try again.');
     }
     if (err) {
       return res.status(500).send(err);

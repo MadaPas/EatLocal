@@ -20,13 +20,13 @@ app.get('/', async (req, res) => {
 
 app.use('/api', routes);
 
-const sampleConfig = require('./config');
+const config = require('./config');
 
 const oktaJwtVerifier = new OktaJwtVerifier({
-  clientId: sampleConfig.resourceServer.oidc.clientId,
-  issuer: sampleConfig.resourceServer.oidc.issuer,
-  assertClaims: sampleConfig.resourceServer.assertClaims,
-  testing: sampleConfig.resourceServer.oidc.testing,
+  clientId: config.resourceServer.oidc.clientId,
+  issuer: config.resourceServer.oidc.issuer,
+  assertClaims: config.resourceServer.assertClaims,
+  testing: config.resourceServer.oidc.testing,
 });
 
 /**
@@ -45,7 +45,7 @@ const authenticationRequired = (req, res, next) => {
   }
 
   const accessToken = match[1];
-  const audience = sampleConfig.resourceServer.assertClaims.aud;
+  const audience = config.resourceServer.assertClaims.aud;
   return oktaJwtVerifier.verifyAccessToken(accessToken, audience)
     .then(jwt => {
       req.jwt = jwt;
@@ -95,11 +95,12 @@ app.get('/api/messages', authenticationRequired, (req, res) => {
 });
 
 connectDB().then(async () => {
-  app.listen(sampleConfig.resourceServer.port, () => {
-    console.log(`Resource Server Ready on port ${sampleConfig.resourceServer.port}`);
+  app.listen(config.resourceServer.port, () => {
+    console.log(`Resource Server Ready on port ${config.resourceServer.port}`);
   });
 });
 
+// Gracefully close connection to MongoDB when turning off the server.
 process.on('SIGINT', () => {
   mongoose.connection.close(() => {
     console.log('MongoDB: Connection closed.');
