@@ -86,11 +86,11 @@ app.get('/api/messages', authenticationRequired, (req, res) => {
     messages: [
       {
         date: new Date(),
-        text: 'I am a robot.',
+        text: 'Hey I heard about this extremely cool food box subscription app! ',
       },
       {
         date: new Date(new Date().getTime() - 1000 * 60 * 60),
-        text: 'Hello, world!',
+        text: 'Should we implement REDUX for no obvious reasons?!',
       },
     ],
   });
