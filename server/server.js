@@ -14,7 +14,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-/**n
+/**
  * For local testing only!  Enables CORS for all domains
  */
 app.use(cors());

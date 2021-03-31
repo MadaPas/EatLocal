@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const { User } = require('../models/users');
 
 const getAllUsers = async (req, res) => {
@@ -8,12 +9,9 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUser = (req, res) => {
-  // if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-  //   return res.status(404).json('Wrong user id format. Try again.');
-  // }
-  // console.log(req.headers.user);
-  console.log(req.body.okta_id)
-  console.log(req.body)
+  if (!req.body.okta_id.match(/^[0-9a-zA-Z]{10,30}$/)) {
+    return res.status(404).json('Wrong user id format. Try again.');
+  }
   return User.find({ okta_id: req.body.okta_id }, (err, user) => {
     if (!user || user.length === 0) {
       return res.status(404).json('No user found. Try again.');
@@ -26,9 +24,10 @@ const getUser = (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-  console.log(req, 'body');
-  const { okta_id, email, first_name, last_name } = req.body;
-  
+  const {
+    okta_id, email, first_name, last_name,
+  } = req.body;
+
   const userExists = await User.findOne({ okta_id });
 
   if (userExists) {
@@ -36,7 +35,9 @@ const registerUser = async (req, res) => {
     // throw new Error('User already exists.');
   }
 
-  const user = await User.create({ okta_id, email, first_name, last_name });
+  const user = await User.create({
+    okta_id, email, first_name, last_name,
+  });
 
   return res.status(201).json({
     okta_id: user.okta_id,
