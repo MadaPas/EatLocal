@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,7 +12,6 @@ export const GeneralProvider = props => {
 
   useEffect(() => {
     if (!allBoxes) {
-      console.log(allBoxes, 'fetching boxes');
       const fetchData = async () => {
         const response = await fetch('http://localhost:8001/api/boxes/');
         const allBoxesJson = await response.json();
@@ -63,7 +63,7 @@ export const GeneralProvider = props => {
     }
   }, [loggedIn]);
   console.log(userData, 'test');
-  console.log(allBoxes, 'current box state');
+
   return (
     <GeneralContext.Provider value={{ setLoggedIn, allBoxes }}>
       {children}

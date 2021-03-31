@@ -32,7 +32,7 @@ const App = () => {
             {boxId ? <Redirect to={`/box/${boxId}`} /> : null}
           </Route>
 
-          <Route path="/box/:id"><Box /></Route>
+          <Route path="/box"><Box /></Route>
           <Route path="/login/callback" component={LoginCallback} />
           <Route path="/boxes" component={AllBoxes} />
           <SecureRoute path="/messages" component={Messages} />

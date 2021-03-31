@@ -72,7 +72,7 @@ const AllBoxes = props => {
 };
 
 AllBoxes.propTypes = {
-  setBox: PropTypes.string.isRequired,
+  setBox: PropTypes.func.isRequired,
 };
 
 export default AllBoxes;
