@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+import React from 'react';
 import {
-  Route, Switch, useHistory, Redirect,
+  Route, Switch, useHistory,
 } from 'react-router-dom';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
@@ -16,8 +17,9 @@ import Box from './components/Box';
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
-  const [boxId, setBox] = useState();
+  // const [boxId, setBox] = useState();
   const history = useHistory();
+  console.log(history, 'This is history');
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri, window.location.origin));
   };
@@ -28,11 +30,10 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Home />
-            <AllBoxes setBox={setBox} />
-            {boxId ? <Redirect to={`/box/${boxId}`} /> : null}
+            <AllBoxes />
           </Route>
 
-          <Route path="/box"><Box /></Route>
+          <Route path="/box/:boxId"><Box /></Route>
           <Route path="/login/callback" component={LoginCallback} />
           <Route path="/boxes" component={AllBoxes} />
           <SecureRoute path="/messages" component={Messages} />

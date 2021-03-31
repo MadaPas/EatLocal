@@ -1,14 +1,15 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import { GeneralContext } from '../context/General';
 
-const AllBoxes = props => {
-  const { setBox } = props;
+const AllBoxes = () => {
   const { allBoxes } = useContext(GeneralContext);
-
-  const buttonHandler = value => setBox(value);
+  const history = useHistory();
+  const buttonHandler = value => {
+    history.push(`/box/${value}`);
+  };
 
   const boxes = allBoxes?.map(item => (
     <article key={item._id} className="box">
@@ -69,10 +70,6 @@ const AllBoxes = props => {
       )}
     </div>
   );
-};
-
-AllBoxes.propTypes = {
-  setBox: PropTypes.func.isRequired,
 };
 
 export default AllBoxes;

@@ -6,6 +6,7 @@ import { GeneralContext } from '../context/General';
 
 const Box = () => {
   const boxId = window.location.pathname.replace('/box/', '');
+  // const { boxId } = useParams();
   const { allBoxes } = useContext(GeneralContext);
   if (!allBoxes) {
     return null;
