@@ -31,15 +31,9 @@ const Profile = () => {
         <Header as="h1">
           <Icon name="drivers license" />
           {' '}
-          My User Profile (ID Token Claims)
+          My User Profile
           {' '}
         </Header>
-        <p>
-          Below is the information from your ID token which was obtained during the &nbsp;
-          <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">PKCE Flow</a>
-          {' '}
-          and is now stored in local storage.
-        </p>
         <p>
           This route is protected with the
           {' '}

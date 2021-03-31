@@ -17,24 +17,34 @@ const Navbar = () => {
           <Menu.Item header>
             <Image size="mini" src="/react.svg" />
             &nbsp;
-            <Link to="/">Okta-React Sample Project</Link>
+            <Link to="/">EatLocal</Link>
           </Menu.Item>
+
           {authState.isAuthenticated && (
           <Menu.Item id="messages-button">
             <Icon name="mail outline" />
             <Link to="/messages">Messages</Link>
           </Menu.Item>
           )}
+
           {authState.isAuthenticated && (
             <Menu.Item id="profile-button">
               <Link to="/profile">Profile</Link>
             </Menu.Item>
           )}
+
           {authState.isAuthenticated && (
             <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
           )}
+
           {!authState.isPending && !authState.isAuthenticated && (
             <Menu.Item onClick={login}>Login</Menu.Item>
+          )}
+
+          {authState.isAuthenticated && (
+            <Menu.Item id="checkout-button">
+              <Link to="/cart">Checkout</Link>
+            </Menu.Item>
           )}
         </Container>
       </Menu>

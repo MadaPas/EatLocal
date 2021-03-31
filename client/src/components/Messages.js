@@ -74,19 +74,6 @@ const Messages = () => {
           <code>localhost:8001/api/messages</code>
         </p>
         <p>
-          It attaches your current access token in the
-          {' '}
-          <code>Authorization</code>
-          {' '}
-          header on the request,
-          and the resource server will attempt to authenticate this access token.
-          If the token is valid the server will return a list of messages.  If the token is not valid
-          or the resource server is incorrectly configured, you will see a 401
-          {' '}
-          <code>Unauthorized response</code>
-          .
-        </p>
-        <p>
           This route is protected with the
           {' '}
           <code>&lt;SecureRoute&gt;</code>
