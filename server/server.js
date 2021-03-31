@@ -6,7 +6,8 @@ const cors = require('cors');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index.js');
+const usersRoutes = require('./routes/usersRoutes.js');
+const boxesRoutes = require('./routes/boxesRoutes.js');
 const { connectDB } = require('./db/index');
 
 const app = express();
@@ -59,10 +60,8 @@ app.get('/', async (req, res) => {
   res.send('Our API is running...');
 });
 
-app.use('/api', authenticationRequired, routes);
-// app.use('/api', (req, res) => {
-//   console.log(req.body, 'api');
-// });
+app.use('/api/users', authenticationRequired, usersRoutes);
+app.use('/api/boxes', boxesRoutes);
 
 app.get('/hello', (req, res) => {
   res.json({
