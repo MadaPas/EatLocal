@@ -6,6 +6,10 @@ const boxSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    img: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       required: true,
@@ -32,6 +36,10 @@ const boxSchema = new mongoose.Schema(
         },
         recipes: {
           recipeOne: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
@@ -39,6 +47,10 @@ const boxSchema = new mongoose.Schema(
             ingredients: [String],
           },
           recipeTwo: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
@@ -46,6 +58,10 @@ const boxSchema = new mongoose.Schema(
             ingredients: [String],
           },
           recipeThree: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
@@ -61,6 +77,10 @@ const boxSchema = new mongoose.Schema(
         },
         recipes: {
           recipeOne: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
@@ -68,6 +88,10 @@ const boxSchema = new mongoose.Schema(
             ingredients: [String],
           },
           recipeTwo: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
@@ -75,6 +99,10 @@ const boxSchema = new mongoose.Schema(
             ingredients: [String],
           },
           recipeThree: {
+            img: {
+              type: String,
+              required: true,
+            },
             name: {
               type: String,
               required: true,
