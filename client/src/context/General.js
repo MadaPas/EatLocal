@@ -9,6 +9,11 @@ export const GeneralProvider = props => {
   const [loggedIn, setLoggedIn] = useState();
   const [userData, setUserData] = useState();
   const [allBoxes, setAllBoxes] = useState();
+  const [order, setOrder] = useState(() => JSON.parse(localStorage.getItem('foodBox')) || []);
+
+  useEffect(() => {
+    localStorage.setItem('foodBox', JSON.stringify(order));
+  }, [order]);
 
   useEffect(() => {
     if (!allBoxes) {
@@ -65,7 +70,10 @@ export const GeneralProvider = props => {
   console.log(userData, 'test');
 
   return (
-    <GeneralContext.Provider value={{ setLoggedIn, allBoxes }}>
+    <GeneralContext.Provider value={{
+      setLoggedIn, allBoxes, setOrder, order,
+    }}
+    >
       {children}
     </GeneralContext.Provider>
   );
