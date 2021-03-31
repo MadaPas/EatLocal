@@ -16,7 +16,7 @@ import Box from './components/Box';
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
-  const [box, setBox] = useState();
+  const [boxId, setBox] = useState();
   const history = useHistory();
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri, window.location.origin));
@@ -26,13 +26,13 @@ const App = () => {
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
             <AllBoxes setBox={setBox} />
-            {box ? <Redirect to="/box" /> : null}
+            {boxId ? <Redirect to={`/box/${boxId}`} /> : null}
           </Route>
 
-          <Route path="/box"><Box box={box} /></Route>
+          <Route path="/box/:id"><Box /></Route>
           <Route path="/login/callback" component={LoginCallback} />
           <Route path="/boxes" component={AllBoxes} />
           <SecureRoute path="/messages" component={Messages} />
