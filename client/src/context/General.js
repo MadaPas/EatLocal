@@ -1,12 +1,24 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export const LoggedInContext = createContext();
+export const GeneralContext = createContext();
 
-export const LoggedInProvider = props => {
+export const GeneralProvider = props => {
   const { children } = props;
   const [loggedIn, setLoggedIn] = useState();
   const [userData, setUserData] = useState();
+  const [allBoxes, setAllBoxes] = useState();
+
+  useEffect(() => {
+    if (!allBoxes) {
+      const fetchData = async () => {
+        const response = await fetch('http://localhost:8001/api/boxes/');
+        const allBoxesJson = await response.json();
+        setAllBoxes([allBoxesJson]);
+      };
+      fetchData();
+    }
+  }, [allBoxes]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -48,31 +60,17 @@ export const LoggedInProvider = props => {
       };
       fetchData();
     }
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         return Promise.reject();
-    //       }
-    //       return response.json();
-    //     })
-    //     .then(data => {
-    //       console.log(data, 'DATA');
-    //       setUserData([data]);
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //     });
-    //   console.log(loggedIn, userInfo, userObj, 'in loggedIn.js');
   }, [loggedIn]);
   console.log(userData, 'test');
-
+  console.log(allBoxes, 'fetching boxes');
   return (
-    <LoggedInContext.Provider value={{ setLoggedIn }}>
+    <GeneralContext.Provider value={{ setLoggedIn, allBoxes }}>
       {children}
-    </LoggedInContext.Provider>
+    </GeneralContext.Provider>
   );
 };
 
-LoggedInProvider.propTypes = {
+GeneralProvider.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.any,

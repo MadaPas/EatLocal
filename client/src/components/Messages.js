@@ -6,13 +6,13 @@ import {
 } from 'semantic-ui-react';
 
 import config from '../config';
-import { LoggedInContext } from '../context/LoggedIn';
+import { GeneralContext } from '../context/General';
 
 const Messages = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [messages, setMessages] = useState(null);
   const [messageFetchFailed, setMessageFetchFailed] = useState(false);
-  const { setLoggedIn } = useContext(LoggedInContext);
+  const { setLoggedIn } = useContext(GeneralContext);
   // fetch messages
   useEffect(() => {
     if (authState.isAuthenticated) {
