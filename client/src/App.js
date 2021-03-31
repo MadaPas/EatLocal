@@ -13,6 +13,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/AllBoxes';
 import Box from './components/Box';
+import Checkout from './components/Checkout';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -34,6 +35,8 @@ const App = () => {
           </Route>
 
           <Route path="/box/:boxId"><Box /></Route>
+          <SecureRoute path="/checkout"><Checkout /></SecureRoute>
+          <SecureRoute path="/cart"><Checkout /></SecureRoute>
           <Route path="/login/callback" component={LoginCallback} />
           <Route path="/boxes" component={AllBoxes} />
           <SecureRoute path="/messages" component={Messages} />
