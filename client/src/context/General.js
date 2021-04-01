@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -34,10 +35,10 @@ export const GeneralProvider = props => {
     if (loggedIn) {
       const userInfo = loggedIn.accessToken.claims;
       const userObj = {
-        okta_id: userInfo.uid,
+        oktaId: userInfo.uid,
         email: userInfo.sub,
-        first_name: userInfo.first_name,
-        last_name: userInfo.last_name,
+        firstName: userInfo.first_name,
+        lastName: userInfo.last_name,
       };
       const fetchData = async () => {
         try {
@@ -60,9 +61,10 @@ export const GeneralProvider = props => {
               body: JSON.stringify(userObj),
             });
             const newUser = await userRegistration.json();
-            setUserData([newUser]);
+            setUserData(newUser);
           } else {
-            setUserData([user]);
+            console.log(user, 'old user');
+            setUserData(user);
           }
         } catch (err) {
           console.log(err);
@@ -70,12 +72,11 @@ export const GeneralProvider = props => {
       };
       fetchData();
     }
-  }, [loggedIn]);
-  console.log(userData, 'test');
+  }, [loggedIn, setLoggedIn]);
 
   return (
     <GeneralContext.Provider value={{
-      setLoggedIn, allBoxes, setOrder, order,
+      setLoggedIn, allBoxes, setOrder, order, userData, loggedIn,
     }}
     >
       {children}
