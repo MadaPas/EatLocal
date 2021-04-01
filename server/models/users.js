@@ -2,18 +2,22 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
   {
-    okta_id: {
+    oktaId: {
       type: String,
+      required: true,
     },
-    first_name: {
+    firstName: {
       type: String,
+      required: true,
     },
-    last_name: {
+    lastName: {
       type: String,
+      required: true,
     },
     email: {
       type: String,
       unique: true,
+      required: true,
     },
     address: {
       street: {
