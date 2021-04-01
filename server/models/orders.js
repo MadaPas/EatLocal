@@ -22,19 +22,14 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
-      street: {
-        type: String,
-        select: false,
-      },
-      postalCode: {
-        type: Number,
-        select: false,
-      },
-      city: {
-        type: String,
-        select: false,
-      },
+    street: {
+      type: String,
+    },
+    postalCode: {
+      type: Number,
+    },
+    city: {
+      type: String,
     },
     people: {
       type: Number,
