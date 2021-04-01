@@ -3,14 +3,18 @@
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useHistory } from 'react-router-dom';
 
 import { GeneralContext } from '../context/General';
 
 const Checkout = () => {
+  const history = useHistory();
   const {
-    allBoxes, order, loggedIn,
+    allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
-  if (!allBoxes) {
+
+  if (!allBoxes || !order || !userData || order.length === 0 || userData.length === 0) {
+    window.location = '/';
     return null;
   }
   const box = allBoxes.filter(b => b._id === order[0]);
@@ -31,8 +35,9 @@ const Checkout = () => {
       price,
     };
     try {
+      console.log(e.target[4].value);
       const checkoutResponse = await fetch('http://localhost:8001/api/orders', {
-        heportaders: {
+        headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
         },
