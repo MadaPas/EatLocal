@@ -45,7 +45,29 @@ const Checkout = () => {
         body: JSON.stringify(userInput),
       });
       const checkout = await checkoutResponse.json();
-      console.log(checkout);
+      if (checkout) {
+        history.push('/success');
+        setOrder(null);
+      }
+      if (e.target[5].value) {
+        const updateFields = {
+          oktaId: loggedIn.accessToken.claims.uid,
+          street: e.target[2].value,
+          postalCode: e.target[3].value,
+          city: e.target[4].value,
+        };
+        const updateResponse = await fetch('http://localhost:8001/api/users', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+          },
+          method: 'PUT',
+          body: JSON.stringify(updateFields),
+        });
+        const updatedUser = await updateResponse.json();
+        setUserData(updatedUser);
+        console.log(updatedUser, 'updated user');
+      }
     } catch (error) {
       console.log(error);
     }
