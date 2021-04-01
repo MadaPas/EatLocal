@@ -29,7 +29,7 @@ const Box = () => {
       <p className="box__desc">{box[0].description}</p>
       <form className="box__price" onSubmit={(e => handleSubmit(e))}>
         <label>
-          <input className="box__price_two" value="2" type="radio" name="price" checked="true" />
+          <input className="box__price_two" value="2" type="radio" name="price" defaultChecked="true" />
           {' '}
           2 people:
           {box[0].price.peopleTwo}
