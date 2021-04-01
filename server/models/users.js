@@ -19,19 +19,14 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    address: {
-      street: {
-        type: String,
-        select: false,
-      },
-      postalCode: {
-        type: Number,
-        select: false,
-      },
-      city: {
-        type: String,
-        select: false,
-      },
+    street: {
+      type: String,
+    },
+    postalCode: {
+      type: Number,
+    },
+    city: {
+      type: String,
     },
   },
 );
