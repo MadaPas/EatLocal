@@ -9,10 +9,10 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUser = (req, res) => {
-  if (!req.body.okta_id.match(/^[0-9a-zA-Z]{10,30}$/)) {
+  if (!req.body.oktaId.match(/^[0-9a-zA-Z]{10,30}$/)) {
     return res.status(404).json('Wrong user id format. Try again.');
   }
-  return User.find({ okta_id: req.body.okta_id }, (err, user) => {
+  return User.find({ oktaId: req.body.oktaId }, (err, user) => {
     if (!user || user.length === 0) {
       return res.status(404).json('No user found. Try again.');
     }
@@ -25,10 +25,10 @@ const getUser = (req, res) => {
 
 const registerUser = async (req, res) => {
   const {
-    okta_id, email, first_name, last_name,
+    oktaId, email, firstName, lastName,
   } = req.body;
 
-  const userExists = await User.findOne({ okta_id });
+  const userExists = await User.findOne({ oktaId });
 
   if (userExists) {
     return res.status(400).json('This user already exists');
@@ -36,15 +36,10 @@ const registerUser = async (req, res) => {
   }
 
   const user = await User.create({
-    okta_id, email, first_name, last_name,
+    oktaId, email, firstName, lastName,
   });
 
-  return res.status(201).json({
-    okta_id: user.okta_id,
-    firstName: user.first_name,
-    lastName: user.last_name,
-    email: user.email,
-  });
+  return res.status(201).json(user);
 };
 
 module.exports.getAllUsers = getAllUsers;
