@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { GeneralContext } from '../context/General';
 
@@ -18,6 +19,7 @@ const Checkout = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const userInput = {
+      orderId: uuidv4(),
       oktaId: loggedIn.accessToken.claims.uid,
       firstName: e.target[0].value,
       lastName: e.target[1].value,
@@ -30,7 +32,7 @@ const Checkout = () => {
     };
     try {
       const checkoutResponse = await fetch('http://localhost:8001/api/orders', {
-        headers: {
+        heportaders: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
         },
