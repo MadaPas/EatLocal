@@ -15,6 +15,9 @@ import Profile from './components/Profile';
 import AllBoxes from './components/AllBoxes';
 import Box from './components/Box';
 import Checkout from './components/Checkout';
+import Cart from './components/Cart';
+import Success from './components/Success';
+import Fail from './components/Fail';
 
 const oktaAuth = new OktaAuth(config.oidc);
 // restoreOriginalUri={restoreOriginalUri}, toRelativeUrl
@@ -39,7 +42,9 @@ const App = () => {
 
             <Route path="/box/:boxId"><Box /></Route>
             <SecureRoute path="/checkout"><Checkout /></SecureRoute>
-            <SecureRoute path="/cart"><Checkout /></SecureRoute>
+            <SecureRoute path="/cart"><Cart /></SecureRoute>
+            <SecureRoute path="/success"><Success /></SecureRoute>
+            <SecureRoute path="/fail"><Fail /></SecureRoute>
             <Route path="/login/callback" component={LoginCallback} />
             <Route path="/boxes" component={AllBoxes} />
             <SecureRoute path="/messages" component={Messages} />
