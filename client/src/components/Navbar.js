@@ -43,7 +43,7 @@ const Navbar = () => {
 
           {authState.isAuthenticated && (
             <Menu.Item id="checkout-button">
-              <Link to="/cart">Checkout</Link>
+              <Link to="/cart">Cart</Link>
             </Menu.Item>
           )}
         </Container>
