@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 const mongoose = require('mongoose');
 
+mongoose.set('useFindAndModify', false);
+
 const connectDB = async () => {
   try {
     const connectDb = await mongoose.connect(process.env.DATABASE_URL, {
