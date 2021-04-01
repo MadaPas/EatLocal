@@ -35,7 +35,6 @@ const Checkout = () => {
       price,
     };
     try {
-      console.log(e.target[4].value);
       const checkoutResponse = await fetch('http://localhost:8001/api/orders', {
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +46,7 @@ const Checkout = () => {
       const checkout = await checkoutResponse.json();
       if (checkout) {
         history.push('/success');
-        setOrder(null);
+        setOrder([]);
       }
       if (e.target[5].value) {
         const updateFields = {
@@ -65,10 +64,10 @@ const Checkout = () => {
           body: JSON.stringify(updateFields),
         });
         const updatedUser = await updateResponse.json();
-        setUserData(updatedUser);
-        console.log(updatedUser, 'updated user');
+        setUserData([updatedUser]);
       }
-    } catch (error) {
+    } catch (err) {
+      console.log(err);
       history.push('/fail');
     }
   };
