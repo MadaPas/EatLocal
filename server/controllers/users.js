@@ -9,11 +9,11 @@ const getAllUsers = async (req, res) => {
   });
 };
 
-const getUser = (req, res) => {
+const getUser = async (req, res) => {
   if (!req.body.oktaId.match(/^[0-9a-zA-Z]{10,30}$/)) {
     return res.status(404).json('Wrong user id format. Try again.');
   }
-  return User.find({
+  return User.findOne({
     oktaId: req.body.oktaId,
   }, (err, user) => {
     if (!user || user.length === 0) {
@@ -48,7 +48,6 @@ const registerUser = async (req, res) => {
     firstName,
     lastName,
   });
-
   return res.status(201).json(user);
 };
 
@@ -69,9 +68,9 @@ const updateUser = async (req, res) => {
       res.status(404).json('User not found');
     }
 
-    user.address.street = street;
-    user.address.postalCode = postalCode;
-    user.address.city = city;
+    user.street = street;
+    user.postalCode = postalCode;
+    user.city = city;
 
     const updatedUser = await user.save();
     res.json(updatedUser);
