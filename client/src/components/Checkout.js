@@ -92,23 +92,27 @@ const Checkout = () => {
       <form onSubmit={e => handleSubmit(e)}>
         <label htmlFor="firstname">
           First name
-          <input type="text" id="firstname" />
+          <input type="text" id="firstname" defaultValue={userData[0].firstName} required />
         </label>
         <label htmlFor="lastname">
           Last name
-          <input type="text" id="lastname" />
+          <input type="text" id="lastname" defaultValue={userData[0].lastName} required />
         </label>
         <label htmlFor="address">
           Address
-          <input type="text" id="address" />
+          <input type="text" id="address" defaultValue={userData[0].street} required />
         </label>
         <label htmlFor="postal_code">
           Postal Code
-          <input type="text" id="postal_code" />
+          <input type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
         </label>
         <label htmlFor="city">
           City
-          <input type="text" id="city" />
+          <input type="text" id="city" defaultValue={userData[0].city} required />
+        </label>
+        <label htmlFor="save">
+          Save the address for future orders
+          <input type="checkbox" id="save" defaultChecked="true" />
         </label>
         <button type="submit">Place an order</button>
       </form>
