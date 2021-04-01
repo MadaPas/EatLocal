@@ -8,7 +8,6 @@ import { GeneralContext } from '../context/General';
 const Box = () => {
   const history = useHistory();
   const boxId = window.location.pathname.replace('/box/', '');
-  // const { boxId } = useParams();
   const { allBoxes, setOrder } = useContext(GeneralContext);
   if (!allBoxes) {
     return null;
