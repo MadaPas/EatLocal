@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useOktaAuth } from '@okta/okta-react';
 
 export const GeneralContext = createContext();
 
 export const GeneralProvider = props => {
   const { children } = props;
+  const { authState, oktaAuth } = useOktaAuth();
   const [loggedIn, setLoggedIn] = useState();
   const [userData, setUserData] = useState();
   const [allBoxes, setAllBoxes] = useState();
@@ -14,6 +16,8 @@ export const GeneralProvider = props => {
   useEffect(() => {
     localStorage.setItem('foodBox', JSON.stringify(order));
   }, [order]);
+
+  useEffect(() => (authState.isAuthenticated ? setLoggedIn(authState) : setLoggedIn(null)), [authState, oktaAuth]);
 
   useEffect(() => {
     if (!allBoxes) {
@@ -24,7 +28,7 @@ export const GeneralProvider = props => {
       };
       fetchData();
     }
-  }, []);
+  }, [allBoxes]);
 
   useEffect(() => {
     if (loggedIn) {
