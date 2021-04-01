@@ -6,8 +6,11 @@ const cors = require('cors');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 const usersRoutes = require('./routes/usersRoutes.js');
 const boxesRoutes = require('./routes/boxesRoutes.js');
+const ordersRoutes = require('./routes/ordersRoutes.js');
+
 const { connectDB } = require('./db/index');
 
 const app = express();
@@ -61,6 +64,7 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api/users', authenticationRequired, usersRoutes);
+app.use('/api/orders', authenticationRequired, ordersRoutes);
 app.use('/api/boxes', boxesRoutes);
 
 app.get('/hello', (req, res) => {
