@@ -10,7 +10,7 @@ export const GeneralProvider = props => {
   const { children } = props;
   const { authState, oktaAuth } = useOktaAuth();
   const [loggedIn, setLoggedIn] = useState();
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState([]);
   const [allBoxes, setAllBoxes] = useState();
   const [order, setOrder] = useState(() => JSON.parse(localStorage.getItem('foodBox')) || []);
 
@@ -61,10 +61,9 @@ export const GeneralProvider = props => {
               body: JSON.stringify(userObj),
             });
             const newUser = await userRegistration.json();
-            setUserData(newUser);
+            setUserData([newUser]);
           } else {
-            console.log(user, 'old user');
-            setUserData(user);
+            setUserData([user]);
           }
         } catch (err) {
           console.log(err);
@@ -73,10 +72,9 @@ export const GeneralProvider = props => {
       fetchData();
     }
   }, [loggedIn, setLoggedIn]);
-
   return (
     <GeneralContext.Provider value={{
-      setLoggedIn, allBoxes, setOrder, order, userData, loggedIn,
+      setLoggedIn, allBoxes, setOrder, order, userData, setUserData, loggedIn,
     }}
     >
       {children}
