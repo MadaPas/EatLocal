@@ -69,7 +69,7 @@ const Checkout = () => {
         console.log(updatedUser, 'updated user');
       }
     } catch (error) {
-      console.log(error);
+      history.push('/fail');
     }
   };
 
