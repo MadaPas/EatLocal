@@ -15,9 +15,9 @@ const Box = () => {
   const box = allBoxes.filter(e => e._id === boxId);
   const handleSubmit = e => {
     e.preventDefault();
-    const selectedSize = e.target[0].checked ? e.target[0].value : e.target[1].value;
+    const selectedPriceId = e.target[0].checked ? e.target[0].value : e.target[1].value;
     const selectedBox = e.target[2].value;
-    setOrder([selectedBox, selectedSize]);
+    setOrder([selectedBox, selectedPriceId]);
     history.push('/checkout');
   };
   return (
@@ -28,16 +28,18 @@ const Box = () => {
       <p className="box__desc">{box[0].description}</p>
       <form className="box__price" onSubmit={(e => handleSubmit(e))}>
         <label>
-          <input className="box__price_two" value="2" type="radio" name="price" defaultChecked="true" />
+          <input className="box__price_two" value={box[0].boxPrice.peopleTwo.priceId} type="radio" name="price" defaultChecked="true" />
           {' '}
-          2 people:
-          {box[0].price.peopleTwo}
+          {box[0].boxPrice.peopleTwo.people}
+          people:
+          {box[0].boxPrice.peopleTwo.price}
         </label>
         <label>
-          <input className="box__price_four" value="4" type="radio" name="price" />
+          <input className="box__price_four" value={box[0].boxPrice.peopleFour.priceId} type="radio" name="price" />
           {' '}
-          4 people:
-          {box[0].price.peopleFour}
+          {box[0].boxPrice.peopleFour.people}
+          people:
+          {box[0].boxPrice.peopleFour.price}
         </label>
         <button type='submit' value={box[0]._id}>Checkout</button>
       </form>

@@ -6,6 +6,7 @@ import {
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
+import StripeContainer from './Stripe/StripeContainer';
 import { GeneralProvider } from './context/General';
 import config from './config';
 import Home from './components/Home';
@@ -14,7 +15,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/AllBoxes';
 import Box from './components/Box';
-import Checkout from './components/Checkout';
+// import Checkout from './components/Checkout';
 import Cart from './components/Cart';
 import Success from './components/Success';
 import Fail from './components/Fail';
@@ -24,8 +25,6 @@ const App = () => {
   const history = useHistory();
   console.log(history);
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
-    setTimeout(() => { console.log('redirecting to messages'); }, 3000);
-    history.push('/messages');
     history.replace(toRelativeUrl(originalUri, window.location.origin));
   };
   return (
@@ -39,7 +38,10 @@ const App = () => {
               <AllBoxes />
             </Route>
             <Route path="/box/:boxId"><Box /></Route>
-            <SecureRoute path="/checkout"><Checkout /></SecureRoute>
+            <SecureRoute path="/checkout">
+              <StripeContainer />
+              {/* <Checkout /> */}
+            </SecureRoute>
             <SecureRoute path="/cart"><Cart /></SecureRoute>
             <SecureRoute path="/success"><Success /></SecureRoute>
             <SecureRoute path="/fail"><Fail /></SecureRoute>

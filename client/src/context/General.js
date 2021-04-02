@@ -58,6 +58,7 @@ export const GeneralProvider = props => {
         email: userInfo.sub,
         firstName: userInfo.first_name,
         lastName: userInfo.last_name,
+        pm: userInfo.pm,
       };
       const fetchData = async () => {
         try {

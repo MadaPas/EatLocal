@@ -18,13 +18,15 @@ const AllBoxes = () => {
       <p className="box__type">{item.type}</p>
       <p className="box__desc">{item.description}</p>
       <div className="box__price">
-        <p className="box__price_two">
-          2 people:
-          {item.price.peopleTwo}
+        <p className="box__price_two" id={item.boxPrice.peopleTwo.priceId}>
+          {item.boxPrice.peopleTwo.people}
+          people:
+          {item.boxPrice.peopleTwo.price}
         </p>
-        <p className="box__price_four">
-          4 people:
-          {item.price.peopleFour}
+        <p className="box__price_four" id={item.boxPrice.peopleFour.priceId}>
+          {item.boxPrice.peopleFour.people}
+          people:
+          {item.boxPrice.peopleFour.price}
         </p>
       </div>
       <div className="box__menus">
