@@ -57,6 +57,7 @@ const updateUser = async (req, res) => {
     street,
     postalCode,
     city,
+    stripeId,
   } = req.body;
 
   try {
@@ -68,9 +69,10 @@ const updateUser = async (req, res) => {
       res.status(404).json('User not found');
     }
 
-    user.street = street;
-    user.postalCode = postalCode;
-    user.city = city;
+    if (street) user.street = street;
+    if (postalCode) user.postalCode = postalCode;
+    if (city) user.city = city;
+    if (stripeId) user.stripeId = stripeId;
 
     const updatedUser = await user.save();
     res.json(updatedUser);

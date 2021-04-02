@@ -4,6 +4,8 @@ const registerOrder = async (req, res) => {
   const {
     orderId,
     oktaId,
+    stripeId,
+    subscriptionId,
     boxId,
     email,
     firstName,
@@ -13,6 +15,7 @@ const registerOrder = async (req, res) => {
     city,
     people,
     price,
+    priceId,
     date,
   } = req.body;
 
@@ -25,6 +28,8 @@ const registerOrder = async (req, res) => {
   const order = await Order.create({
     orderId,
     oktaId,
+    stripeId,
+    subscriptionId,
     boxId,
     email,
     firstName,
@@ -34,6 +39,7 @@ const registerOrder = async (req, res) => {
     city,
     people,
     price,
+    priceId,
     date,
   });
 
