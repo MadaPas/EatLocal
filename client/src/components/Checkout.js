@@ -33,6 +33,7 @@ const Checkout = () => {
       boxId: order[0],
       people: order[1],
       price,
+      date: new Date().toISOString().slice(0, 10),
     };
     try {
       const checkoutResponse = await fetch('http://localhost:8001/api/orders', {
@@ -97,9 +98,9 @@ const Checkout = () => {
           Last name
           <input type="text" id="lastname" defaultValue={userData[0].lastName} required />
         </label>
-        <label htmlFor="address">
-          Address
-          <input type="text" id="address" defaultValue={userData[0].street} required />
+        <label htmlFor="street">
+          Street
+          <input type="text" id="street" defaultValue={userData[0].street} required />
         </label>
         <label htmlFor="postal_code">
           Postal Code
