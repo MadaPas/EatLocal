@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema(
     city: {
       type: String,
     },
+    stripeId: {
+      type: String,
+    },
   },
 );
 

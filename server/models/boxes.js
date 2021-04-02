@@ -18,14 +18,34 @@ const boxSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
+    boxPrice: {
       peopleTwo: {
-        type: Number,
-        required: true,
+        people: {
+          type: Number,
+          required: true,
+        },
+        priceId: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
       },
       peopleFour: {
-        type: Number,
-        required: true,
+        people: {
+          type: Number,
+          required: true,
+        },
+        priceId: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
       },
     },
     menu: {

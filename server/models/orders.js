@@ -10,6 +10,12 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    stripeId: {
+      type: String,
+    },
+    subscriptionId: {
+      type: String,
+    },
     boxId: {
       type: String,
       required: true,
@@ -38,6 +44,9 @@ const orderSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: true,
+    },
+    priceId: {
+      type: String,
     },
     date: {
       type: String,
