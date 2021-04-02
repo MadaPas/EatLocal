@@ -13,6 +13,7 @@ export const GeneralProvider = props => {
   const [userData, setUserData] = useState([]);
   const [allBoxes, setAllBoxes] = useState();
   const [order, setOrder] = useState(() => JSON.parse(localStorage.getItem('foodBox')) || []);
+  const [orderHistory, setOrderHistory] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('foodBox', JSON.stringify(order));
@@ -30,6 +31,24 @@ export const GeneralProvider = props => {
       fetchData();
     }
   }, [allBoxes]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      const fetchData = async () => {
+        const response = await fetch('http://localhost:8001/api/orders/user', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+          },
+          method: 'POST',
+          body: JSON.stringify({ oktaId: loggedIn.accessToken.claims.uid }),
+        });
+        const newOrderHistory = await response.json();
+        setOrderHistory(newOrderHistory);
+      };
+      fetchData();
+    }
+  }, [loggedIn, order]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -72,9 +91,10 @@ export const GeneralProvider = props => {
       fetchData();
     }
   }, [loggedIn, setLoggedIn]);
+
   return (
     <GeneralContext.Provider value={{
-      setLoggedIn, allBoxes, setOrder, order, userData, setUserData, loggedIn,
+      setLoggedIn, allBoxes, setOrder, order, userData, setUserData, loggedIn, orderHistory,
     }}
     >
       {children}
