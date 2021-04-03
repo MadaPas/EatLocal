@@ -59,7 +59,7 @@ const Farmer = () => {
         {farmer[0].animals}
       </p>
       <p className="farmer__credits">
-        <a href={farmer[0].credits} rel="noreferrer" target="_blank">Credits</a>
+        <a href={farmer[0].credits} target="_blank" rel="noreferrer">Credits</a>
       </p>
     </article>
   );
