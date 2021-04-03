@@ -10,10 +10,10 @@ const stripe = require('stripe')(process.env.STRIPE_API_SECRET_KEY);
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const usersRoutes = require('./routes/usersRoutes.js');
-const boxesRoutes = require('./routes/boxesRoutes.js');
-const ordersRoutes = require('./routes/ordersRoutes.js');
-const farmersRoute = require('./routes/farmersRoutes.js');
+const usersRoutes = require('./routes/users.js');
+const boxesRoutes = require('./routes/boxes.js');
+const ordersRoutes = require('./routes/orders.js');
+const farmersRoute = require('./routes/farmers.js');
 
 const { connectDB } = require('./db/index');
 
