@@ -46,6 +46,10 @@ const Navbar = () => {
               <Link to="/cart">Cart</Link>
             </Menu.Item>
           )}
+
+          <Menu.Item id="farmers">
+            <Link to="/farmers">Our Farmers</Link>
+          </Menu.Item>
         </Container>
       </Menu>
     </div>
