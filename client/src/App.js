@@ -11,7 +11,7 @@ import { GeneralProvider } from './context/General';
 import config from './config';
 import Home from './components/Home';
 import Messages from './components/Messages';
-import Navbar from './components/Navbar';
+import Navbar from './components/Partials/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/Boxes/AllBoxes';
 import Box from './components/Boxes/Box';
