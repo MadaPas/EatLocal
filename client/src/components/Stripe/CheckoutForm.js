@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { GeneralContext } from '../context/General';
+import { GeneralContext } from '../../context/General';
 
 const CheckoutForm = () => {
   const stripe = useStripe();

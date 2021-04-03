@@ -6,19 +6,19 @@ import {
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
-import StripeContainer from './Stripe/StripeContainer';
+import StripeContainer from './components/Stripe/StripeContainer';
 import { GeneralProvider } from './context/General';
 import config from './config';
 import Home from './components/Home';
 import Messages from './components/Messages';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
-import AllBoxes from './components/AllBoxes';
-import Box from './components/Box';
+import AllBoxes from './components/Boxes/AllBoxes';
+import Box from './components/Boxes/Box';
 // import Checkout from './components/Checkout';
-import Cart from './components/Cart';
-import Success from './components/Success';
-import Fail from './components/Fail';
+import Cart from './components/Orders/Cart';
+import Success from './components/Validation/Success';
+import Fail from './components/Validation/Fail';
 
 const oktaAuth = new OktaAuth(config.oidc);
 const App = () => {
