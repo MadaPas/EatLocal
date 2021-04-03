@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const usersRoutes = require('./routes/usersRoutes.js');
 const boxesRoutes = require('./routes/boxesRoutes.js');
 const ordersRoutes = require('./routes/ordersRoutes.js');
+const farmersRoute = require('./routes/farmersRoutes.js');
 
 const { connectDB } = require('./db/index');
 
@@ -68,6 +69,7 @@ app.get('/', async (req, res) => {
 app.use('/api/users', authenticationRequired, usersRoutes);
 app.use('/api/orders', authenticationRequired, ordersRoutes);
 app.use('/api/boxes', boxesRoutes);
+app.use('/api/farmers', farmersRoute);
 
 app.get('/hello', (req, res) => {
   res.json({
