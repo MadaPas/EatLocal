@@ -11,7 +11,7 @@ const Farmer = () => {
   const farmer = allFarmers.filter(e => e._id === farmerId);
 
   return (
-    <article key={farmer[0]._id} className="box">
+    <article key={farmer[0]._id} className="farmer">
       <p className="farmer__name">
         Name:
         {' '}
