@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
