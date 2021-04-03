@@ -1,4 +1,6 @@
-const { Order } = require('../models/orders');
+const {
+  Order,
+} = require('../models/orders');
 
 const registerOrder = async (req, res) => {
   const {
@@ -19,7 +21,9 @@ const registerOrder = async (req, res) => {
     date,
   } = req.body;
 
-  const orderExists = await Order.findOne({ orderId });
+  const orderExists = await Order.findOne({
+    orderId,
+  });
 
   if (orderExists) {
     return res.status(400).json('Something went wrong.');
@@ -47,7 +51,9 @@ const registerOrder = async (req, res) => {
 };
 
 const getOrders = async (req, res) => {
-  await Order.find({ oktaId: req.body.oktaId }, (err, orders) => {
+  await Order.find({
+    oktaId: req.body.oktaId,
+  }, (err, orders) => {
     if (err) res.status(500).send(err);
     res.status(200).json(orders);
   });

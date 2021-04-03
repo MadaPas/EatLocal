@@ -1,5 +1,6 @@
-/* eslint-disable camelcase */
-const { Box } = require('../models/boxes');
+const {
+  Box,
+} = require('../models/boxes');
 
 const getAllBoxes = async (req, res) => {
   await Box.find({}, (err, boxes) => {

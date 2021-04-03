@@ -1,4 +1,6 @@
-const { Farmer } = require('../models/farmers');
+const {
+  Farmer,
+} = require('../models/farmers');
 
 const getAllFarmers = async (req, res) => {
   await Farmer.find({}, (err, farmers) => {
