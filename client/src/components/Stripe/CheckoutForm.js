@@ -1,9 +1,9 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { GeneralContext } from '../../context/General';
 
@@ -43,9 +43,9 @@ const CheckoutForm = () => {
   }
 
   if (!order || order.length === 0) {
-    // window.location = '/';
-    return null;
+    window.location = '/';
   }
+
   if (!allBoxes || !userData || userData.length === 0) {
     return null;
   }
@@ -55,72 +55,63 @@ const CheckoutForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    });
+    setLoading(true);
+    setFail(false);
 
-    if (!error && userData) {
-      try {
-        let updatedUser;
-        const { id } = paymentMethod;
-        if (!userData[0].stripeId) {
-          const response = await fetch('http://localhost:8001/api/create-customer', {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
-            },
-            method: 'POST',
-            body: JSON.stringify({
-              email: userData[0].email,
-              pm: id,
-            }),
-          });
-          const customer = await response.json();
+    try {
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement),
+      });
+      if (error) throw new Error('Payment failed. Please, try again.');
 
-          const updateUser = {
-            oktaId: loggedIn.accessToken.claims.uid,
-            stripeId: customer.id,
-          };
-          if (e.target[5].value) {
-            updateUser.street = e.target[2].value;
-            updateUser.postalCode = e.target[3].value;
-            updateUser.city = e.target[4].value;
-          }
-          const updateUserResponse = await fetch('http://localhost:8001/api/users', {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
-            },
-            method: 'PUT',
-            body: JSON.stringify(updateUser),
-          });
-          updatedUser = await updateUserResponse.json();
-          setUserData([updatedUser]);
-        }
+      const { id } = paymentMethod;
+      const newPayment = {
+        email: userData[0].email,
+        pm: id,
+        priceId: boxOption.priceId,
+        stripeId: userData[0].stripeId,
+      };
+      const paymentResponse = await fetch('http://localhost:8001/api/payment', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+        },
+        method: 'POST',
+        body: JSON.stringify(newPayment),
+      });
 
-        const createSubscription = await fetch('http://localhost:8001/api/create-subscription', {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
-          },
-          body: JSON.stringify({
-            customerId: userData[0].stripeId || updatedUser.stripeId,
-            paymentMethodId: id,
-            priceId: order[1],
-          }),
-        });
-        if (!createSubscription.ok) {
-          throw Error(createSubscription.statusText);
-        }
+      if (!paymentResponse.ok) throw new Error('Payment failed. Please, try again.');
+      const payment = await paymentResponse.json();
 
-        const subscription = await createSubscription.json();
+      const updateUser = {
+        oktaId: loggedIn.accessToken.claims.uid,
+      };
+      if (!userData[0].stripeId) {
+        updateUser.stripeId = payment.customer;
+      }
+      if (e.target[5].value) {
+        updateUser.street = e.target[2].value;
+        updateUser.postalCode = e.target[3].value;
+        updateUser.city = e.target[4].value;
+      }
+      const updateUserResponse = await fetch('http://localhost:8001/api/users', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+        },
+        method: 'PUT',
+        body: JSON.stringify(updateUser),
+      });
 
-        const userInput = {
-          orderId: uuidv4(),
-          oktaId: loggedIn.accessToken.claims.uid,
-          stripeId: userData[0].stripeId || updatedUser.stripeId,
+      if (!updateUserResponse.ok) throw new Error('Something went wrong. Please, contact our support team.');
+      const updatedUser = await updateUserResponse.json();
+      setUserData([updatedUser]);
+
+      const newOrder = {
+        orderId: uuidv4(),
+        oktaId: loggedIn.accessToken.claims.uid,
+        stripeId: userData[0].stripeId || updatedUser.stripeId,
         subscriptionId: payment.id,
         firstName: e.target[0].value,
         lastName: e.target[1].value,
@@ -131,30 +122,22 @@ const CheckoutForm = () => {
         people: boxOption.people,
         price: boxOption.price,
         priceId: boxOption.priceId,
-          date: new Date().toISOString().slice(0, 10),
-        };
-        const checkoutResponse = await fetch('http://localhost:8001/api/orders', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
-          },
-          method: 'POST',
-          body: JSON.stringify(userInput),
-        });
-        const checkout = await checkoutResponse.json();
-        if (checkout) {
-          history.push('/success');
-          setOrder([]);
-        }
-        // } catch (err) {
-        //   console.log(err);
-        //   history.push('/fail');
-        // }
-      } catch (err) {
-        history.push('/fail');
-      }
-    } else if (error) {
-      history.push('/fail');
+        date: new Date().toLocaleDateString('en-GB'),
+      };
+      const saveOrder = await fetch('http://localhost:8001/api/orders', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
+        },
+        method: 'POST',
+        body: JSON.stringify(newOrder),
+      });
+      if (!saveOrder.ok) throw new Error('Something went wrong. Please, contact our support team.');
+      setSuccess([box[0].img, box[0].name, box[0].type, boxOption.people, boxOption.price]);
+      setOrder([]);
+    } catch (err) {
+      setLoading(false);
+      setFail(err.message);
     }
   };
 
@@ -202,6 +185,8 @@ const CheckoutForm = () => {
         <CardElement />
         <button type="submit">Pay</button>
       </form>
+      {fail && <p>{fail}</p>}
+      {loading && <p>Loading...</p>}
     </div>
   );
 };
