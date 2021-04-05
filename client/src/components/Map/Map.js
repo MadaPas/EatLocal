@@ -22,6 +22,8 @@ const Map = props => {
 
   const { allFarmers } = useContext(GeneralContext);
 
+  const [selectedFarm, setSelectedFarm] = useState(allFarmers ? allFarmers.filter(f => f._id === window.location.pathname.replace('/farmers/', '')) : null);
+
   useEffect(() => {
     const listener = e => {
       if (e.key === 'Escape') setSelectedFarm(null);
@@ -37,6 +39,7 @@ const Map = props => {
 
   return (
     <>
+      <section className="section map">
       <ReactMapGL
         latitude={viewport.latitude}
         longitude={viewport.longitude}
@@ -53,31 +56,36 @@ const Map = props => {
               className="marker"
               type="button"
               onClick={() => {
-                setSelectedFarm(farm);
-              }}
-            >
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-            </button>
-          </Marker>
-        ))}
-        {selectedFarm && (
-        <Popup
-          latitude={selectedFarm.lat}
-          longitude={selectedFarm.lon}
-          onClose={() => setSelectedFarm(null)}
-        >
-          <div>
-            {selectedFarm.name}
-          </div>
-        </Popup>
-        )}
-      </ReactMapGL>
-      {selectedFarm && (
-        <div>
-          <p>{selectedFarm.name}</p>
-          <p>{selectedFarm.address}</p>
-          <p>{selectedFarm.description}</p>
-          <p>
+                  setSelectedFarm([farm]);
+                }}
+              >
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+              </button>
+            </Marker>
+          ))}
+          {selectedFarm && selectedFarm.length > 0 && (
+          <Popup
+            className="map__popup"
+            latitude={selectedFarm[0].lat}
+            longitude={selectedFarm[0].lon}
+            closeButton={false}
+          >
+            <button className="map__popup_close btn" type="button" onClick={() => setSelectedFarm(null)}>x</button>
+            <p className="map__popup__title">
+              {selectedFarm[0].name}
+            </p>
+            {!farmersPage && (<button className="map__popup_btn btn" type="button" onClick={() => history.push(`/farmers/${selectedFarm[0]._id}`)}>See More</button>)}
+          </Popup>
+          )}
+        </ReactMapGL>
+      </section>
+      <div>
+        {farmersPage && selectedFarm && (
+        <section className="section farmers">
+          <p className="farmers__name">{selectedFarm[0].name}</p>
+          <p className="farmers__address">{selectedFarm[0].address}</p>
+          <p className="farmers__desc">{selectedFarm[0].description}</p>
+          <p className="farmers__organic">
             Organic:
             {selectedFarm.organic}
           </p>
