@@ -1,11 +1,9 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-console */
 require('dotenv').config();
 const express = require('express');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.STRIPE_API_SECRET_KEY);
-// const { uuidv4 } = require('uuid');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -26,9 +24,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-/**
- * For local testing only!  Enables CORS for all domains
- */
 app.use(cors());
 
 const config = require('./config');
@@ -107,7 +102,52 @@ app.get('/api/messages', authenticationRequired, (req, res) => {
   });
 });
 
-app.post('/api/create-customer', async (req, res) => {
+app.post('/api/payment', async (req, res) => {
+  const {
+    email, pm, priceId, stripeId,
+  } = req.body;
+  try {
+    let customer;
+    if (!stripeId) {
+      customer = await stripe.customers.create({
+        email,
+        payment_method: pm,
+        invoice_settings: {
+          default_payment_method: pm,
+        },
+      });
+    } else {
+      await stripe.paymentMethods.attach(pm, {
+        customer: stripeId || customer.id,
+      });
+    }
+    await stripe.customers.update(
+      stripeId || customer.id, {
+        invoice_settings: {
+          default_payment_method: pm,
+        },
+      },
+    );
+
+    const subscription = await stripe.subscriptions.create({
+      customer: stripeId || customer.id,
+      items: [{
+        price: priceId,
+      }],
+      expand: ['latest_invoice.payment_intent'],
+    });
+
+    res.send(subscription);
+  } catch (error) {
+    return res.status('500').send({
+      error: {
+        message: error.message,
+      },
+    });
+  }
+});
+
+app.post('/api/create-customer', authenticationRequired, async (req, res) => {
   const {
     email,
     pm,
