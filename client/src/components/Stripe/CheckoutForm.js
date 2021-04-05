@@ -10,11 +10,38 @@ import { GeneralContext } from '../../context/General';
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const history = useHistory();
+  const [fail, setFail] = useState();
+  const [success, setSuccess] = useState();
+  const [loading, setLoading] = useState();
   const {
     allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
-  console.log(setOrder);
+
+  if (success) {
+    return (
+      <div>
+        <p>Your payment was successful</p>
+        <img src={success[0]} alt="box" />
+        <p>
+          Name:
+          {success[1]}
+        </p>
+        <p>
+          Type:
+          {success[2]}
+        </p>
+        <p>
+          People:
+          {success[3]}
+        </p>
+        <p>
+          Price:
+          {success[4]}
+        </p>
+      </div>
+    );
+  }
+
   if (!order || order.length === 0) {
     // window.location = '/';
     return null;
