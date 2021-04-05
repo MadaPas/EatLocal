@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
@@ -16,6 +17,15 @@ const Profile = () => {
       </div>
     );
   }
+  const now = new Date();
+  const dateOffset = now.getDay() > 4 ? ((7 - now.getDay()) % 7) + 7 : ((7 - now.getDay()) % 7);
+  const result = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + dateOffset,
+  ).toLocaleDateString('en-GB');
+  if (result < now) result.setDate(result.getDate() + 7);
+
   let historyHtml = null;
   if (orderHistory.length > 0) {
     historyHtml = orderHistory.map(o => {
@@ -33,6 +43,11 @@ const Profile = () => {
             {o.people}
             {' '}
             people
+          </p>
+          <p>
+            Next delivery:
+            {' '}
+            {result}
           </p>
         </article>
       );
