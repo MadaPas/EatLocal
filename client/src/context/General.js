@@ -12,6 +12,8 @@ export const GeneralProvider = props => {
   const [loggedIn, setLoggedIn] = useState();
   const [userData, setUserData] = useState([]);
   const [allBoxes, setAllBoxes] = useState();
+  const [allFarmers, setAllFarmers] = useState();
+
   const [order, setOrder] = useState(() => JSON.parse(localStorage.getItem('foodBox')) || []);
   const [orderHistory, setOrderHistory] = useState([]);
 
@@ -31,6 +33,17 @@ export const GeneralProvider = props => {
       fetchData();
     }
   }, [allBoxes]);
+
+  useEffect(() => {
+    if (!allFarmers) {
+      const fetchData = async () => {
+        const response = await fetch('http://localhost:8001/api/farmers/');
+        const allFarmersJson = await response.json();
+        setAllFarmers(allFarmersJson);
+      };
+      fetchData();
+    }
+  }, [allFarmers]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -95,7 +108,7 @@ export const GeneralProvider = props => {
 
   return (
     <GeneralContext.Provider value={{
-      setLoggedIn, allBoxes, setOrder, order, userData, setUserData, loggedIn, orderHistory,
+      setLoggedIn, allBoxes, setOrder, order, userData, setUserData, loggedIn, orderHistory, allFarmers,
     }}
     >
       {children}
