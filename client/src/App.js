@@ -24,7 +24,6 @@ import Footer from './components/Partials/Footer';
 const oktaAuth = new OktaAuth(config.oidc);
 const App = () => {
   const history = useHistory();
-  console.log(history);
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri, window.location.origin));
   };
