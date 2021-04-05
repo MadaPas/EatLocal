@@ -18,6 +18,11 @@ const AllFarmers = () => {
         {' '}
         {item.name}
       </p>
+      <p className="farmer__address">
+        Address:
+        {' '}
+        {item.address}
+      </p>
       <p className="farmer__type">
         Type:
         {' '}
