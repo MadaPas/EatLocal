@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   if (authState.isPending) {
-    return (
+  return (
     <>
       <header className="header">
         <div className="header__content">
