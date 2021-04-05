@@ -15,10 +15,7 @@ import Navbar from './components/Partials/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/Boxes/AllBoxes';
 import Box from './components/Boxes/Box';
-import AllFarmers from './components/Farmers/AllFarmers';
-import Farmer from './components/Farmers/Farmer';
-
-// import Checkout from './components/Checkout';
+import Map from './components/Map/Map';
 import Cart from './components/Orders/Cart';
 import Success from './components/Validation/Success';
 import Fail from './components/Validation/Fail';
@@ -40,19 +37,18 @@ const App = () => {
               <Home />
               <AllBoxes />
             </Route>
-            <Route path="/box/:boxId"><Box /></Route>
-            <Route path="/farmer/:farmerId"><Farmer /></Route>
-
+            <Route path="/box/:boxId">
+              <Box />
+            </Route>
             <SecureRoute path="/checkout">
               <StripeContainer />
-              {/* <Checkout /> */}
             </SecureRoute>
             <SecureRoute path="/cart"><Cart /></SecureRoute>
             <SecureRoute path="/success"><Success /></SecureRoute>
             <SecureRoute path="/fail"><Fail /></SecureRoute>
             <Route path="/login/callback" component={LoginCallback} />
             <Route path="/boxes" component={AllBoxes} />
-            <Route path="/farmers" component={AllFarmers} />
+            <Route path="/farmers" component={Map} />
             <SecureRoute path="/messages" component={Messages} />
             <SecureRoute path="/profile" component={Profile} />
           </Switch>
