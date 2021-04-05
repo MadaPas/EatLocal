@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
 import React, { useState, useContext, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,8 +19,6 @@ const Map = props => {
     height: '100vh',
     zoom: 5,
   });
-  const [selectedFarm, setSelectedFarm] = useState(null);
-
   const { allFarmers } = useContext(GeneralContext);
 
   const [selectedFarm, setSelectedFarm] = useState(allFarmers ? allFarmers.filter(f => f._id === window.location.pathname.replace('/farmers/', '')) : null);
@@ -35,27 +34,25 @@ const Map = props => {
     };
   }, []);
 
-  console.log(process.env.REACT_APP_MAPBOX_TOKEN, 'Map key');
-
   return (
     <>
       <section className="section map">
-      <ReactMapGL
-        latitude={viewport.latitude}
-        longitude={viewport.longitude}
-        width={viewport.width}
-        height={viewport.height}
-        zoom={viewport.zoom}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle='mapbox://styles/kemppi83/ckn4obm5f1ygk17mlc1pdlwuc'
-        onViewportChange={v => setViewport(v)}
-      >
-        {allFarmers && allFarmers.map(farm => (
-          <Marker key={farm._id} latitude={farm.lat} longitude={farm.lon}>
-            <button
-              className="marker"
-              type="button"
-              onClick={() => {
+        <ReactMapGL
+          latitude={viewport.latitude}
+          longitude={viewport.longitude}
+          width={viewport.width}
+          height={viewport.height}
+          zoom={viewport.zoom}
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+          mapStyle='mapbox://styles/kemppi83/ckn4obm5f1ygk17mlc1pdlwuc'
+          onViewportChange={v => setViewport(v)}
+        >
+          {allFarmers && allFarmers.map(farm => (
+            <Marker key={farm._id} latitude={farm.lat} longitude={farm.lon}>
+              <button
+                className="map__marker"
+                type="button"
+                onClick={() => {
                   setSelectedFarm([farm]);
                 }}
               >
@@ -87,34 +84,35 @@ const Map = props => {
           <p className="farmers__desc">{selectedFarm[0].description}</p>
           <p className="farmers__organic">
             Organic:
-            {selectedFarm.organic}
+            {selectedFarm[0].organic}
           </p>
-          <p>
+          <p className="farmers__type">
             Type:
-            {selectedFarm.type}
+            {selectedFarm[0].type}
           </p>
-          <p>
+          <p className="farmers__area">
             Property Type:
-            {selectedFarm.propertyArea}
+            {selectedFarm[0].propertyArea}
           </p>
-          <p>
+          <p className="farmers__practices">
             Practices:
-            {selectedFarm.practices}
+            {selectedFarm[0].practices}
           </p>
-          <p>
+          <p className="farmers__animals">
             Animals:
-            {selectedFarm.animals}
+            {selectedFarm[0].animals}
           </p>
-          <p>
+          <p className="farmers__products">
             Products:
-            {selectedFarm.products}
+            {selectedFarm[0].products}
           </p>
-          <p>
+          <p className="farmers__credits">
             Link:
-            {selectedFarm.credits}
+            {selectedFarm[0].credits}
           </p>
-        </div>
-      )}
+        </section>
+        )}
+      </div>
     </>
   );
 };
