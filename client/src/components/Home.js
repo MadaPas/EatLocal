@@ -72,17 +72,58 @@ const Home = () => {
             who have to sell their produce for lower prices since only a few big companies buy the produce in bulk. We give regular consumers the possibility to buy directly from farmers and give more control over prices to the farmers.
           </p>
         </div>
-        )}
-
-        {!authState.isAuthenticated
-        && (
-        <div>
-          <p>
-            When you click the login button below, you will be redirected to the login page on your Okta org.
-            After you authenticate, you will be returned to this application with an ID token and access token.  These tokens will be stored in local storage and can be retrieved at a later time.
-          </p>
-          <Button id="login-button" primary onClick={login}>Login</Button>
+        <img className="about__img" src="/images/home/artichokes.jpg" alt="artichokes" />
+      </section>
+      <section className="section farmers">
+        <div className="section__content farmers__content">
+          <h2 className="content__title">Swedish Farms</h2>
+          <div className="content__info">
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/home/farmer.jpg" alt="farmer" />
+              <p className="content__info__txt">We work with some of the best independent farmers and fisherman of Sweden. Find out more about them here.</p>
+              <a className="btn btn--info content__info--btn" href="/farmers">Meet Our Farmers</a>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/home/tomatoes.jpg" alt="tomatoes" />
+              <p className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</p>
+              <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
+            </div>
+          </div>
         </div>
+      </section>
+      <Map farmersPage={false} />
+      <section className="section authors">
+        <div className="section__content authors_content">
+          <h2 className="content__title">Developed By</h2>
+          <div className="content__info">
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/authors/juha.jpg" alt="juha" />
+              <div className="content__info__socials">
+                <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                <a href="https://github.com/kemppi83"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/authors/anastasia.jpg" alt="anastasia" />
+              <div className="content__info__socials">
+                <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/authors/madalina.jpg" alt="madalina" />
+              <div className="content__info__socials">
+                <a href="https://www.linkedin.com/in/andreea-madalina-pascariu/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                <a href="https://github.com/MadaPas"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/authors/valentina.jpg" alt="valentina" />
+              <div className="content__info__socials">
+                <a href="https://www.linkedin.com/in/ko-va/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                <a href="https://github.com/ko-va"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+            </div>
         )}
 
       </div>
