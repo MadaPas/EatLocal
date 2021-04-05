@@ -28,25 +28,48 @@ const Home = () => {
 
   if (authState.isPending) {
     return (
-      <div>Loading...</div>
-    );
-  }
-
-  return (
-    <div>
-      <div>
-        <Header as="h1">Hosted Login Page</Header>
-
-        { authState.isAuthenticated && !userInfo
-        && <div>Loading user information...</div>}
-
-        {authState.isAuthenticated && userInfo
-        && (
-        <div>
-          <p>
-            Welcome, &nbsp;
-            {userInfo.name}
-            !
+    <>
+      <header className="header">
+        <div className="header__content">
+          <h1 className="header__tagline">Quality food from Local Swedish farms to your door!</h1>
+          <div className="header__cta">
+            <p className="header header__info">Contact-free delivery</p>
+            <a className="header__btn btn btn--info" href="/boxes">See Offers</a>
+          </div>
+        </div>
+      </header>
+      <section className="section boxes">
+        <div className="section__content boxes__content">
+          <h2 className="content__title">Our Food Boxes</h2>
+          <div className="content__info">
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/boxes/vegetarian.jpg" alt="salad" />
+              <a className="btn btn--white content__info--btn" href="/boxes/#vegetarian">Vegetarian</a>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/boxes/family.jpg" alt="salmon" />
+              <a className="btn btn--white content__info--btn" href="/boxes/#family">Family</a>
+            </div>
+            <div className="content__column">
+              <img className="content__info__img img" src="/images/boxes/vegan.jpg" alt="wrap" />
+              <a className="btn btn--white content__info--btn" href="/boxes/#vegan">Vegan</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section about">
+        <div className="about__content section__content">
+          <h2 className="content__title">Who we are</h2>
+          <p className="content__info">
+            We  are
+            <span className="accent">Mobsters 4 Justice</span>
+            {' '}
+            - team of talanted & passionate web developers who want to connect bussy professional and local farm producers.
+            Our mission is
+            {' '}
+            <span className="accent">Justice for Farmers</span>
+            {' '}
+            who have to sell their produce for lower prices since only a few big companies buy the produce in bulk. We give regular consumers the possibility to buy directly from farmers and give more control over prices to the farmers.
           </p>
         </div>
         )}
