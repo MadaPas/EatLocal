@@ -10,15 +10,20 @@ const stripe = require('stripe')(process.env.STRIPE_API_SECRET_KEY);
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const usersRoutes = require('./routes/usersRoutes.js');
-const boxesRoutes = require('./routes/boxesRoutes.js');
-const ordersRoutes = require('./routes/ordersRoutes.js');
+const usersRoutes = require('./routes/users.js');
+const boxesRoutes = require('./routes/boxes.js');
+const ordersRoutes = require('./routes/orders.js');
+const farmersRoute = require('./routes/farmers.js');
 
-const { connectDB } = require('./db/index');
+const {
+  connectDB,
+} = require('./db/index');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
 app.use(bodyParser.json());
 
 /**
@@ -68,6 +73,7 @@ app.get('/', async (req, res) => {
 app.use('/api/users', authenticationRequired, usersRoutes);
 app.use('/api/orders', authenticationRequired, ordersRoutes);
 app.use('/api/boxes', boxesRoutes);
+app.use('/api/farmers', farmersRoute);
 
 app.get('/hello', (req, res) => {
   res.json({
@@ -89,21 +95,23 @@ app.get('/secure', authenticationRequired, (req, res) => res.json(req.jwt));
  */
 app.get('/api/messages', authenticationRequired, (req, res) => {
   res.json({
-    messages: [
-      {
-        date: new Date(),
-        text: 'Hey I heard about this extremely cool food box subscription app! ',
-      },
-      {
-        date: new Date(new Date().getTime() - 1000 * 60 * 60),
-        text: 'Should we implement REDUX for no obvious reasons?!',
-      },
+    messages: [{
+      date: new Date(),
+      text: 'Hey I heard about this extremely cool food box subscription app! ',
+    },
+    {
+      date: new Date(new Date().getTime() - 1000 * 60 * 60),
+      text: 'Should we implement REDUX for no obvious reasons?!',
+    },
     ],
   });
 });
 
 app.post('/api/create-customer', async (req, res) => {
-  const { email, pm } = req.body;
+  const {
+    email,
+    pm,
+  } = req.body;
   const customer = await stripe.customers.create({
     email,
     payment_method: pm,
@@ -122,13 +130,16 @@ app.post('/api/create-subscription', async (req, res) => {
       customer: req.body.customerId,
     });
   } catch (error) {
-    return res.status('500').send({ error: { message: error.message } });
+    return res.status('500').send({
+      error: {
+        message: error.message,
+      },
+    });
   }
 
   // Change the default invoice settings on the customer to the new payment method
   await stripe.customers.update(
-    req.body.customerId,
-    {
+    req.body.customerId, {
       invoice_settings: {
         default_payment_method: req.body.paymentMethodId,
       },
@@ -138,7 +149,9 @@ app.post('/api/create-subscription', async (req, res) => {
   // Create the subscription
   const subscription = await stripe.subscriptions.create({
     customer: req.body.customerId,
-    items: [{ price: req.body.priceId }],
+    items: [{
+      price: req.body.priceId,
+    }],
     expand: ['latest_invoice.payment_intent'],
   });
 
@@ -147,7 +160,9 @@ app.post('/api/create-subscription', async (req, res) => {
 
 app.post(
   '/stripe-webhook',
-  bodyParser.raw({ type: 'application/json' }),
+  bodyParser.raw({
+    type: 'application/json',
+  }),
   async (req, res) => {
     // Retrieve the event by verifying the signature using the raw body and secret.
     let event;
@@ -191,7 +206,7 @@ app.post(
         }
         break;
       default:
-      // Unexpected event type
+        // Unexpected event type
     }
     res.sendStatus(200);
   },

@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { GeneralContext } from '../context/General';
+import { GeneralContext } from '../../context/General';
 
 const Box = () => {
   const history = useHistory();

@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
 
-import { GeneralContext } from '../context/General';
+import { GeneralContext } from '../../context/General';
 
 const Cart = () => {
   const {
