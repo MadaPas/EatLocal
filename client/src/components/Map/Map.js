@@ -3,11 +3,14 @@ import React, { useState, useContext, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { GeneralContext } from '../../context/General';
 
-const Map = () => {
+const Map = props => {
+  const { farmersPage } = props;
+  const history = useHistory();
   const [viewport, setViewport] = useState({
     latitude: 62.5757168,
     longitude: 11.3908554,
@@ -109,3 +112,11 @@ const Map = () => {
 };
 
 export default Map;
+
+Map.defaultProps = {
+  farmersPage: true,
+};
+
+Map.propTypes = {
+  farmersPage: PropTypes.bool,
+};
