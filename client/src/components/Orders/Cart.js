@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
 
@@ -14,7 +15,7 @@ const Cart = () => {
     return <a href="/boxes">View boxes</a>;
   }
   const box = allBoxes.filter(b => b._id === order[0]);
-  const price = order[1] === '2' ? box[0].price.peopleTwo : box[0].price.peopleFour;
+  const boxOption = box[0].boxPrice.peopleFour.priceId === order[1] ? box[0].boxPrice.peopleFour : box[0].boxPrice.peopleTwo;
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -23,18 +24,17 @@ const Cart = () => {
 
   return (
     <div key={box[0]._id} className="box">
-      <h1>Checkout</h1>
-      <p>Call to place an order: 1234567890</p>
-      <p>You ordered:</p>
+      <h1>Cart</h1>
+      <p>Your cart contains:</p>
       <img src={box[0].img} alt="place holder" />
       <p className="box__name">{box[0].name}</p>
       <p className="box__type">{box[0].type}</p>
       <p>
         for
-        {order[1]}
+        {boxOption.people}
       </p>
       <p>
-        {price}
+        {boxOption.price}
       </p>
       <button type="button" onClick={e => handleSubmit(e)}>Remove</button>
       <a href="/checkout">Checkout</a>
