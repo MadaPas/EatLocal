@@ -3,6 +3,8 @@ import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
 
+import Map from './Map/Map';
+
 const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
