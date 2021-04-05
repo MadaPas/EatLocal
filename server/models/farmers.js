@@ -53,6 +53,14 @@ const farmerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lat: {
+    type: Number,
+    required: true,
+  },
+  lon: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Farmer = mongoose.model('farmers', farmerSchema);
