@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
-import { useOktaAuth } from '@okta/okta-react';
-import React, { useState, useEffect } from 'react';
-import { Button, Header } from 'semantic-ui-react';
+// import { useOktaAuth } from '@okta/okta-react';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import Map from './Map/Map';
 
