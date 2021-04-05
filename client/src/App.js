@@ -19,6 +19,7 @@ import Map from './components/Map/Map';
 import Cart from './components/Orders/Cart';
 import Success from './components/Validation/Success';
 import Fail from './components/Validation/Fail';
+import Footer from './components/Partials/Footer';
 
 const oktaAuth = new OktaAuth(config.oidc);
 const App = () => {
@@ -35,7 +36,6 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Home />
-              <AllBoxes />
             </Route>
             <Route path="/box/:boxId">
               <Box />
@@ -53,6 +53,7 @@ const App = () => {
             <SecureRoute path="/profile" component={Profile} />
           </Switch>
         </Container>
+        <Footer />
       </GeneralProvider>
     </Security>
   );
