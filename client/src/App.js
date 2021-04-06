@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
-import { Container } from 'semantic-ui-react';
 import StripeContainer from './components/Stripe/StripeContainer';
 import { GeneralProvider } from './context/General';
 import config from './config';
@@ -29,7 +28,8 @@ const App = () => {
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <GeneralProvider>
         <Navbar />
-        <Container text style={{ marginTop: '7em' }}>
+        <main className="main">
+          {' '}
           <Switch>
             <Route exact path="/">
               <Home />
@@ -47,7 +47,7 @@ const App = () => {
             <Route path="/apply" component={Apply} />
             <SecureRoute path="/profile" component={Profile} />
           </Switch>
-        </Container>
+        </main>
         <Footer />
       </GeneralProvider>
     </Security>
