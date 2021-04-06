@@ -13,11 +13,11 @@ const Map = props => {
   const { farmersPage } = props;
   const history = useHistory();
   const [viewport, setViewport] = useState({
-    latitude: 62.5757168,
-    longitude: 11.3908554,
-    width: '100vw',
-    height: '100vh',
-    zoom: 5,
+    latitude: 57.7826,
+    longitude: 14.1618,
+    width: '100%',
+    height: '50vh',
+    zoom: 4,
   });
   const { allFarmers } = useContext(GeneralContext);
 

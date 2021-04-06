@@ -41,7 +41,7 @@ const AllBoxes = () => {
   const boxes = allBoxes?.map(item => (
     <article key={item._id} className="box" id={item.name}>
       <div className="box__info">
-        <div className="box__info__columnn">
+        <div className="box__info__columnn box__img__container">
           <img className="box__img img" src={item.img} alt="place holder" />
         </div>
         <div className="box__info__columnn">

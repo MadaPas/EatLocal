@@ -39,7 +39,7 @@ const Support = () => {
         <p className="faq__question">What is Lorem Ipsum?</p>
         <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
       </div>
-      <form className="support__form" onSubmit={e => submitHandler(e)}>
+      <form className="support__form form" onSubmit={e => submitHandler(e)}>
         <label className="form__name label__name" htmlFor="name">
           Name
           <input className="form__name input__name" id="name" type="text" required />

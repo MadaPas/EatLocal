@@ -14,7 +14,7 @@ const Navbar = () => {
   const logout = async () => oktaAuth.signOut();
   const [open, setOpen] = useState(false);
   return (
-    <header>
+    <header className="header">
       <Menu fixed="top" inverted>
         <Container>
           <Menu.Item header>
@@ -42,20 +42,17 @@ const Navbar = () => {
               <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
             </Menu.Item>
           )}
-          <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <FontAwesomeIcon icon={faUser} />
-            <div className={open ? 'open' : 'closed'}>
-              {authState.isAuthenticated && (
+          {authState.isAuthenticated && (
+            <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+              <FontAwesomeIcon icon={faUser} />
+              <div className={open ? 'open' : 'closed'}>
                 <Menu.Item id="profile-button">
                   <Link to="/profile">Profile</Link>
                 </Menu.Item>
-              )}
-
-              {authState.isAuthenticated && (
                 <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </Container>
       </Menu>
     </header>

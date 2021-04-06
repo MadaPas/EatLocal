@@ -33,7 +33,7 @@ const Apply = () => {
       <p className="apply__txt">
         Join us today!
       </p>
-      <form className="apply__form" onSubmit={e => submitHandler(e)}>
+      <form className="apply__form form" onSubmit={e => submitHandler(e)}>
         <label className="form__name label__name" htmlFor="name">
           Name
           <input className="form__name input__name" id="name" type="text" required />

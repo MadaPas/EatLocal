@@ -78,32 +78,32 @@ const Home = () => {
       <section className="section authors">
         <div className="section__content authors_content">
           <h2 className="content__title">Developed By</h2>
-          <div className="content__info">
-            <div className="column-three__author">
+          <div className="content__info card-container">
+            <div className="column__author column-four">
               <img className="content__info__img img" src="/images/authors/juha.jpg" alt="juha" />
-              <div className="content__info__name">Juha</div>
+              <div className="content__info__name">Juha Kemppinen</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
                 <a href="https://github.com/kemppi83"><FontAwesomeIcon icon={faGithub} /></a>
               </div>
             </div>
-            <div className="column-three__author">
+            <div className="column__author column-four">
               <img className="content__info__img img" src="/images/authors/anastasia.jpg" alt="anastasia" />
-              <div className="content__info__name">Anastasia</div>
+              <div className="content__info__name">Anastasia Ponomarenko</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
                 <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
               </div>
             </div>
-            <div className="column-three__author">
+            <div className="column__author column-four">
               <img className="content__info__img img" src="/images/authors/madalina.jpg" alt="madalina" />
-              <div className="content__info__name">Madalina</div>
+              <div className="content__info__name">Madalina Andreea</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/andreea-madalina-pascariu/"><FontAwesomeIcon icon={faLinkedin} /></a>
                 <a href="https://github.com/MadaPas"><FontAwesomeIcon icon={faGithub} /></a>
               </div>
             </div>
-            <div className="column-three__author">
+            <div className="column__author column-four">
               <img className="content__info__img img" src="/images/authors/valentina.jpg" alt="valentina" />
               <div className="content__info__name">Valentina</div>
               <div className="content__info__socials">
