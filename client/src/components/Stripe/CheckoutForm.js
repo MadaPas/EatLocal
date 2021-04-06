@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
@@ -17,27 +18,50 @@ const CheckoutForm = () => {
     allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
 
+  const now = new Date();
+  const dateOffset = now.getDay() > 4 ? ((7 - now.getDay()) % 7) + 7 : ((7 - now.getDay()) % 7);
+  const dateResult = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + dateOffset,
+  ).toLocaleDateString('en-GB');
+  if (dateResult < now) dateResult.setDate(dateResult.getDate() + 7);
+
   if (success) {
+    console.log(success);
     return (
-      <div>
-        <p>Your payment was successful</p>
-        <img src={success[0]} alt="box" />
-        <p>
-          Name:
-          {success[1]}
-        </p>
-        <p>
-          Type:
-          {success[2]}
-        </p>
-        <p>
-          People:
-          {success[3]}
-        </p>
-        <p>
-          Price:
-          {success[4]}
-        </p>
+      <div className="checkout__success checkout">
+        <p className="success__txt">Your payment was successful</p>
+        <div className="summary__card">
+          <div className="summary__card__column">
+            <img className="summary__card__img img" src={success[0]} alt="food" />
+          </div>
+          <div className="summary__card__column">
+            <p className="box__name">
+              {success[1]}
+              {' '}
+              box
+            </p>
+            <p className="box__people">
+              For
+              {' '}
+              {success[3]}
+              {' '}
+              people
+            </p>
+            <p className="box__text">
+              Delivery every Sunday, await your box on
+              {' '}
+              {dateResult}
+              . Recipes will be in the box.
+            </p>
+            <p className="box__price">
+              {success[4]}
+              {' '}
+              SEK
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -80,6 +104,7 @@ const CheckoutForm = () => {
         method: 'POST',
         body: JSON.stringify(newPayment),
       });
+      console.log(paymentResponse);
 
       if (!paymentResponse.ok) throw new Error('Payment failed. Please, try again.');
       const payment = await paymentResponse.json();
@@ -142,51 +167,126 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div key={box[0]._id} className="box">
-      <h1>Checkout</h1>
-      <p>Call to place an order: 1234567890</p>
-      <p>You ordered:</p>
-      <img src={box[0].img} alt="place holder" />
-      <p className="box__name">{box[0].name}</p>
-      <p className="box__type">{box[0].type}</p>
-      <p>
-        for
-        {boxOption.people}
-      </p>
-      <p>
-        {boxOption.price}
-      </p>
-      <p>You will enjoy your box on Sunday. (Calculate date based on order date)</p>
-      <form onSubmit={e => handleSubmit(e)}>
-        <label htmlFor="firstname">
+    <div key={box[0]._id} className="checkout">
+      <div className="checkout__summary">
+        <h1 className="summary__title">Order Summary</h1>
+        <div className="summary__card">
+          <button className="form__btn btn btn--remove" type="button" onClick={() => setOrder([])}>x</button>
+          <div className="summary__card__column">
+            <img className="summary__card__img img" src={box[0].img} alt="food" />
+          </div>
+          <div className="summary__card__column">
+            <p className="box__name">
+              {box[0].name}
+              {' '}
+              box
+            </p>
+            <p className="box__people">
+              For
+              {' '}
+              {boxOption.people}
+              {' '}
+              people
+            </p>
+            <p className="box__text">
+              Delivery every Sunday
+            </p>
+            <p className="box__price">
+              {boxOption.price}
+              {' '}
+              SEK
+            </p>
+          </div>
+        </div>
+        <div className="summary__table">
+          <p className="table__title">Your order</p>
+          <p className="table__box">
+            {box[0].name}
+            {' '}
+            (
+            {box[0].type}
+            ),
+            {' '}
+            {boxOption.people}
+            {' '}
+            people
+          </p>
+          <table className="table__invoice">
+            <tbody>
+              <tr>
+                <td>{box[0].name}</td>
+                <td>
+                  {boxOption.price}
+                  .00
+                  {' '}
+                  SEK
+                </td>
+              </tr>
+              <tr>
+                <td>Delivery</td>
+                <td>
+                  0.00
+                  {' '}
+                  SEK
+                </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>
+                  {boxOption.price}
+                  .00
+                  {' '}
+                  SEK
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="table__txt">You can skip a week or cancel the subscription any time.</p>
+          <p className="table__txt">The subscription is billed weekly.</p>
+          <p className="table__txt">
+            You will receive your box on Sunday,
+            {' '}
+            {dateResult}
+            .
+          </p>
+        </div>
+      </div>
+      <form className="checkout__form" onSubmit={e => handleSubmit(e)}>
+        <label className="form__label firstname" htmlFor="firstname">
           First name
-          <input type="text" id="firstname" defaultValue={userData[0].firstName} required />
+          <input className="form__input firstname" type="text" id="firstname" defaultValue={userData[0].firstName} required />
         </label>
-        <label htmlFor="lastname">
+        <label className="form__label lastname" htmlFor="lastname">
           Last name
-          <input type="text" id="lastname" defaultValue={userData[0].lastName} required />
+          <input className="form__input lastname" type="text" id="lastname" defaultValue={userData[0].lastName} required />
         </label>
-        <label htmlFor="street">
+        <label className="form__label street" htmlFor="street">
           Street
-          <input type="text" id="street" defaultValue={userData[0].street} required />
+          <input className="form__input street" type="text" id="street" defaultValue={userData[0].street} required />
         </label>
-        <label htmlFor="postal_code">
+        <label className="form__label postal_code" htmlFor="postal_code">
           Postal Code
-          <input type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+          <input className="form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
         </label>
-        <label htmlFor="city">
+        <label className="form__label city" htmlFor="city">
           City
-          <input type="text" id="city" defaultValue={userData[0].city} required />
+          <input className="form__input city" type="text" id="city" defaultValue={userData[0].city} required />
         </label>
-        <label htmlFor="save">
+        <label className="form__label save" htmlFor="save">
           Save the address for future orders
-          <input type="checkbox" id="save" defaultChecked="true" />
+          <input className="form__input save" type="checkbox" id="save" defaultChecked="true" />
+        </label>
+        <label className="form__label terms" htmlFor="terms">
+          I accept
+          {' '}
+          <a href="#">Terms and Conditions</a>
+          <input className="form__input terms" type="checkbox" id="terms" required />
         </label>
         <CardElement />
-        <button type="submit">Pay</button>
+        <button className="form__btn btn btn-green" type="submit">Pay</button>
       </form>
-      {fail && <p>{fail}</p>}
-      {loading && <p>Loading...</p>}
+      {fail && <p className="form__txt">{fail}</p>}
+      {loading && <p className="form__txt">Loading...</p>}
     </div>
   );
 };
