@@ -6,14 +6,14 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 const Footer = () => (
   <footer className="footer">
     <div className="footer__content">
-      <div className="footer content__column">
+      <div className="footer column-two">
         <p className="footer__links">
           <a href="/contact">Contact Us</a>
           <a href="/apply">Join As a Member</a>
           <a href="/faq">FAQ</a>
         </p>
       </div>
-      <div className="footer content__column">
+      <div className="footer column-two">
         <p className="footer__links">
           Sponsored by Salt
           {' '}
