@@ -33,7 +33,7 @@ const Map = props => {
       window.removeEventListener('keydown', listener);
     };
   }, []);
-
+  console.log(farmersPage, selectedFarm);
   return (
     <>
       <section className="section map">
@@ -77,41 +77,53 @@ const Map = props => {
         </ReactMapGL>
       </section>
       <div>
-        {farmersPage && selectedFarm && (
-        <section className="section farmers">
-          <p className="farmers__name">{selectedFarm[0].name}</p>
-          <p className="farmers__address">{selectedFarm[0].address}</p>
-          <p className="farmers__desc">{selectedFarm[0].description}</p>
-          <p className="farmers__organic">
-            Organic:
-            {selectedFarm[0].organic}
-          </p>
-          <p className="farmers__type">
-            Type:
-            {selectedFarm[0].type}
-          </p>
-          <p className="farmers__area">
-            Property Type:
-            {selectedFarm[0].propertyArea}
-          </p>
-          <p className="farmers__practices">
-            Practices:
-            {selectedFarm[0].practices}
-          </p>
-          <p className="farmers__animals">
-            Animals:
-            {selectedFarm[0].animals}
-          </p>
-          <p className="farmers__products">
-            Products:
-            {selectedFarm[0].products}
-          </p>
-          <p className="farmers__credits">
-            Link:
-            {selectedFarm[0].credits}
-          </p>
-        </section>
+        {farmersPage && selectedFarm && selectedFarm.length > 0 && (
+          <>
+            <section className="section farmers">
+              <p className="farmers__name">{selectedFarm[0].name}</p>
+              <p className="farmers__address">{selectedFarm[0].address}</p>
+              <p className="farmers__organic">
+                Organic:
+                {selectedFarm[0].organic}
+              </p>
+              <p className="farmers__type">
+                Type:
+                {selectedFarm[0].type}
+              </p>
+              <p className="farmers__area">
+                Property Type:
+                {selectedFarm[0].propertyArea}
+              </p>
+              <p className="farmers__practices">
+                Practices:
+                {selectedFarm[0].practices}
+              </p>
+              <p className="farmers__animals">
+                Animals:
+                {selectedFarm[0].animals}
+              </p>
+              <p className="farmers__products">
+                Products:
+                {selectedFarm[0].products}
+              </p>
+              <p className="farmers__desc">{selectedFarm[0].description}</p>
+              <p className="farmers__credits">
+                Link:
+                {selectedFarm[0].credits}
+              </p>
+            </section>
+          </>
         )}
+        <section className="section farmer__cards card-container">
+          {allFarmers?.map(f => (
+            <div className="farmer__card column-three">
+              <div className="card__content">
+                <p className="card__name">{f.name}</p>
+                <p className="card__address">{f.address}</p>
+              </div>
+            </div>
+          ))}
+        </section>
       </div>
     </>
   );
