@@ -56,7 +56,6 @@ const authenticationRequired = (req, res, next) => {
       next();
     })
     .catch(err => {
-      console.log(err.message, '##');
       res.status(401).send(err.message);
     });
 };
@@ -136,7 +135,6 @@ app.post('/api/payment', async (req, res) => {
       }],
       expand: ['latest_invoice.payment_intent'],
     });
-
     res.send(subscription);
   } catch (error) {
     return res.status('500').send({
