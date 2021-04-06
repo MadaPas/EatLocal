@@ -10,15 +10,13 @@ import StripeContainer from './components/Stripe/StripeContainer';
 import { GeneralProvider } from './context/General';
 import config from './config';
 import Home from './components/Home';
-import Messages from './components/Messages';
 import Navbar from './components/Partials/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/Boxes/AllBoxes';
-import Box from './components/Boxes/Box';
 import Map from './components/Map/Map';
-import Cart from './components/Orders/Cart';
-import Success from './components/Validation/Success';
-import Fail from './components/Validation/Fail';
+import Cart from './components/Stripe/Cart';
+import Support from './components/Support';
+import Apply from './components/Apply';
 import Footer from './components/Partials/Footer';
 
 const oktaAuth = new OktaAuth(config.oidc);
@@ -36,19 +34,17 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/box/:boxId">
-              <Box />
-            </Route>
+            <Route path="/boxes" component={AllBoxes} />
             <SecureRoute path="/checkout">
               <StripeContainer />
             </SecureRoute>
-            <SecureRoute path="/cart"><Cart /></SecureRoute>
-            <SecureRoute path="/success"><Success /></SecureRoute>
-            <SecureRoute path="/fail"><Fail /></SecureRoute>
+            <SecureRoute path="/cart">
+              <Cart />
+            </SecureRoute>
             <Route path="/login/callback" component={LoginCallback} />
-            <Route path="/boxes" component={AllBoxes} />
             <Route path="/farmers" component={Map} />
-            <SecureRoute path="/messages" component={Messages} />
+            <Route path="/contact" component={Support} />
+            <Route path="/apply" component={Apply} />
             <SecureRoute path="/profile" component={Profile} />
           </Switch>
         </Container>
