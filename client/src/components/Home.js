@@ -22,7 +22,7 @@ const Home = () => {
             <button type="button" className="hero__btn btn btn--green btn--shop" value="/boxes" onClick={e => buttonHandler(e)}>See Offers</button>
           </div>
         </div>
-      </header>
+      </section>
       <section className="section boxes">
         <h2 className="content__title">Our Food Boxes</h2>
         <div className="section__content boxes__content card-container">
