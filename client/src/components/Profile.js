@@ -31,25 +31,46 @@ const Profile = () => {
     historyHtml = orderHistory.map(o => {
       const box = allBoxes.filter(b => b._id === o.boxId);
       return (
-        <article>
-          <p>{o.date}</p>
-          <img src={box[0].img} alt="place holder" />
-          <p>{box[0].name}</p>
-          <p>{box[0].type}</p>
-          <p>{o.price}</p>
-          <p>
-            For
-            {' '}
-            {o.people}
-            {' '}
-            people
-          </p>
-          <p>
-            Next delivery:
-            {' '}
-            {result}
-          </p>
-        </article>
+        <div className="summary__card">
+          <div className="summary__card__column">
+            <img className="summary__card__img img" src={box[0].img} alt="food" />
+          </div>
+          <div className="summary__card__column">
+            <p className="box__name">
+              {box[0].name}
+              {' '}
+              box
+            </p>
+            <p className="box__type">
+              {box[0].type}
+            </p>
+            <p className="box__people">
+              For
+              {' '}
+              {o.people}
+              {' '}
+              people
+            </p>
+            <p className="box__text">
+              Order placed on
+              {' '}
+              {o.date}
+              .
+            </p>
+            <p className="box__text">
+              Next delivery on
+              {' '}
+              {result}
+              .
+            </p>
+            <p className="box__price">
+              {o.price}
+              {' '}
+              SEK
+            </p>
+            <p className="box__status">Active</p>
+          </div>
+        </div>
       );
     });
   }
@@ -83,41 +104,45 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      <p>
-        First name:
-        {userData[0].firstName}
-      </p>
-      <p>
-        Last name:
-        {userData[0].lastName}
-      </p>
-      <p>
-        Email:
-        {userData[0].email}
-      </p>
-      <form onSubmit={e => handleEdit(e)}>
-        <label htmlFor="street">
-          Street
-          {editing ? (
-            <input type="text" id="street" defaultValue={userData[0].street} required />
-          ) : <p id="street">{userData[0].street}</p>}
-        </label>
-        <label htmlFor="postal_code">
-          Postal code
-          {editing ? (
-            <input type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
-          ) : <p id="postal_code">{userData[0].postalCode}</p>}
-        </label>
-        <label htmlFor="city">
-          City
-          {editing ? (
-            <input type="text" id="city" defaultValue={userData[0].city} required />
-          ) : <p id="city">{userData[0].city}</p>}
-        </label>
-        <button type="submit">Edit address</button>
-      </form>
-      {historyHtml}
+    <div className="section profile">
+      <div className="profile__column">
+        <p className="profile__firstname">
+          First name:
+          {userData[0].firstName}
+        </p>
+        <p className="profile__lastname">
+          Last name:
+          {userData[0].lastName}
+        </p>
+        <p className="profile__email">
+          Email:
+          {userData[0].email}
+        </p>
+        <form className="profile__form form" onSubmit={e => handleEdit(e)}>
+          <label className="form__label street" htmlFor="street">
+            Street
+            {editing ? (
+              <input className="form__input street" type="text" id="street" defaultValue={userData[0].street} required />
+            ) : <p className="profile__street" id="street">{userData[0].street}</p>}
+          </label>
+          <label className="form__label postal_code" htmlFor="postal_code">
+            Postal code
+            {editing ? (
+              <input className="form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+            ) : <p className="profile__postal_code" id="postal_code">{userData[0].postalCode}</p>}
+          </label>
+          <label className="form__label city" htmlFor="city">
+            City
+            {editing ? (
+              <input className="form__input city" type="text" id="city" defaultValue={userData[0].city} required />
+            ) : <p className="profile__city" id="city">{userData[0].city}</p>}
+          </label>
+          <button className="profile__btn btn btn--green" type="submit">Edit address</button>
+        </form>
+      </div>
+      <div className="profile__column">
+        {historyHtml}
+      </div>
     </div>
   );
 };
