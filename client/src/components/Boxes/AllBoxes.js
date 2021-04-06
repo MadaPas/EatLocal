@@ -1,75 +1,112 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-underscore-dangle */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { GeneralContext } from '../../context/General';
 
 const AllBoxes = () => {
-  const { allBoxes } = useContext(GeneralContext);
+  const { allBoxes, setOrder } = useContext(GeneralContext);
   const history = useHistory();
-  const buttonHandler = value => {
-    history.push(`/box/${value}`);
+  const [toggle, setToggle] = useState(true);
+
+  if (!allBoxes || allBoxes.length === 0) {
+    return null;
+  }
+
+  const weekNo = dt => {
+    const tdt = new Date(dt.valueOf());
+    const dayn = (dt.getDay() + 6) % 7;
+    tdt.setDate(tdt.getDate() - dayn + 3);
+    const firstThursday = tdt.valueOf();
+    tdt.setMonth(0, 1);
+    if (tdt.getDay() !== 4) {
+      // eslint-disable-next-line no-mixed-operators
+      tdt.setMonth(0, (1 + ((4 - tdt.getDay()) + 7) % 7));
+    }
+    return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+  };
+
+  const dt = new Date();
+  const weekNum = weekNo(dt);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const selectedPriceId = e.target[0].value;
+    const selectedBox = e.target[1].value;
+    setOrder([selectedBox, selectedPriceId]);
+    history.push('/checkout');
   };
 
   const boxes = allBoxes?.map(item => (
-    <article key={item._id} className="box">
-      <img src={item.img} alt="place holder" />
-      <p className="box__name">{item.name}</p>
-      <p className="box__type">{item.type}</p>
-      <p className="box__desc">{item.description}</p>
-      <div className="box__price">
-        <p className="box__price_two" id={item.boxPrice.peopleTwo.priceId}>
-          {item.boxPrice.peopleTwo.people}
-          people:
-          {item.boxPrice.peopleTwo.price}
-        </p>
-        <p className="box__price_four" id={item.boxPrice.peopleFour.priceId}>
-          {item.boxPrice.peopleFour.people}
-          people:
-          {item.boxPrice.peopleFour.price}
-        </p>
+    <article key={item._id} className="box" id={item.name}>
+      <div className="box__info">
+        <div className="box__info__columnn">
+          <img className="box__img img" src={item.img} alt="place holder" />
+        </div>
+        <div className="box__info__columnn">
+          <h2 className="box__name">{item.name}</h2>
+          <p className="box__desc">{item.description}</p>
+          <form className="box__price" onSubmit={e => handleSubmit(e)}>
+            <label className="box__input" htmlFor="box--toggle">
+              <input type="checkbox" className="box--toggle" id="box--toggle" value={toggle ? item.boxPrice.peopleTwo.priceId : item.boxPrice.peopleFour.priceId} onChange={() => setToggle(!toggle)} />
+            </label>
+            <p>
+              Vegeterian box with 3 meals for
+              {' '}
+              {toggle ? item.boxPrice.peopleTwo.people : item.boxPrice.peopleFour.people}
+              {' '}
+              people
+            </p>
+            <p>
+              {toggle ? item.boxPrice.peopleTwo.price : item.boxPrice.peopleFour.price}
+              {' '}
+              kr
+            </p>
+            <button className="btn box__btn btn--white" type="submit" value={item._id}>
+              Order
+            </button>
+          </form>
+        </div>
       </div>
-      <div className="box__menus">
-        <div className="box__menu">
-          <p className="menu__week">
-            Next week:
-            {item.menu.nextWeek.weekNumber}
-          </p>
-          <div className="menu__recipes">
-            <div className="recipe__one">
+      <div className="box__menu">
+        <h3 className="box__menu__title">
+          Week
+          {' '}
+          {weekNum}
+          {' '}
+          menu
+        </h3>
+        <div className="box__menu__recipe card-container">
+          <div className="recipe column-three">
+            <div className="recipe__content">
+              <h4 className="recipe__day">Day 1</h4>
               <p className="recipe__name">{item.menu.nextWeek.recipes.recipeOne.name}</p>
-              <ul className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.map(i => (<li>{i}</li>))}</ul>
+              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
             </div>
           </div>
-        </div>
-        <div className="box__menu">
-          <p className="menu__week">
-            Week after:
-            {item.menu.weekAfter.weekNumber}
-          </p>
-          <div className="menu__recipes">
-            <div className="recipe__one">
-              <p className="recipe__name">{item.menu.weekAfter.recipes.recipeOne.name}</p>
-              <ul className="recipe__ingredients">{item.menu.weekAfter.recipes.recipeOne.ingredients.map(i => (<li>{i}</li>))}</ul>
+          <div className="recipe column-three">
+            <div className="recipe__content">
+              <h4 className="recipe__day">Day 2</h4>
+              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeTwo.name}</p>
+              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeTwo.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+            </div>
+          </div>
+          <div className="recipe column-three">
+            <div className="recipe__content">
+              <h4 className="recipe__day">Day 3</h4>
+              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeThree.name}</p>
+              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeThree.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
             </div>
           </div>
         </div>
       </div>
-      <button type="button" value={item._id} onClick={e => buttonHandler(e.target.value)}>
-        VIEW
-      </button>
     </article>
   ));
 
   return (
-    <div>
-      {!allBoxes || allBoxes.length === 0 ? (
-        null
-      ) : (
-        <div>
-          {boxes}
-        </div>
-      )}
+    <div className="boxes__container">
+      {boxes}
     </div>
   );
 };
