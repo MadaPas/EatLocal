@@ -45,7 +45,6 @@ $white: #FFFFFF;
   border-top: 0;
   width: 100%;
   font-size: 1em;
-  // padding: 7px 0;
   color: $black;
 }
 
@@ -76,7 +75,6 @@ $white: #FFFFFF;
   border-width: 1px;
   border-image: linear-gradient(to right, $aqua, rgba($green, .5)) 1 0%;
 }
-
 
 .form__field__user:focus {
   background: #fff;
