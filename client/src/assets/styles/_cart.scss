@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+
 $logo: #3DBB3D;
 $gray: #777777;
 $black: #070707;
@@ -17,14 +19,11 @@ $white: #FFFFFF;
   border-radius: 10px;
   background: rgb(255, 255, 255);
   padding: 40px;
+  justify-content: center;
 }
 
 .cart__title {
   text-align: center;
-}
-
-.cart__txt {
-
 }
 
 .summary__card {
@@ -53,6 +52,31 @@ $white: #FFFFFF;
 .summary-description  {
   margin-left: auto;
   text-align: center;
-  line-height: 20px;
+  line-height: 25px;
+}
+
+.btn--btn-remove {
+  background-color: $white;
+  max-width: fit-content;
+  padding: 9px 15px;
+  border-radius: 50px;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: -20px;
+  border: 1px solid black;
+}
+
+.btn--remove {
+  font-family: Lemon;
+  font-size: 30px;
+  margin-top:  -10px
+}
+
+.btn--btn-checkout {
+  background-color: $aqua;
+  max-width: fit-content;
+  padding: 20px;
+  border-radius: 50px;
+  justify-content: center;
 }
 

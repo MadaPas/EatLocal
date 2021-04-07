@@ -8,28 +8,30 @@
   url('../../../public/images/home/landing-page.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
   mix-blend-mode: overlay;
 }
 
-// hr {
-//   display: block;
-//   border-style: inset;
-//   border-width: 1px;
-//   color: white;
-// }
+hr {
+  border-style: inset;
+  border-width: 1px;
+  color: white;
+  width: 90%;
+  top: 30px;
+}
 
 .hero {
   display: flex;
   flex-direction: column;
-  font-family: "Lexend Deca";
   text-align: center;
-  padding-top: 150px;
+  padding-top: 75px;
 }
 
 .hero__tagline {
   text-transform: uppercase;
+  font-family: "Lexend Deca";
   color: white;
+  margin-top: 90px;
   font-size: 30px;
   text-shadow: 2px 2px 4px #000000;
 }
@@ -38,17 +40,15 @@
   background-color: rgba(255, 255, 255, 0.603);
   margin: auto;
   margin-top: 5%;
-  padding: 30px;
+  padding: 30px 60px;
 }
 
 .hero__btn--subscribe {
   color: white;
   background-color: #3A6857;
-  width: 290px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 40px;
   border-radius: 50px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 // Boxes section -------------------------------------------------------------------------------

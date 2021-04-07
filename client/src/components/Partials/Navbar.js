@@ -45,7 +45,7 @@ const Navbar = () => {
               {authState.isAuthenticated && (
                 <>
                   <Link to="/profile">Profile</Link>
-                  <div className="nav-logout" id="logout-button" onClick={logout}>Logout</div>
+                  <div className="nav-logout" id="logout-button closed" onClick={logout}>Logout</div>
                 </>
               )}
             </div>
