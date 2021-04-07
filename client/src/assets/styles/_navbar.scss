@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
+
+.ui .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 3%;
+    color: white;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: 700; 
+    margin-left: 4%;
+}
+
+.logo__eat {
+    font-family: "League Script"; 
+}
+
+.logo__local {
+    font-family: "Ledger"; 
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.item a {
+    margin: 10px;
+    font-family: "Lexend Deca";
+    font-size: 25px;
+}
+
+.fa-user {
+    margin: 10px;
+    font-family: "Lexend Deca";
+    font-size: 25px;
+}
+

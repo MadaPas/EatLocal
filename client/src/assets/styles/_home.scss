@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+// Landing section -------------------------------------------------------------------------------
+
+.landing-page {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
+  url('../../../public/images/home/landing-page.jpg') rgba(0, 0, 0, 0.527);
+  background-size: cover;
+  height: 100vh;
+  mix-blend-mode: overlay;
+}
+
+hr {
+  display: block;
+  margin: 0.5em 3em;
+  border-style: inset;
+  border-width: 1px;
+  color: white;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  font-family: "Lexend Deca";
+  text-align: center;
+  margin-top: 5%;
+}
+
+.hero__tagline {
+  text-transform: uppercase;
+  color: white;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.hero__cta {
+  margin: 5%;
+  background-color: rgba(255, 255, 255, 0.603);
+  width: 700px;
+  margin: auto;
+  margin-top: 5%;
+  padding: 3%;
+}
+
+.hero__cta__info, .hero__btn--subscribe {
+  font-size: 30px;
+  margin: 3%;
+}
+
+.hero__btn--subscribe {
+  color: white;
+  background-color: #3A6857;
+  width: 290px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  margin-top: 40px;
+}
+
+// Boxes section -------------------------------------------------------------------------------
+.boxes__content, .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.column-three {
+  flex: 1 1 30%;
+  position: relative;
+  width: 50%;
+}
+
+.boxes-page {
+  margin-top: 5%;
+}
+
+.img-box {
+  opacity: 0.85;
+}
+
+.content__info__img {
+  width: 480px; 
+  height: 380px; 
+  object-fit: cover;
+}
+
+.box__btn--info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.698);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-family: "Ledger";
+  width: 400px;
+  height: 300px;
+}
+
+// About section -------------------------------------------------------------------------------
+
+.section, .about-page {
+  margin-top: 5%;
+}
+
+.content__title {
+  text-align: center;
+  margin-bottom: 5%;
+  font-size: 45px;
+  text-shadow: 2px 2px 3px #00000098;
+  font-family: "Lexend Deca";
+}
+
+.content__info-about {
+  font-family: 'Libre Baskerville';
+  font-size: 20px;
+  background-color: #F7F9F6;
+  padding: 5%;
+  text-align: center;
+}
+
+.accent {
+  color: #CD883D;
+}
+
+.about__img {
+  width: 100%; 
+  height: 380px; 
+  object-fit: cover;
+}
+
+// Farm section -------------------------------------------------------------------------------
+
+.column-two {
+  flex-basis: 50%;
+  font-family: 'Libre Baskerville';
+  background-color: #F7F9F6;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.img-farm {
+  height: 400px;
+  width: 400px;
+}
+
+.content__info__txt {
+  font-size: 15px;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 2%;
+}

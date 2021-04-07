@@ -9,7 +9,7 @@ import StripeContainer from './components/Stripe/StripeContainer';
 import { GeneralProvider } from './context/General';
 import config from './config';
 import Home from './components/Home';
-import Navbar from './components/Partials/Navbar';
+// import Navbar from './components/Partials/Navbar';
 import Profile from './components/Profile';
 import AllBoxes from './components/Boxes/AllBoxes';
 import Map from './components/Map/Map';
@@ -27,7 +27,6 @@ const App = () => {
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <GeneralProvider>
-        <Navbar />
         <main className="main">
           {' '}
           <Switch>
