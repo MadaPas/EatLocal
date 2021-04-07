@@ -1,6 +1,10 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
 
+.developed-by__title {
+  margin-top: 50px;
+}
+
 .figure {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
@@ -16,7 +20,7 @@
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: inline-block;
   z-index: 1;
   position: relative;
@@ -74,6 +78,7 @@
   font-weight: 400;
   text-transform: none;
   display: block;
+  margin-top: 10px;
 }
 
 /* Color Variables */
@@ -90,6 +95,7 @@ $color-linkedin: #006599;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .social__icon {

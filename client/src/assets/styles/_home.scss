@@ -14,7 +14,6 @@
 
 hr {
   display: block;
-  margin: 0.5em 3em;
   border-style: inset;
   border-width: 1px;
   color: white;
@@ -25,8 +24,7 @@ hr {
   flex-direction: column;
   font-family: "Lexend Deca";
   text-align: center;
-  // margin-top: 5%;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 .hero__tagline {
@@ -61,40 +59,76 @@ hr {
 }
 
 // Boxes section -------------------------------------------------------------------------------
-.boxes__content, .card-container {
+.card-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
+@media only screen and (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+  }
+}
+
 .column-three {
-  flex: 1 1 20%;
+  flex: 1 1 30%;
   text-align: center;
 }
 
-.vegeterian-img {
+.box-content, .recipe-content {
+  height: 170px;
+  background-color: rgba(255, 255, 255, 0.698);
+  margin: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+  flex-direction: column;
+}
+
+.box-content {
+  padding: 15px;
+}
+
+.box-content:hover {
+  cursor: pointer;
+}
+
+.box-name {
+margin-top: 15px;
+}
+
+.box-desc{
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -40px;
+}
+.box__btn--info {
+  padding-top: 10px;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+.box-card, .menu-card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vegeterian-box {
   background-image: url('../../../public/images/boxes/vegetarian.jpg');
-  background-repeat: no-repeat;
-  object-fit: cover;
-  // width: 400px; 
-  // height: 380px;
 }
 
-.family-img {
+.family-box {
   background-image: url('../../../public/images/boxes/family.jpg');
-  background-repeat: no-repeat;
-  object-fit: cover;
-  // width: 480px; 
-  // height: 380px;
 }
 
-.vegan-img {
+.vegan-box {
   background-image: url('../../../public/images/boxes/vegan.jpg');
-  background-repeat: no-repeat;
-  object-fit: cover;
-  // width: 480px; 
-  // height: 380px;
 }
 
 .boxes-page {
@@ -111,18 +145,16 @@ hr {
 //   object-fit: cover;
 // }
 
-.box__btn--info {
-  background-color: rgba(255, 255, 255, 0.698);
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  font-family: "Ledger";
-  padding: 100px;
-}
+// .box__btn--info {
+//   color: rgb(0, 0, 0);
+//   font-size: 30px;
+//   font-family: "Ledger";
+// }
 
 // About section -------------------------------------------------------------------------------
 
-.section, .about-page {
-  margin-top: 5%;
+.about-page, .farmers-page, .developed-by__title {
+  margin-top: 50px;
 }
 
 .content__title {
@@ -159,16 +191,29 @@ hr {
   background-color: #F7F9F6;
   text-align: center;
   margin-bottom: 20px;
+  display:inline-block;
 }
 
 .img-farm {
   height: 400px;
   width: 400px;
+  object-fit: cover;
 }
 
 .content__info__txt {
   font-size: 15px;
-  max-width: 500px;
+  max-width: 480px;
   margin: auto;
   margin-top: 2%;
+}
+
+.column-two__info {
+  margin: 50px;
+}
+
+.content__info--btn {
+  background-color: #3A6857;
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: white;
 }

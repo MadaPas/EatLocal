@@ -1,11 +1,11 @@
 @import "./index";
 @import "./dropdown";
+@import "./allboxes";
 @import "./reset.local";
 @import "./home";
 @import "./authors";
-// @import "./navbar";
+@import "./navbar";
 @import "./footer";
-@import "./support";
 
 .landing-page {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
@@ -16,6 +16,7 @@
   mix-blend-mode: overlay;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
@@ -44,11 +45,19 @@ h3 {
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 20px;
+  font-family: 'Ledger';
 }
 
 p {
   font-size: 15px;
+  font-family: 'Lato';
+  font-weight: 400;
+}
+
+a {
+  font-family: 'Lato';
+  font-weight: 400;
 }
 
 .box__info {
