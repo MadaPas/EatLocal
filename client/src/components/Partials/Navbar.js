@@ -72,7 +72,7 @@ const Navbar = () => {
               <div className="nav-person" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
                 <div className="nav-person-content">
                   <FontAwesomeIcon className="nav-icon" icon={faUser} />
-                  <div className={open ? 'dropdown' : 'dropdown'}>
+                  <div className={open ? 'dropdown' : 'dropdown closed'}>
                     <Link to="/profile">Profile</Link>
                     <div className="nav-logout" id="logout-button" onClick={logout}>Logout</div>
                   </div>

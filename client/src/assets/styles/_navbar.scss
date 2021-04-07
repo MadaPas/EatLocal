@@ -53,10 +53,15 @@
 }
 .dropdown {
   margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.603);
+  background-color: #759589;
   padding: 10px 20px;
-  color: #000;
+  color: #fff;
   position: absolute;
+  top: 73px;
+}
+.landing .dropdown {
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.603);
   top: 73px;
 }
 .dropdown a {
@@ -99,11 +104,12 @@
   flex-direction: row;
   justify-content: flex-start;
   z-index:10;
-  padding-top: 15px;
+  padding: 15px 0;
 }
 
 .header-content.landing {
   background-color: transparent;
+  padding: 15px 0 0 0;
 }
 
 // .header a {
