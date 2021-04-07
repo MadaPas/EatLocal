@@ -30,12 +30,12 @@ const Cart = () => {
         <h1 className="cart__title">Order Summary</h1>
         <div className="cart__order-summary">
           <div>
-            <p className="cart__txt">Subscription:</p>
+            <h4 className="cart__txt">Subscription:</h4>
             <div className="summary__card">
               <div className="summary__card__column">
                 <img className="summary__card__img img" src={box[0].img} alt="food" />
               </div>
-              <div className="summary__card__column">
+              <div className="summary__card__column summary-description">
                 <p className="box__name">
                   {box[0].name}
                   {' '}
@@ -45,7 +45,7 @@ const Cart = () => {
                   {box[0].type}
                 </p>
                 <p className="box__people">
-                  r
+                  for
                   {' '}
                   {boxOption.people}
                   {' '}

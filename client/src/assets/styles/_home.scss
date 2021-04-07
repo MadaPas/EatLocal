@@ -12,12 +12,12 @@
   mix-blend-mode: overlay;
 }
 
-hr {
-  display: block;
-  border-style: inset;
-  border-width: 1px;
-  color: white;
-}
+// hr {
+//   display: block;
+//   border-style: inset;
+//   border-width: 1px;
+//   color: white;
+// }
 
 .hero {
   display: flex;
@@ -30,22 +30,15 @@ hr {
 .hero__tagline {
   text-transform: uppercase;
   color: white;
-  font-size: 40px;
+  font-size: 30px;
   text-shadow: 2px 2px 4px #000000;
 }
 
 .hero__cta {
-  margin: 5%;
   background-color: rgba(255, 255, 255, 0.603);
-  width: 700px;
   margin: auto;
   margin-top: 5%;
-  padding: 3%;
-}
-
-.hero__cta__info, .hero__btn--subscribe {
-  font-size: 30px;
-  margin: 3%;
+  padding: 30px;
 }
 
 .hero__btn--subscribe {

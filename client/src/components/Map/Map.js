@@ -31,6 +31,7 @@ const Map = props => {
 
   const scrollHandler = f => {
     setSelectedFarm([f]);
+    myRef.current.scrollIntoView();
   };
 
   useEffect(() => {
@@ -44,15 +45,15 @@ const Map = props => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!farmersPage) {
-      document.getElementById('map').classList.add('landing__map');
-      return () => {
-        document.getElementById('map').classList.remove('landing__map');
-      };
-    }
-    return null;
-  }, []);
+  // useEffect(() => {
+  //   if (!farmersPage) {
+  //     document.getElementById('map').classList.add('landing__map');
+  //     return () => {
+  //       document.getElementById('map').classList.remove('landing__map');
+  //     };
+  //   }
+  //   return null;
+  // }, []);
 
   return (
     <>
@@ -96,10 +97,10 @@ const Map = props => {
           )}
         </ReactMapGL>
       </section>
-      <div>
+      <div ref={myRef}>
         {farmersPage && selectedFarm && selectedFarm.length > 0 && (
           <>
-            <section ref={myRef} className="section farmers">
+            <section className="section farmers">
               <div className="farm-container-name">
                 <div className="farm__content">
                   <p className="farmers__name">{selectedFarm[0].name}</p>
@@ -146,7 +147,7 @@ const Map = props => {
           <section className="section farmer__cards card-container">
             {allFarmers?.map(f => (
               <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
-                <div className="farmer__content card__content" onClick={() => scrollHandler()}>
+                <div className="farmer__content card__content" onClick={() => scrollHandler(f)}>
                   <p className="card__name">{f.name}</p>
                   <p className="card__address">{f.address}</p>
                 </div>

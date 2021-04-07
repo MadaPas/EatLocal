@@ -33,7 +33,7 @@ const Home = () => {
           </h1>
           <div className="hero__cta">
             <p className="hero__cta__info">Contact-free delivery</p>
-            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>Subscribe</button>
+            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>View Options</button>
           </div>
         </section>
       </section>
