@@ -141,7 +141,7 @@ const Profile = () => {
               ) : <p className="profile__street profile__field__address" id="street">{userData[0].street}</p>}
             </label>
             <label className="form__label postal_code" htmlFor="postal_code">
-              <p className="user__label user__label__address">Postal Code</p>
+              <p className="user__label user__label__address">Postal</p>
               {editing ? (
                 <input className="form__field__user form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
               ) : <p className="profile__postal_code profile__field__address" id="postal_code">{userData[0].postalCode}</p>}

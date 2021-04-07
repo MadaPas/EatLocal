@@ -1,0 +1,66 @@
+$logo: #3DBB3D;
+$gray: #777777;
+$black: #070707;
+$green: #759589;
+$aqua: #35645f;
+$white: #FFFFFF;
+
+.cart {
+  padding-top: 130px;
+  margin: auto;
+  width: 50%;
+  height: 90%;
+  border: 2px solid #759589;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  padding: 40px;
+}
+
+.cart__title  {
+
+}
+
+.summary__card__img {
+  flex: 1 1 30%;
+  text-align: center;
+}
+
+.user__profile__title {
+    color: $green;
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    text-decoration: underline;
+  }
+  
+  .user__label {
+    color: $gray;
+    width: 80%;
+    font-size: 15px;
+    margin-left: 2px;
+    padding: 5px 0px 5px 0px;
+  }
+
+  .profile__field {
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, $aqua, rgba($green,.5)) 1 0%;
+    border-top: 0;
+    width: 100%;
+    font-size: 1em;
+    padding: 7px 0;
+    color: $black;
+  }
+
+  .user__label__address {
+    margin-left: 20px;
+  }
+  .profile__field__address {
+    width: 100%;
+    font-size: 1em;
+    color: $black;
+    padding: 5px 0px 5px 20px;
+  }
+
+  .user__label__ad {
+    font-size: 20px;
+  }

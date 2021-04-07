@@ -120,7 +120,7 @@ const Map = props => {
         {farmersPage && (
           <section className="section farmer__cards card-container">
             {allFarmers?.map(f => (
-              <div className="farmer__card column-three" id={f._id}>
+              <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
                 <div className="farmer__content card__content">
                   <p className="card__name">{f.name}</p>
                   <p className="card__address">{f.address}</p>

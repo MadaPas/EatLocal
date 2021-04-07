@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 .map {
     padding-top: 80px;
 }
@@ -15,12 +17,12 @@
   background-color: #fafafa;
   // font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
   padding: 10px;
-  width: 180px;
+  width: 160px;
 }
 
-// .map__popup__title {
-  // font-size: 25px;
-// }
+.map__popup__title {
+  margin: -17px 15px 15px 0;
+}
 
 .mapboxgl-popup-content-wrapper {
   padding: 1%;
@@ -28,5 +30,9 @@
 
 .map__popup_close {
   margin-left: auto;
-  color: red;
+}
+
+.map__popup_btn {
+  font-family: 'Lato';
+  font-weight: 400;
 }
