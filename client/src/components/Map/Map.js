@@ -114,31 +114,66 @@ const Map = props => {
                 </div>
               </div>
               <div className="farm-info">
-                <p className="farmers__type">
-                  Type:
-                  {selectedFarm[0].type}
-                </p>
-                <p className="farmers__area">
-                  Area:
-                  {selectedFarm[0].propertyArea}
-                </p>
-                <p className="farmers__practices">
-                  Practices:
-                  {selectedFarm[0].practices}
-                </p>
-                <p className="farmers__animals">
-                  Animals:
-                  {selectedFarm[0].animals}
-                </p>
-                <p className="farmers__products">
-                  Products:
-                  {selectedFarm[0].products}
-                </p>
-                <p className="farmers__desc">{selectedFarm[0].description}</p>
-                <p className="farmers__credits">
-                  Link:
-                  {selectedFarm[0].credits}
-                </p>
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Type
+                  </p>
+                  <p className="farmer__field farmers__type">
+                    {selectedFarm[0].type}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Property Area
+                  </p>
+                  <p className="farmer__field farmers__area">
+                    {selectedFarm[0].propertyArea}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Practices
+                  </p>
+                  <p className="farmer__field farmers__practices">
+                    {selectedFarm[0].practices}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Animals
+                  </p>
+                  <p className="farmer__field farmers__animals">
+                    {selectedFarm[0].animals}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Products
+                  </p>
+                  <p className="farmer__field farmers__products">
+                    {selectedFarm[0].products}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    About
+                  </p>
+                  <p className="farmer__field farmers__desc">
+                    {selectedFarm[0].description}
+                  </p>
+                </div>
+
+                <div className="credit__link__container farmer__field__container">
+                  <a className="farmer__label credit__link" href={selectedFarm[0].credits} target="_blank" rel="noreferrer">
+                    Credit
+                  </a>
+                </div>
+
               </div>
             </section>
           </>
