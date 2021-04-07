@@ -45,7 +45,6 @@ $white: #FFFFFF;
   border-top: 0;
   width: 100%;
   font-size: 1em;
-  // padding: 7px 0;
   color: $black;
 }
 
@@ -68,7 +67,7 @@ $white: #FFFFFF;
   border-top: 0;
   width: 100%;
   font-size: 1em;
-  color: rgb(0, 0, 0);
+  color: #5a746a;
   font-weight: 500;
   padding: 15px;
   margin-bottom: 5px;
@@ -77,12 +76,11 @@ $white: #FFFFFF;
   border-image: linear-gradient(to right, $aqua, rgba($green, .5)) 1 0%;
 }
 
-
 .form__field__user:focus {
   background: #fff;
   box-shadow: 0;
   border-radius: 10px;
-  color: #000;
+  color: #5a746a;
   outline: none;
   padding: 15px;
 }
