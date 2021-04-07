@@ -137,19 +137,19 @@ const Profile = () => {
             <label className="form__label street" htmlFor="street">
               <p className="user__label user__label__address">Street</p>
               {editing ? (
-                <input className="form__field form__input street" type="text" id="street" defaultValue={userData[0].street} required />
+                <input className="form__field__user form__input street" type="text" id="street" defaultValue={userData[0].street} required />
               ) : <p className="profile__street profile__field__address" id="street">{userData[0].street}</p>}
             </label>
             <label className="form__label postal_code" htmlFor="postal_code">
               <p className="user__label user__label__address">Postal Code</p>
               {editing ? (
-                <input className="form__field form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+                <input className="form__field__user form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
               ) : <p className="profile__postal_code profile__field__address" id="postal_code">{userData[0].postalCode}</p>}
             </label>
             <label className="form__label city" htmlFor="city">
               <p className="user__label user__label__address">City</p>
               {editing ? (
-                <input className="form__field form__input city" type="text" id="city" defaultValue={userData[0].city} required />
+                <input className="form__field__user form__input city" type="text" id="city" defaultValue={userData[0].city} required />
               ) : <p className="profile__city profile__field__address" id="city">{userData[0].city}</p>}
             </label>
             <button className="form__btn profile__btn btn btn--green" type="submit">Edit address</button>
