@@ -12,9 +12,8 @@ const Footer = () => (
       <div className="footer__links__container">
         <h6 className="foote__title">Quick Links</h6>
         <ul className="footer-links">
-          <li><a className="footer__q-links" href="/contact">Contact Us</a></li>
+          <li><a className="footer__q-links" href="/contact">Contact Us & FAQ</a></li>
           <li><a className="footer__q-links" href="/apply">Join As a Member</a></li>
-          <li><a className="footer__q-links" href="/faq">FAQ</a></li>
           <li><a className="footer__q-links" href="/#">Privacy Policy</a></li>
         </ul>
       </div>
