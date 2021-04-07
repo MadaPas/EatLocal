@@ -32,13 +32,45 @@ const Support = () => {
   return (
     <div className="support">
       <div className="support__faq">
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+        <h2 className="faq">FAQ</h2>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question one </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question two </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question three </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question four </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="ffaq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
       </div>
+      <div className="form__div">
       <form className="support__form form" onSubmit={e => submitHandler(e)}>
         <label className="form__name label__name" htmlFor="name">
           Name
