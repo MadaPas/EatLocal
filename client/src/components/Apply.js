@@ -29,26 +29,26 @@ const Apply = () => {
   };
 
   return (
-    <div className="apply">
-      <p className="apply__txt">
-        Join us today!
-      </p>
-      <form className="apply__form form" onSubmit={e => submitHandler(e)}>
-        <label className="form__name label__name" htmlFor="name">
-          Name
-          <input className="form__name input__name" id="name" type="text" required />
-        </label>
-        <label className="form__email label__email" htmlFor="email">
-          Email
-          <input className="form__email input__email" id="email" type="email" required />
-        </label>
-        <label className="form__message label__message" htmlFor="message">
-          Message
-          <textarea className="form__message" id="message" required />
-        </label>
-        <button className="form__btn btn btn--green" type="submit">Send</button>
-        <p className="form__txt">{emailResponse}</p>
-      </form>
+    <div className="apply__support">
+      <p className="apply__txt">Join us today!</p>
+      <div className="form__div">
+        <form className="apply__form support__form form" onSubmit={e => submitHandler(e)}>
+          <label className="form__name label__name" htmlFor="name">
+            Name
+            <input className="form__field form__name input__name" id="name" type="text" required />
+          </label>
+          <label className="form__email label__email" htmlFor="email">
+            Email
+            <input className="form__field form__email input__email" id="email" type="email" required />
+          </label>
+          <label className="form__message label__message" htmlFor="message">
+            Message
+            <textarea className="form__field form__message" id="message" required />
+          </label>
+          <button className="form__btn btn btn--green" type="submit">Send</button>
+          <p className="form__txt">{emailResponse}</p>
+        </form>
+      </div>
     </div>
   );
 };
