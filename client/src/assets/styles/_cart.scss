@@ -5,14 +5,8 @@ $green: #759589;
 $aqua: #35645f;
 $white: #FFFFFF;
 
-.profile {
+.cart {
   padding-top: 130px;
-}
-.profile__column {
-  padding-bottom: 40px;
-}
-
-.user__cont {
   margin: auto;
   width: 50%;
   height: 90%;
@@ -20,6 +14,15 @@ $white: #FFFFFF;
   border-radius: 10px;
   background: rgb(255, 255, 255);
   padding: 40px;
+}
+
+.cart__title  {
+
+}
+
+.summary__card__img {
+  flex: 1 1 30%;
+  text-align: center;
 }
 
 .user__profile__title {
@@ -31,7 +34,7 @@ $white: #FFFFFF;
   
   .user__label {
     color: $gray;
-    width: 100%;
+    width: 80%;
     font-size: 15px;
     margin-left: 2px;
     padding: 5px 0px 5px 0px;
