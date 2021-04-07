@@ -130,9 +130,11 @@ const Home = () => {
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
                 <h5 className="content__info__name">
                   Madalina Andreea
                   {' '}
