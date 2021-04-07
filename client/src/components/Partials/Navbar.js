@@ -26,7 +26,7 @@ const Navbar = () => {
         <MediaQuery maxWidth={768}>
           <div className="bars" onMouseEnter={() => setBurger(true)} onMouseLeave={() => setBurger(false)}>
             <FontAwesomeIcon className="bars-icon" icon={faBars} />
-            <div className={burger ? 'bars-burger' : 'bars-burger closed'}>
+            <div className={burger ? 'bars-burger' : 'bars-burger'}>
               <Link to="/boxes">Boxes</Link>
 
               <Link to="/farmers">Farmers</Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
               <div className="nav-person" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
                 <div className="nav-person-content">
                   <FontAwesomeIcon className="nav-icon" icon={faUser} />
-                  <div className={open ? 'dropdown' : 'dropdown closed'}>
+                  <div className={open ? 'dropdown' : 'dropdown'}>
                     <Link to="/profile">Profile</Link>
                     <div className="nav-logout" id="logout-button" onClick={logout}>Logout</div>
                   </div>

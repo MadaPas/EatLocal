@@ -56,6 +56,8 @@
   background-color: rgba(255, 255, 255, 0.603);
   padding: 10px 20px;
   color: #000;
+  position: absolute;
+  top: 73px;
 }
 .dropdown a {
   margin-left: 0;
@@ -90,7 +92,7 @@
 }
 .header-content {
   position: absolute;
-  background-color: transparent;
+  background-color: #3A6857;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +100,10 @@
   justify-content: flex-start;
   z-index:10;
   padding-top: 15px;
+}
+
+.header-content.landing {
+  background-color: transparent;
 }
 
 // .header a {

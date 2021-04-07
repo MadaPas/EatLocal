@@ -16,10 +16,11 @@ const Home = () => {
   };
   useEffect(() => {
     document.getElementById('header-content').classList.add('landing');
+    return () => {
+      document.getElementById('header-content').classList.remove('landing');
+    };
   }, []);
-  // useEffect
-  // console.log(ReactDOM.getElementById('header-content'));
-  // document.getElementById('header-content').classList.add('landing');
+
   return (
     <>
       <section className="landing-page">
@@ -113,14 +114,14 @@ const Home = () => {
           <div className="content__info card-container">
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/farmer.jpg" alt="farmer" />
-              <p className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</p>
+              <h4 className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</h4>
               <div className="column-two__info">
                 <a className="btn btn--info content__info--btn" href="/farmers">Meet Our Farmers</a>
               </div>
             </div>
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/tomatoes.jpg" alt="tomatoes" />
-              <p className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</p>
+              <h4 className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</h4>
               <div className="column-two__info">
                 <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
               </div>
