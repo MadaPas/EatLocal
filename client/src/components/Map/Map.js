@@ -80,7 +80,9 @@ const Map = props => {
         {farmersPage && selectedFarm && selectedFarm.length > 0 && (
           <>
             <section className="section farmers">
-              <p className="farmers__name">{selectedFarm[0].name}</p>
+              <div className="container__farm-name">
+                <p className="farmers__name">{selectedFarm[0].name}</p>
+              </div>
               <p className="farmers__address">{selectedFarm[0].address}</p>
               <p className="farmers__organic">
                 Organic:
@@ -114,6 +116,7 @@ const Map = props => {
             </section>
           </>
         )}
+        {farmersPage && (
         <section className="section farmer__cards card-container">
           {allFarmers?.map(f => (
             <div className="farmer__card column-three">
@@ -124,6 +127,7 @@ const Map = props => {
             </div>
           ))}
         </section>
+        )}
       </div>
     </>
   );

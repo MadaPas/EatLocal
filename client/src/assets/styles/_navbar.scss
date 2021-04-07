@@ -48,6 +48,8 @@
 
 .nav-person {
   display: inline-flex;
+  width: 100px;
+  justify-content: center;
 }
 .dropdown {
   margin-top: 10px;
@@ -95,7 +97,7 @@
   flex-direction: row;
   justify-content: flex-start;
   z-index:10;
-  margin-top: 15px;
+  padding-top: 15px;
 }
 
 // .header a {
@@ -103,19 +105,40 @@
 //   pointer-events: all;
 // }
 
-.bars-logout:hover, .bars-login:hover {
+.nav-logout:hover, .nav-login:hover {
   cursor: pointer;
 }
 
 .closed {
-  visibility: hidden;
+  display: none;
 }
 
 .bars-burger {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.603);
+  padding: 20px 20px 10px;
+  color: #000;
 }
 .bars {
-  float: right;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 0 0;
+}
+.bars-burger > * {
+  margin-bottom: 10px;
+}
+.bars-burger .nav-logout {
+  margin-top: 0;
+}
+.bars-burger .nav-login {
+  margin-left: 0;
+}
+.bars-icon {
+  font-size: 25px;
 }

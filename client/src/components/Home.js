@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useHistory } from 'react-router-dom';
@@ -14,6 +14,12 @@ const Home = () => {
   const buttonHandler = e => {
     history.push(e.target.parentElement.id);
   };
+  useEffect(() => {
+    document.getElementById('header-content').classList.add('landing');
+  }, []);
+  // useEffect
+  // console.log(ReactDOM.getElementById('header-content'));
+  // document.getElementById('header-content').classList.add('landing');
   return (
     <>
       <section className="landing-page">
