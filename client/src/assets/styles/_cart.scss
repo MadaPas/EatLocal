@@ -19,7 +19,6 @@ $white: #FFFFFF;
   border-radius: 10px;
   background: rgb(255, 255, 255);
   padding: 40px;
-  justify-content: center;
 }
 
 .cart__title {
@@ -56,20 +55,21 @@ $white: #FFFFFF;
 }
 
 .btn--btn-remove {
-  background-color: $white;
   max-width: fit-content;
-  padding: 9px 15px;
   border-radius: 50px;
   justify-content: center;
   margin-left: auto;
   margin-top: -20px;
-  border: 1px solid black;
 }
 
 .btn--remove {
+  background-color: $white;
   font-family: Lemon;
   font-size: 30px;
-  margin-top:  -10px
+  margin-top:  -20px;
+  border: 1px solid black;
+  padding: 9px 15px;
+  border-radius: 50px;
 }
 
 .btn--btn-checkout {
