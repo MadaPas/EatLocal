@@ -132,7 +132,7 @@ const Map = props => {
           <section className="section farmer__cards card-container">
             {allFarmers?.map(f => (
               <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
-                <div className="farmer__content card__content">
+                <div className="farmer__content card__content" onClick={() => setSelectedFarm([f])}>
                   <p className="card__name">{f.name}</p>
                   <p className="card__address">{f.address}</p>
                 </div>
