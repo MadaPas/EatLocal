@@ -6,9 +6,6 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useHistory } from 'react-router-dom';
 
 import Map from './Map/Map';
-import Navbar from './Partials/Navbar';
-
-import '../assets/styles/_home.scss';
 
 const Home = () => {
   const history = useHistory();
@@ -18,8 +15,7 @@ const Home = () => {
   return (
     <>
       <section className="landing-page">
-        <Navbar />
-        <hr />
+        {/* <hr /> */}
         <section className="hero">
           <h1 className="hero__tagline">
             Quality food from
@@ -39,16 +35,13 @@ const Home = () => {
 
         {/* <h2 className="content__title">Our Food Boxes</h2> */}
         <div className="section__content boxes__content card-container">
-          <div className="column-three">
-            <img className="content__info__img img-box" src="/images/boxes/vegetarian.jpg" alt="salad" />
+          <div className="column-three vegeterian-img">
             <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Vegetarian" onClick={e => buttonHandler(e)}>Vegetarian</button>
           </div>
-          <div className="column-three">
-            <img className="content__info__img img-box" src="/images/boxes/family.jpg" alt="salmon" />
+          <div className="column-three family-img">
             <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Family" onClick={e => buttonHandler(e)}>Family</button>
           </div>
-          <div className="column-three">
-            <img className="content__info__img img-box" src="/images/boxes/vegan.jpg" alt="wrap" />
+          <div className="column-three vegan-img">
             <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Vegan" onClick={e => buttonHandler(e)}>Vegan</button>
           </div>
         </div>
@@ -101,7 +94,7 @@ const Home = () => {
           <h2 className="content__title">Developed By</h2>
           <div className="content__info card-container">
             <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/juha.jpg" alt="juha" />
+              <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
               <div className="content__info__name">Juha Kemppinen</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -109,7 +102,7 @@ const Home = () => {
               </div>
             </div>
             <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/anastasia.jpg" alt="anastasia" />
+              <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
               <div className="content__info__name">Anastasia Ponomarenko</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -117,7 +110,7 @@ const Home = () => {
               </div>
             </div>
             <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/madalina.jpg" alt="madalina" />
+              <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
               <div className="content__info__name">Madalina Andreea</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/andreea-madalina-pascariu/"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -125,7 +118,7 @@ const Home = () => {
               </div>
             </div>
             <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/valentina.jpg" alt="valentina" />
+              <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
               <div className="content__info__name">Valentina</div>
               <div className="content__info__socials">
                 <a href="https://www.linkedin.com/in/ko-va/"><FontAwesomeIcon icon={faLinkedin} /></a>

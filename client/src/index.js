@@ -7,6 +7,7 @@ import './polyfills';
 import App from './App';
 
 import './assets/styles/app.scss';
+
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(

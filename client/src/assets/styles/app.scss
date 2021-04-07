@@ -1,6 +1,18 @@
 @import "./index";
 @import "./dropdown";
 @import "./reset.local";
+@import "./home";
+@import "./authors";
+@import "./navbar";
+
+.landing-page {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
+  url('../../../public/images/home/landing-page.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  mix-blend-mode: overlay;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');

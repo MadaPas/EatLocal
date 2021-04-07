@@ -5,7 +5,8 @@
 
 .landing-page {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
-  url('../../../public/images/home/landing-page.jpg') rgba(0, 0, 0, 0.527);
+  url('../../../public/images/home/landing-page.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   mix-blend-mode: overlay;
@@ -24,7 +25,8 @@ hr {
   flex-direction: column;
   font-family: "Lexend Deca";
   text-align: center;
-  margin-top: 5%;
+  // margin-top: 5%;
+  padding-top: 100px;
 }
 
 .hero__tagline {
@@ -67,9 +69,32 @@ hr {
 }
 
 .column-three {
-  flex: 1 1 30%;
-  position: relative;
-  width: 50%;
+  flex: 1 1 20%;
+  text-align: center;
+}
+
+.vegeterian-img {
+  background-image: url('../../../public/images/boxes/vegetarian.jpg');
+  background-repeat: no-repeat;
+  object-fit: cover;
+  // width: 400px; 
+  // height: 380px;
+}
+
+.family-img {
+  background-image: url('../../../public/images/boxes/family.jpg');
+  background-repeat: no-repeat;
+  object-fit: cover;
+  // width: 480px; 
+  // height: 380px;
+}
+
+.vegan-img {
+  background-image: url('../../../public/images/boxes/vegan.jpg');
+  background-repeat: no-repeat;
+  object-fit: cover;
+  // width: 480px; 
+  // height: 380px;
 }
 
 .boxes-page {
@@ -80,24 +105,18 @@ hr {
   opacity: 0.85;
 }
 
-.content__info__img {
-  width: 480px; 
-  height: 380px; 
-  object-fit: cover;
-}
+// .content__info__img {
+//   width: 480px; 
+//   height: 380px; 
+//   object-fit: cover;
+// }
 
 .box__btn--info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.698);
   color: rgb(0, 0, 0);
   font-size: 30px;
   font-family: "Ledger";
-  width: 400px;
-  height: 300px;
+  padding: 100px;
 }
 
 // About section -------------------------------------------------------------------------------
