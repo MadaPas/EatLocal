@@ -11,9 +11,7 @@ import Map from './Map/Map';
 
 const Home = () => {
   const history = useHistory();
-  const buttonHandler = e => {
-    history.push(e.target.parentElement.id);
-  };
+
   useEffect(() => {
     document.getElementById('header-content').classList.add('landing');
     return () => {
@@ -35,7 +33,7 @@ const Home = () => {
           </h1>
           <div className="hero__cta">
             <p className="hero__cta__info">Contact-free delivery</p>
-            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => buttonHandler(e)}>Subscribe</button>
+            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>Subscribe</button>
           </div>
         </section>
       </section>
@@ -45,7 +43,7 @@ const Home = () => {
         {/* <h2 className="content__title">Our Food Boxes</h2> */}
         <div className="section__content boxes__content card-container">
           <div className="column-three box-card vegeterian-box">
-            <div className="box-content" id="/boxes/#Vegetarian" onClick={e => buttonHandler(e)}>
+            <div className="box-content" id="/boxes/#Vegetarian" onClick={e => history.push(e.target.parentElement.id)}>
               <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Vegetarian
@@ -56,7 +54,7 @@ const Home = () => {
             </div>
           </div>
           <div className="column-three box-card family-box">
-            <div className="box-content" id="/boxes/#Family" onClick={e => buttonHandler(e)}>
+            <div className="box-content" id="/boxes/#Family" onClick={e => history.push(e.target.parentElement.id)}>
               <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Family
@@ -67,7 +65,7 @@ const Home = () => {
             </div>
           </div>
           <div className="column-three box-card vegan-box">
-            <div className="box-content" id="/boxes/#Vegan" onClick={e => buttonHandler(e)}>
+            <div className="box-content" id="/boxes/#Vegan" onClick={e => history.push(e.target.parentElement.id)}>
               <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Vegan
