@@ -77,7 +77,7 @@ hr {
   text-align: center;
 }
 
-.box-content, .recipe-content {
+.box-content, .recipe-content, .farmer__content {
   height: 170px;
   background-color: rgba(255, 255, 255, 0.698);
   margin: 20px;
@@ -119,6 +119,17 @@ margin-top: 15px;
   background-size: cover;
 }
 
+.vegeterian-box {
+  background-image: url('../../../public/images/boxes/vegetarian.jpg');
+}
+
+.family-box {
+  background-image: url('../../../public/images/boxes/family.jpg');
+}
+
+.vegan-box {
+  background-image: url('../../../public/images/boxes/vegan.jpg');
+}
 .vegeterian-box {
   background-image: url('../../../public/images/boxes/vegetarian.jpg');
 }
