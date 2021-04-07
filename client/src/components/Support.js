@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import * as emailjs from 'emailjs-com';
 
@@ -32,33 +33,66 @@ const Support = () => {
   return (
     <div className="support">
       <div className="support__faq">
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
-        <p className="faq__question">What is Lorem Ipsum?</p>
-        <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+        <h2 className="faq">FAQ</h2>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question one </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question two </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question three </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="faq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
+        <div className="faq-drawer">
+          <input className="faq-drawer__trigger" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer">Question four </label>
+          <div className="faq-drawer__content-wrapper">
+            <div className="ffaq-drawer__content">
+              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <form className="support__form form" onSubmit={e => submitHandler(e)}>
-        <label className="form__name label__name" htmlFor="name">
-          Name
-          <input className="form__name input__name" id="name" type="text" required />
-        </label>
-        <label className="form__email label__email" htmlFor="email">
-          Email
-          <input className="form__email input__email" id="email" type="email" required />
-        </label>
-        <label className="form__topic label__topic" htmlFor="topic">
-          Topic
-          <input className="form__topic input__topic" id="topic" type="text" required />
-        </label>
-        <label className="form__message label__message" htmlFor="message">
-          Message
-          <textarea className="form__message" id="message" required />
-        </label>
-        <button className="form__btn btn btn--green" type="submit">Send</button>
-        <p className="form__txt">{emailResponse}</p>
-      </form>
+      <div className="form__div">
+        <form className="support__form form" onSubmit={e => submitHandler(e)}>
+          <label className="form__name label__name" htmlFor="name">
+            Name
+            <input className="form__field form__name input__name" id="name" type="text" required />
+          </label>
+          <label className="form__email label__email" htmlFor="email">
+            Email
+            <input className="form__field form__email input__email" id="email" type="email" required />
+          </label>
+          <label className="form__topic label__topic" htmlFor="topic">
+            Topic
+            <input className="form__field form__topic input__topic" id="topic" type="text" required />
+          </label>
+          <label className="form__message label__message" htmlFor="message">
+            Message
+            <textarea className="form__field form__message" id="message" required />
+          </label>
+          <button className="form__btn btn btn--green" type="submit">Send</button>
+          <p className="form__txt">{emailResponse}</p>
+        </form>
+      </div>
     </div>
   );
 };
