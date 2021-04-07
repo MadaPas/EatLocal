@@ -24,6 +24,7 @@ const Home = () => {
       <section className="landing-page">
         {/* <hr /> */}
         <section className="hero">
+          <hr />
           <h1 className="hero__tagline">
             Quality food from
             <br />
@@ -33,7 +34,7 @@ const Home = () => {
           </h1>
           <div className="hero__cta">
             <p className="hero__cta__info">Contact-free delivery</p>
-            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>View Options</button>
+            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>Our Food Boxes</button>
           </div>
         </section>
       </section>

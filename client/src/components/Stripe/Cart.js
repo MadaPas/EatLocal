@@ -45,14 +45,14 @@ const Cart = () => {
                   {box[0].type}
                 </p>
                 <p className="box__people">
-                  for
+                  For
                   {' '}
                   {boxOption.people}
                   {' '}
                   people
                 </p>
                 <p className="box__text">
-                  livery every Sunday.
+                  Delivery every Sunday.
                 </p>
                 <p className="box__price">
                   {boxOption.price}
@@ -63,9 +63,14 @@ const Cart = () => {
             </div>
           </div>
         </div>
+
+        <div className="btn--btn-remove">
+          <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>x</button>
+        </div>
       </div>
-      <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>Remove</button>
-      <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
+      <div className="btn--btn-checkout">
+        <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
+      </div>
     </div>
   );
 };
