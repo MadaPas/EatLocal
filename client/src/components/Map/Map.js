@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -22,8 +26,12 @@ const Map = props => {
     zoom: 4,
   });
   const { allFarmers } = useContext(GeneralContext);
-
+  const myRef = useRef(null);
   const [selectedFarm, setSelectedFarm] = useState(allFarmers ? allFarmers.filter(f => f._id === window.location.pathname.replace('/farmers/', '')) : null);
+
+  const scrollHandler = f => {
+    setSelectedFarm([f]);
+  };
 
   useEffect(() => {
     const listener = e => {
@@ -91,40 +99,46 @@ const Map = props => {
       <div>
         {farmersPage && selectedFarm && selectedFarm.length > 0 && (
           <>
-            <section className="section farmers">
-              <div className="container__farm-name">
-                <p className="farmers__name">{selectedFarm[0].name}</p>
+            <section ref={myRef} className="section farmers">
+              <div className="farm-container-name">
+                <div className="farm__content">
+                  <p className="farmers__name">{selectedFarm[0].name}</p>
+                  <p className="farmers__address">{selectedFarm[0].address}</p>
+                  {selectedFarm[0].organic && (
+                    <p className="farmers__organic">
+                      Organic
+                      <FontAwesomeIcon icon={faLeaf} />
+                    </p>
+                  )}
+                </div>
               </div>
-              <p className="farmers__address">{selectedFarm[0].address}</p>
-              <p className="farmers__organic">
-                Organic:
-                {selectedFarm[0].organic}
-              </p>
-              <p className="farmers__type">
-                Type:
-                {selectedFarm[0].type}
-              </p>
-              <p className="farmers__area">
-                Property Type:
-                {selectedFarm[0].propertyArea}
-              </p>
-              <p className="farmers__practices">
-                Practices:
-                {selectedFarm[0].practices}
-              </p>
-              <p className="farmers__animals">
-                Animals:
-                {selectedFarm[0].animals}
-              </p>
-              <p className="farmers__products">
-                Products:
-                {selectedFarm[0].products}
-              </p>
-              <p className="farmers__desc">{selectedFarm[0].description}</p>
-              <p className="farmers__credits">
-                Link:
-                {selectedFarm[0].credits}
-              </p>
+              <div className="farm-info">
+                <p className="farmers__type">
+                  Type:
+                  {selectedFarm[0].type}
+                </p>
+                <p className="farmers__area">
+                  Area:
+                  {selectedFarm[0].propertyArea}
+                </p>
+                <p className="farmers__practices">
+                  Practices:
+                  {selectedFarm[0].practices}
+                </p>
+                <p className="farmers__animals">
+                  Animals:
+                  {selectedFarm[0].animals}
+                </p>
+                <p className="farmers__products">
+                  Products:
+                  {selectedFarm[0].products}
+                </p>
+                <p className="farmers__desc">{selectedFarm[0].description}</p>
+                <p className="farmers__credits">
+                  Link:
+                  {selectedFarm[0].credits}
+                </p>
+              </div>
             </section>
           </>
         )}
@@ -132,7 +146,7 @@ const Map = props => {
           <section className="section farmer__cards card-container">
             {allFarmers?.map(f => (
               <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
-                <div className="farmer__content card__content" onClick={() => setSelectedFarm([f])}>
+                <div className="farmer__content card__content" onClick={() => scrollHandler()}>
                   <p className="card__name">{f.name}</p>
                   <p className="card__address">{f.address}</p>
                 </div>

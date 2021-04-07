@@ -77,7 +77,7 @@ hr {
   text-align: center;
 }
 
-.box-content, .recipe-content, .farmer__content {
+.box-content, .recipe-content, .farmer__content, .farm__content {
   height: 170px;
   background-color: rgba(255, 255, 255, 0.698);
   margin: 20px;
@@ -87,16 +87,16 @@ hr {
   flex-direction: column;
 }
 
-.box-content {
+.box-content, .farmer__content, .farm__content {
   padding: 15px;
 }
 
-.box-content:hover {
+.box-content:hover, .farmer__content:hover {
   cursor: pointer;
 }
 
 .box-name {
-margin-top: 15px;
+  margin-top: 15px;
 }
 
 .box-desc {
@@ -109,7 +109,7 @@ margin-top: 15px;
   margin-top: -40px;
 }
 
-.card__address {
+.card__address, .farmers__address {
   text-align: center;
   position: relative;
   top: 50%;
@@ -118,6 +118,7 @@ margin-top: 15px;
   transform: translateY(-50%);
   margin-top: -40px;
 }
+
 .box__btn--info {
   padding-top: 10px;
   text-decoration: underline;
@@ -139,41 +140,6 @@ margin-top: 15px;
 
 .vegan-box {
   background-image: url('../../../public/images/boxes/vegan.jpg');
-}
-
-#Bäckdalens {
-  background-image: url('../../../public/images/farms/Bäckdalens.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Brödhultsgården {
-  background-image: url('../../../public/images/farms/Brödhultsgården.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Salthamn {
-  background-image: url('../../../public/images/farms/Salthamn.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Hållbar {
-  background-image: url('../../../public/images/farms/Hållbar.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Ladbackens {
-  background-image: url('../../../public/images/farms/Ladbackens.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.card__name {
-  margin-top: 30px;
 }
 
 .boxes-page {
@@ -239,7 +205,7 @@ margin-top: 15px;
   font-family: 'Libre Baskerville';
   background-color: #F7F9F6;
   text-align: center;
-  display:inline-block;
+  display: inline-block;
 }
 
 .img-farm {
