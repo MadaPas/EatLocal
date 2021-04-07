@@ -93,38 +93,80 @@ const Home = () => {
         <div className="section__content authors_content">
           <h2 className="content__title">Developed By</h2>
           <div className="content__info card-container">
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
-              <div className="content__info__name">Juha Kemppinen</div>
-              <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/kemppi83"><FontAwesomeIcon icon={faGithub} /></a>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
+                <h5 className="content__info__name">
+                  Juha Kemppinen
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
-              <div className="content__info__name">Anastasia Ponomarenko</div>
               <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/juhakemppinen/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/kemppi83" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              </div>
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
+                <h5 className="content__info__name">
+                  Anastasia Ponomarenko
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
+              </div>
+              <div className="content__info__socials">
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/ana-ponomarenko/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/anastasia-pon" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
               </div>
             </div>
             <div className="column__author column-four">
               <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
-              <div className="content__info__name">Madalina Andreea</div>
-              <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/andreea-madalina-pascariu/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/MadaPas"><FontAwesomeIcon icon={faGithub} /></a>
+                <h5 className="content__info__name">
+                  Madalina Andreea
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
-              <div className="content__info__name">Valentina</div>
               <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/ko-va/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/ko-va"><FontAwesomeIcon icon={faGithub} /></a>
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/andreea-madalina-pascariu/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/MadaPas" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
               </div>
-            </div>
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
+                <h5 className="content__info__name">
+                  Valentina Kochegarova
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
+              </div>
+              <div className="content__info__socials">
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/ko-va/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/ko-va" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              </div>
+            </figure>
           </div>
         </div>
       </section>
