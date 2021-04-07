@@ -1,0 +1,62 @@
+.menu-risotto {
+  background-image: url('../../../public/images/subscriptions/risotto.jpg');
+}
+
+.menu-pastry {
+  background-image: url('../../../public/images/subscriptions/pastry.jpg');
+}
+
+.menu-melon {
+  background-image: url('../../../public/images/subscriptions/melonAndGrapes.jpg');
+}
+
+.recipe-content {
+  flex-direction: column;
+  // justify-content: space-between;
+  padding: 15px;
+}
+
+.recipe__ingredients {
+  display: none;
+}
+  
+.recipe-content:hover > * > .recipe__ingredients, .recipe-content:active > * > .recipe__ingredients {
+  display: block;
+}
+
+.recipe-content:hover > .recipe__day, .recipe-content:hover > * > .recipe__name, .recipe-content:active > .recipe__day, .recipe-content:active > * > .recipe__name {
+  display: none;
+}
+
+.recipe-content-txt {
+  // height: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-content: center;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// .recipe__name, .recipe__ingredients {
+//   text-align: center;
+//   position: relative;
+//   top: 50%;
+//   -ms-transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+//   transform: translateY(-50%);
+// }
+
+.recipe__name {
+  margin-top: -30px;
+}
+
+.recipe__day {
+  padding-top: 10px;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+/*-----------mobile---------*/

@@ -29,7 +29,6 @@ const App = () => {
       <GeneralProvider>
         <Navbar />
         <main className="main">
-          {' '}
           <Switch>
             <Route exact path="/">
               <Home />

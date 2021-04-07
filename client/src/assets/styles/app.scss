@@ -1,17 +1,33 @@
 @import "./index";
 @import "./dropdown";
+@import "./allboxes";
 @import "./reset.local";
+@import "./home";
+@import "./authors";
+@import "./navbar";
+
+.landing-page {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
+  url('../../../public/images/home/landing-page.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  mix-blend-mode: overlay;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  letter-spacing: 1px;
 }
 
 .main {
-  max-width: 1024px;
+  max-width: 1440px;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 h1 {
@@ -34,33 +50,11 @@ p {
   font-size: 15px;
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.column-three {
-  flex: 1 1 30%;
-}
-
-.column-two {
-  flex-basis: 50%;
-  padding: 20px;
-  margin-left: auto;
-}
-
-.column-four {
-  flex-basis: 25%;
-  padding: 20px;
-  margin-left: auto;
-}
-
-.img {
-  max-width: 100%;
-  height: auto;
-}
+// .column-four {
+//   flex-basis: 25%;
+//   padding: 20px;
+//   margin-left: auto;
+// }
 
 .box__info {
   display: flex;
@@ -83,12 +77,5 @@ p {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: flex-start;
-}
-
-.ui .container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: flex-start;
 }
