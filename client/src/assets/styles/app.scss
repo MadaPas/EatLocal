@@ -1,5 +1,6 @@
 @import "./index";
 @import "./dropdown";
+@import "./allboxes";
 @import "./reset.local";
 @import "./home";
 @import "./authors";
@@ -49,11 +50,11 @@ p {
   font-size: 15px;
 }
 
-.column-four {
-  flex-basis: 25%;
-  padding: 20px;
-  margin-left: auto;
-}
+// .column-four {
+//   flex-basis: 25%;
+//   padding: 20px;
+//   margin-left: auto;
+// }
 
 .box__info {
   display: flex;

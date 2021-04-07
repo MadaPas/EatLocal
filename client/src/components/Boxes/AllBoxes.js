@@ -9,6 +9,7 @@ const AllBoxes = () => {
   const { allBoxes, setOrder } = useContext(GeneralContext);
   const history = useHistory();
   const [toggle, setToggle] = useState(true);
+  // const [menuToggle, setMenuToggle] = useState(false);
 
   if (!allBoxes || allBoxes.length === 0) {
     return null;
@@ -78,25 +79,43 @@ const AllBoxes = () => {
           menu
         </h3>
         <div className="box__menu__recipe card-container">
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 1</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeOne.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-risotto">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 1
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeOne.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 2</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeTwo.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeTwo.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-pastry">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 2
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeTwo.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeTwo.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 3</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeThree.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeThree.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-melon">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 3
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeThree.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeThree.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
         </div>

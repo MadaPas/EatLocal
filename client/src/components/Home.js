@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import React from 'react';
@@ -10,7 +12,7 @@ import Map from './Map/Map';
 const Home = () => {
   const history = useHistory();
   const buttonHandler = e => {
-    history.push(e.target.value);
+    history.push(e.target.parentElement.id);
   };
   return (
     <>
@@ -35,14 +37,39 @@ const Home = () => {
 
         {/* <h2 className="content__title">Our Food Boxes</h2> */}
         <div className="section__content boxes__content card-container">
-          <div className="column-three vegeterian-img">
-            <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Vegetarian" onClick={e => buttonHandler(e)}>Vegetarian</button>
+          <div className="column-three box-card vegeterian-box">
+            <div className="box-content" id="/boxes/#Vegetarian" onClick={e => buttonHandler(e)}>
+              <p className="box-name">
+                {'\u00a0\u00a0'}
+                Vegetarian
+                {'\u00a0\u00a0'}
+              </p>
+              <p className="box-desc">Favorite dishes for entire family made by fresh localy-sourced ingredients for 3 meals</p>
+            </div>
           </div>
-          <div className="column-three family-img">
-            <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Family" onClick={e => buttonHandler(e)}>Family</button>
+          <div className="column-three box-card family-box">
+            <div className="box-content" id="/boxes/#Family" onClick={e => buttonHandler(e)}>
+              <p className="box-name">
+                {'\u00a0\u00a0'}
+                Family
+                {'\u00a0\u00a0'}
+              </p>
+              <p className="box-desc">Mix of localy-sources fish and meat dishes garnished with fresh vegetables high qiality crops for 3 meals</p>
+            </div>
           </div>
-          <div className="column-three vegan-img">
-            <button type="button" className="btn btn-white box__btn--info" value="/boxes/#Vegan" onClick={e => buttonHandler(e)}>Vegan</button>
+          <div className="column-three box-card vegan-box">
+            <div className="box-content" id="/boxes/#Vegan" onClick={e => buttonHandler(e)}>
+              <p className="box-name">
+                {'\u00a0\u00a0'}
+                Vegan
+                {'\u00a0\u00a0'}
+              </p>
+              <p className="box-desc">
+                Prepare your dinner in 30 minutes with our healthy vegan fast
+                &
+                easy recepies.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -93,38 +120,82 @@ const Home = () => {
         <div className="section__content authors_content">
           <h2 className="content__title">Developed By</h2>
           <div className="content__info card-container">
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
-              <div className="content__info__name">Juha Kemppinen</div>
-              <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/kemppi83"><FontAwesomeIcon icon={faGithub} /></a>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
+                <h5 className="content__info__name">
+                  Juha Kemppinen
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
-              <div className="content__info__name">Anastasia Ponomarenko</div>
               <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/juhakemppinen/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/kemppi83" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
-              <div className="content__info__name">Madalina Andreea</div>
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
+                <h5 className="content__info__name">
+                  Anastasia Ponomarenko
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
+              </div>
               <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/andreea-madalina-pascariu/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/MadaPas"><FontAwesomeIcon icon={faGithub} /></a>
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/ana-ponomarenko/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/anastasia-pon" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
               </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
-              <div className="content__info__name">Valentina</div>
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
+                <h5 className="content__info__name">
+                  Madalina Andreea
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
+              </div>
               <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/ko-va/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/ko-va"><FontAwesomeIcon icon={faGithub} /></a>
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/andreea-madalina-pascariu/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/MadaPas" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
               </div>
-            </div>
+            </figure>
+            <figure className="column__author column-four figure">
+              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <div className="author">
+                <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
+                <h5 className="content__info__name">
+                  Valentina Kochegarova
+                  {' '}
+                  <span className="author__span">Fullstack Developer</span>
+                </h5>
+              </div>
+              <div className="content__info__socials">
+                <a className="social__icon social__icon--linkedin" href="https://www.linkedin.com/in/ko-va/" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a className="social__icon social__icon--github" href="https://github.com/ko-va" target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              </div>
+            </figure>
           </div>
         </div>
       </section>

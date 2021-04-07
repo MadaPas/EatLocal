@@ -14,38 +14,40 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <header className="header">
-      <div className="logo">
-        <Link to="/">
-          <span className="logo__eat">Eat</span>
-          <span className="logo__local">Local</span>
-        </Link>
-      </div>
-
-      <div className="navigation">
-        <Link to="/boxes">Boxes</Link>
-
-        <Link to="/farmers">Our Farmers</Link>
-
-        <Link to="/contact">Contact</Link>
-
-        {!authState.isPending && !authState.isAuthenticated && (
-        <div onClick={login}>
-          Login
+      <div className="header-content">
+        <div className="logo">
+          <Link to="/">
+            <span className="logo__eat">Eat</span>
+            <span className="logo__local">Local</span>
+          </Link>
         </div>
-        )}
 
-        {authState.isAuthenticated && (
-        <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
-        )}
-        {authState.isAuthenticated && (
-        <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-          <FontAwesomeIcon icon={faUser} />
-          <div className={open ? 'open' : 'closed'}>
-            <Link to="/profile">Profile</Link>
-            <div id="logout-button" onClick={logout}>Logout</div>
+        <div className="navigation">
+          <Link to="/boxes">Boxes</Link>
+
+          <Link to="/farmers">Our Farmers</Link>
+
+          <Link to="/contact">Contact</Link>
+
+          {!authState.isPending && !authState.isAuthenticated && (
+          <div onClick={login}>
+            Login
           </div>
+          )}
+
+          {authState.isAuthenticated && (
+          <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
+          )}
+          {authState.isAuthenticated && (
+          <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+            <FontAwesomeIcon icon={faUser} />
+            <div className={open ? 'open' : 'closed'}>
+              <Link to="/profile">Profile</Link>
+              <div id="logout-button" onClick={logout}>Logout</div>
+            </div>
+          </div>
+          )}
         </div>
-        )}
       </div>
     </header>
   );
