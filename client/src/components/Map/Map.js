@@ -35,6 +35,13 @@ const Map = props => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   document.getElementById('map').classList.add('landing__map');
+  //   return () => {
+  //     document.getElementById('header-content').classList.remove('landing');
+  //   };
+  // }, []);
+
   return (
     <>
       <section className="section map">

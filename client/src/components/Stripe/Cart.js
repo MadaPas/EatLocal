@@ -26,41 +26,43 @@ const Cart = () => {
 
   return (
     <div key={box[0]._id} className="cart">
-      <h1 className="cart__title">Cart</h1>
-      <p className="cart__txt">Your cart contains:</p>
-      <div className="summary__card">
-        <div className="summary__card__column">
-          <img className="summary__card__img img" src={box[0].img} alt="food" />
-        </div>
-        <div className="summary__card__column">
-          <p className="box__name">
-            {box[0].name}
-            {' '}
+      <div className="cart__cont">
+        <h1 className="cart__title">Cart</h1>
+        <p className="cart__txt">Your cart contains:</p>
+        <div className="summary__card">
+          <div className="summary__card__column">
+            <img className="summary__card__img img" src={box[0].img} alt="food" />
+          </div>
+          <div className="summary__card__column">
+            <p className="box__name">
+              {box[0].name}
+              {' '}
             box
           </p>
-          <p className="box__type">
-            {box[0].type}
-          </p>
-          <p className="box__people">
-            For
+            <p className="box__type">
+              {box[0].type}
+            </p>
+            <p className="box__people">
+              For
             {' '}
-            {boxOption.people}
-            {' '}
+              {boxOption.people}
+              {' '}
             people
           </p>
-          <p className="box__text">
-            Delivery every Sunday.
+            <p className="box__text">
+              Delivery every Sunday.
           </p>
-          <p className="box__price">
-            {boxOption.price}
-            {' '}
+            <p className="box__price">
+              {boxOption.price}
+              {' '}
             SEK
           </p>
+          </div>
         </div>
       </div>
       <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>Remove</button>
-      <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
-    </div>
+          <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
+        </div>
   );
 };
 
