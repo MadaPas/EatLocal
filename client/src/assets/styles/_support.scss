@@ -1,12 +1,11 @@
 .support {
-  height: 50em;
-  display: grid;
+  padding-bottom: 20px;
 }
 
-.support__faq {
-  margin: auto;
+.faq {
+  text-align: center;
+  padding-bottom: 25px;
 }
-
 .form__div {
   margin: auto;
   width: 50%;
@@ -16,6 +15,7 @@
   background: rgb(255, 255, 255);
   padding: 40px;
 }
+
 
 .form__field {
   color: rgb(0, 0, 0);
