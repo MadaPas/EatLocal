@@ -99,7 +99,7 @@ hr {
 margin-top: 15px;
 }
 
-.box-desc{
+.box-desc {
   text-align: center;
   position: relative;
   top: 50%;
@@ -132,31 +132,31 @@ margin-top: 15px;
 }
 
 #Bäckdalens {
-  background-image: url('../../../public/images/farms/Bäckdalens.jpeg');
+  background-image: url('../../../public/images/farms/Bäckdalens.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #Brödhultsgården {
-  background-image: url('../../../public/images/farms/Brödhultsgården.webp');
+  background-image: url('../../../public/images/farms/Brödhultsgården.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #Salthamn {
-  background-image: url('../../../public/images/boxes/vegan.jpg');
+  background-image: url('../../../public/images/farms/Salthamn.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #Hållbar {
-  background-image: url('../../../public/images/boxes/family.jpg');
+  background-image: url('../../../public/images/farms/Hållbar.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #Ladbackens {
-  background-image: url('../../../public/images/boxes/vegan.jpg');
+  background-image: url('../../../public/images/farms/Ladbackens.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -168,6 +168,10 @@ margin-top: 15px;
 
 .img-box {
   opacity: 0.85;
+}
+
+.landing__map {
+  margin-top: -80px;
 }
 
 // .content__info__img {

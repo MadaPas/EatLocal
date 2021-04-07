@@ -36,10 +36,13 @@ const Map = props => {
   }, []);
 
   useEffect(() => {
-    !farmersPage && document.getElementById('map').classList.add('landing__map');
-    return () => {
-      !farmersPage &&  document.getElementById('map').classList.remove('landing__map');
-    };
+    if (!farmersPage) {
+      document.getElementById('map').classList.add('landing__map');
+      return () => {
+        document.getElementById('map').classList.remove('landing__map');
+      };
+    }
+    return null;
   }, []);
 
   return (
