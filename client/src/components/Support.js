@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import * as emailjs from 'emailjs-com';
@@ -33,37 +34,43 @@ const Support = () => {
   return (
     <div className="support">
       <div className="support__faq">
-        <h2 className="faq">FAQ</h2>
+        <h2 className="faq">Frequently Asked Questions</h2>
         <div className="faq-drawer">
-          <input className="faq-drawer__trigger" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer">Question one </label>
+          <input className="faq-drawer__trigger" id="faq-drawer1" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer1">Question one </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
-              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+              <p className="faq__answer">
+                Although the phrase is nonsense, it does have a long history. The phrase has been used for several centuries by typographers to show the most distinctive features of their fonts. It is used because the letters involved and the letter spacing in those combinations reveal, at their best, the weight, design, and other important features of the typeface. A 1994 issue of Before & After to a jumbled Latin version of a passage from de Finibus Bonorum et Malorum, a treatise on the theory of ethics written by Cicero in 45 B.C. The passage is taken from text that reads, Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ..., which translates as, There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+              </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
-          <input className="faq-drawer__trigger" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer">Question two </label>
+          <input className="faq-drawer__trigger" id="faq-drawer2" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer2">Question two </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
-              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+              <p className="faq__answer">
+                From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.
+              </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
-          <input className="faq-drawer__trigger" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer">Question three </label>
+          <input className="faq-drawer__trigger" id="faq-drawer3" type="checkbox" />
+          <label className="faq-drawer__title" htmlFor="faq-drawer3">Question three </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
-              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+              <p className="faq__answer">
+                From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.
+              </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
-          <input className="faq-drawer__trigger" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer">Question four </label>
+          <input className="faq-drawer__trigger" id="faq-drawer4" type="checkbox" />
+          <label className="faq-drawer__title" id="faq-drawer4" htmlFor="faq-drawer4">Question four </label>
           <div className="faq-drawer__content-wrapper">
             <div className="ffaq-drawer__content">
               <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
