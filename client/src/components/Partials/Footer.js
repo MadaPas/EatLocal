@@ -1,33 +1,50 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {
+  faLinkedin, faFacebook, faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (
   <footer className="footer">
-    <div className="footer__content">
-      <div className="footer column-two">
-        <p className="footer__links">
-          <a href="/contact">Contact Us</a>
-          <a href="/apply">Join As a Member</a>
-          <a href="/faq">FAQ</a>
-        </p>
+    <div className="footer__container__one">
+      <div className="footer__links__container">
+        <h6 className="foote__title">Quick Links</h6>
+        <ul className="footer-links">
+          <li><a className="footer__q-links" href="/contact">Contact Us</a></li>
+          <li><a className="footer__q-links" href="/apply">Join As a Member</a></li>
+          <li><a className="footer__q-links" href="/#">Privacy Policy</a></li>
+        </ul>
       </div>
-      <div className="footer column-two">
-        <p className="footer__links">
+      <div className="footer__container__two">
+        <h6 className="foote__title">
           Sponsored by Salt
           {' '}
-          <a href="https://www.linkedin.com/company/applied-technology-stockholm/mycompany/"><FontAwesomeIcon icon={faLinkedin} /></a>
-        </p>
-        <p className="footer__policy">
-          <a href="/#">
-            Privacy Policy
-          </a>
-        </p>
+          <a href="https://www.linkedin.com/company/applied-technology-stockholm/mycompany/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+        </h6>
       </div>
-      <p className="footer__copyright">
-        Copyright © 2021 Eat Local - All Rights Reserved.
-      </p>
+    </div>
+    <hr />
+    <div className="footer__container__three">
+      <div className="row">
+        <div className="col-md-8 col-sm-6 col-xs-12">
+          <p className="copyright-text footer__copyright">
+            Copyright &copy; 2021 All Rights Reserved by
+            {' '}
+            <a href="#">Mobsters-4-Justice</a>
+            .
+          </p>
+        </div>
+
+        <div className="footer_socials">
+          <ul className="social__icons">
+            <li><a className="facebook" href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+            <li><a className="twitter" href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
+            <li><a className="linkedin" href="#"><FontAwesomeIcon icon={faLinkedin} /></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </footer>
 );

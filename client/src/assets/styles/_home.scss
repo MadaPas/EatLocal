@@ -14,7 +14,6 @@
 
 hr {
   display: block;
-  margin: 0.5em 3em;
   border-style: inset;
   border-width: 1px;
   color: white;
@@ -25,8 +24,7 @@ hr {
   flex-direction: column;
   font-family: "Lexend Deca";
   text-align: center;
-  // margin-top: 5%;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 .hero__tagline {
@@ -97,6 +95,10 @@ hr {
   cursor: pointer;
 }
 
+.box-name {
+margin-top: 15px;
+}
+
 .box-desc{
   text-align: center;
   position: relative;
@@ -104,7 +106,7 @@ hr {
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  margin-top: -20px;
+  margin-top: -40px;
 }
 .box__btn--info {
   padding-top: 10px;
@@ -151,8 +153,8 @@ hr {
 
 // About section -------------------------------------------------------------------------------
 
-.section, .about-page {
-  margin-top: 5%;
+.about-page, .farmers-page, .developed-by__title {
+  margin-top: 50px;
 }
 
 .content__title {
@@ -189,16 +191,29 @@ hr {
   background-color: #F7F9F6;
   text-align: center;
   margin-bottom: 20px;
+  display:inline-block;
 }
 
 .img-farm {
   height: 400px;
   width: 400px;
+  object-fit: cover;
 }
 
 .content__info__txt {
   font-size: 15px;
-  max-width: 500px;
+  max-width: 480px;
   margin: auto;
   margin-top: 2%;
+}
+
+.column-two__info {
+  margin: 50px;
+}
+
+.content__info--btn {
+  background-color: #3A6857;
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: white;
 }

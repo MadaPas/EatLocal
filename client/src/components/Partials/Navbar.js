@@ -4,14 +4,16 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const login = async () => oktaAuth.signInWithRedirect();
   const logout = async () => oktaAuth.signOut();
   const [open, setOpen] = useState(false);
+  const [burger, setBurger] = useState(false);
   return (
     <header className="header">
       <div className="header-content">
@@ -21,33 +23,64 @@ const Navbar = () => {
             <span className="logo__local">Local</span>
           </Link>
         </div>
+        <MediaQuery maxWidth={768}>
+          <div className="bars">
+            <FontAwesomeIcon className="bars-icon" icon={faBars} onMouseEnter={() => setBurger(true)} onMouseLeave={() => setBurger(false)} />
+            <div className={burger ? 'bars-burger' : 'bars-burger closed'}>
+              <Link to="/boxes">Boxes</Link>
 
-        <div className="navigation">
-          <Link to="/boxes">Boxes</Link>
+              <Link to="/farmers">Farmers</Link>
 
-          <Link to="/farmers">Our Farmers</Link>
+              <Link to="/contact">Contact</Link>
 
-          <Link to="/contact">Contact</Link>
+              {!authState.isPending && !authState.isAuthenticated && (
+                <span className="nav-login" onClick={login}>
+                  Login
+                </span>
+              )}
 
-          {!authState.isPending && !authState.isAuthenticated && (
-          <div onClick={login}>
-            Login
-          </div>
-          )}
-
-          {authState.isAuthenticated && (
-          <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
-          )}
-          {authState.isAuthenticated && (
-          <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <FontAwesomeIcon icon={faUser} />
-            <div className={open ? 'open' : 'closed'}>
-              <Link to="/profile">Profile</Link>
-              <div id="logout-button" onClick={logout}>Logout</div>
+              {authState.isAuthenticated && (
+                <Link className="nav-cart" to="/cart">Cart</Link>
+              )}
+              {authState.isAuthenticated && (
+                <>
+                  <Link to="/profile">Profile</Link>
+                  <div className="nav-logout" id="logout-button" onClick={logout}>Logout</div>
+                </>
+              )}
             </div>
           </div>
-          )}
-        </div>
+        </MediaQuery>
+        <MediaQuery minWidth={769}>
+          <div className="navigation">
+            <Link to="/boxes">Boxes</Link>
+
+            <Link to="/farmers">Farmers</Link>
+
+            <Link to="/contact">Contact</Link>
+
+            {!authState.isPending && !authState.isAuthenticated && (
+              <span className="nav-login" onClick={login}>
+                Login
+              </span>
+            )}
+
+            {authState.isAuthenticated && (
+              <Link className="nav-cart" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
+            )}
+            {authState.isAuthenticated && (
+              <div className="nav-person" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+                <div className="nav-person-content">
+                  <FontAwesomeIcon className="nav-icon" icon={faUser} />
+                  <div className={open ? 'dropdown' : 'dropdown closed'}>
+                    <Link to="/profile">Profile</Link>
+                    <div className="nav-logout" id="logout-button" onClick={logout}>Logout</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </MediaQuery>
       </div>
     </header>
   );

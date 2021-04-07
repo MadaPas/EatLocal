@@ -39,31 +39,34 @@ const Home = () => {
         <div className="section__content boxes__content card-container">
           <div className="column-three box-card vegeterian-box">
             <div className="box-content" id="/boxes/#Vegetarian" onClick={e => buttonHandler(e)}>
-              <p className="box-name">
+              <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Vegetarian
+                <hr />
                 {'\u00a0\u00a0'}
-              </p>
-              <p className="box-desc">Favorite dishes for entire family made by fresh localy-sourced ingredients for 3 meals</p>
+              </h4>
+              <p className="box-desc">Favorite dishes for the entire family, made by fresh locally-sourced ingredients for 3 meals</p>
             </div>
           </div>
           <div className="column-three box-card family-box">
             <div className="box-content" id="/boxes/#Family" onClick={e => buttonHandler(e)}>
-              <p className="box-name">
+              <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Family
+                <hr />
                 {'\u00a0\u00a0'}
-              </p>
-              <p className="box-desc">Mix of localy-sources fish and meat dishes garnished with fresh vegetables high qiality crops for 3 meals</p>
+              </h4>
+              <p className="box-desc">Mix of locally-sourced fish and meat dishes, garnished with fresh vegetables and high quality crops for 3 meals</p>
             </div>
           </div>
           <div className="column-three box-card vegan-box">
             <div className="box-content" id="/boxes/#Vegan" onClick={e => buttonHandler(e)}>
-              <p className="box-name">
+              <h4 className="box-name">
                 {'\u00a0\u00a0'}
                 Vegan
+                <hr />
                 {'\u00a0\u00a0'}
-              </p>
+              </h4>
               <p className="box-desc">
                 Prepare your dinner in 30 minutes with our healthy vegan fast
                 &
@@ -80,11 +83,11 @@ const Home = () => {
         <div className="section__content about__content">
           <h2 className="content__title">About Us</h2>
           <p className="content__info-about">
-            We  are
+            We are
             {' '}
             <span className="accent">Mobsters 4 Justice</span>
             {' '}
-            - team of talanted & passionate web developers who want to connect bussy professional and local farm producers.
+            - team of talented & passionate web developers who want to connect busy professionals and local farm producers.
             <br />
             Our mission is
             {' '}
@@ -98,19 +101,23 @@ const Home = () => {
 
       </section>
 
-      <section className="section farmers">
+      <section className="section farmers-page">
         <div className="section__content farmers__content">
           <h2 className="content__title">Swedish Farms</h2>
           <div className="content__info card-container">
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/farmer.jpg" alt="farmer" />
-              <p className="content__info__txt">We work with some of the best independent farmers and fisherman of Sweden. Find out more about them here.</p>
-              <a className="btn btn--info content__info--btn" href="/farmers">Meet Our Farmers</a>
+              <p className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</p>
+              <div className="column-two__info">
+                <a className="btn btn--info content__info--btn" href="/farmers">Meet Our Farmers</a>
+              </div>
             </div>
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/tomatoes.jpg" alt="tomatoes" />
               <p className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</p>
-              <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
+              <div className="column-two__info">
+                <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
+              </div>
             </div>
           </div>
         </div>
@@ -118,10 +125,10 @@ const Home = () => {
       <Map farmersPage={false} />
       <section className="section authors">
         <div className="section__content authors_content">
-          <h2 className="content__title">Developed By</h2>
+          <h2 className="content__title developed-by__title">Developed By</h2>
           <div className="content__info card-container">
             <figure className="column__author column-four figure">
-              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <blockquote className="author__desc">If you have seen my profile, you must have noticed my CERN nuclear power. Web development is very nuclear fusion. I am really after french and CERN.</blockquote>
               <div className="author">
                 <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
                 <h5 className="content__info__name">
@@ -140,7 +147,7 @@ const Home = () => {
               </div>
             </figure>
             <figure className="column__author column-four figure">
-              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <blockquote className="author__desc">I am told I am a very good board game professional. It is one of my favourite pastimes. If you have seen my profile, you will know that I am all about board games.</blockquote>
               <div className="author">
                 <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
                 <h5 className="content__info__name">
@@ -159,7 +166,7 @@ const Home = () => {
               </div>
             </figure>
             <figure className="column__author column-four figure">
-              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <blockquote className="author__desc">I am a fairy kind of person. The first thing people usually notice about me is my fairy personality. I work as a web dev, helping fairy. My ideal world would involve fairies.</blockquote>
               <div className="author">
                 <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
                 <h5 className="content__info__name">
@@ -178,7 +185,11 @@ const Home = () => {
               </div>
             </figure>
             <figure className="column__author column-four figure">
-              <blockquote className="author__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</blockquote>
+              <blockquote className="author__desc">
+                Meow, meow meow meow meow meow. Meow meow meow meow - meow meow. Meow meow! Meow meow meow meow.”
+                <br />
+                - My cat once said.
+              </blockquote>
               <div className="author">
                 <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
                 <h5 className="content__info__name">
