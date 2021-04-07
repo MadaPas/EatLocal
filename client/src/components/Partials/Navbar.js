@@ -26,7 +26,7 @@ const Navbar = () => {
         <MediaQuery maxWidth={768}>
           <div className="bars" onMouseEnter={() => setBurger(true)} onMouseLeave={() => setBurger(false)}>
             <FontAwesomeIcon className="bars-icon" icon={faBars} />
-            <div className={burger ? 'bars-burger' : 'bars-burger'}>
+            <div className={burger ? 'bars-burger' : 'bars-burger closed'}>
               <Link to="/boxes">Boxes</Link>
 
               <Link to="/farmers">Farmers</Link>

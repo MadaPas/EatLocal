@@ -48,21 +48,21 @@
 
 .nav-person {
   display: inline-flex;
+  padding-bottom: 15px;
   width: 100px;
   justify-content: center;
 }
 .dropdown {
   margin-top: 10px;
-  background-color: #759589;
+  background-color: #3a6857;
   padding: 10px 20px;
   color: #fff;
   position: absolute;
-  top: 73px;
+  top: 65px;
 }
 .landing .dropdown {
   color: #000;
   background-color: rgba(255, 255, 255, 0.603);
-  top: 73px;
 }
 .dropdown a {
   margin-left: 0;
@@ -130,8 +130,12 @@
   flex-wrap: wrap;
   flex-direction: column;
   margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.603);
+  background-color: #3A6857;
   padding: 20px 20px 10px;
+  color: #fff;
+}
+.landing .bars-burger {
+  background-color: rgba(255, 255, 255, 0.603);
   color: #000;
 }
 .bars {
