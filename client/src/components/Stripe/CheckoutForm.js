@@ -273,11 +273,11 @@ const CheckoutForm = () => {
             City
             <input className="form__field form__input city" type="text" id="city" defaultValue={userData[0].city} required />
           </label>
-          <label className="form__label save" htmlFor="save">
+          <label className="form__label__save save" htmlFor="save">
             Save the address for future orders
             <input className="form__input save" type="checkbox" id="save" defaultChecked="true" />
           </label>
-          <label className="form__label terms" htmlFor="terms">
+          <label className="form__label__terms terms" htmlFor="terms">
             I accept
             {' '}
             <a href="#">Terms and Conditions</a>
