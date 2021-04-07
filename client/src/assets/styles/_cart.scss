@@ -16,6 +16,15 @@ $white: #FFFFFF;
   border: 2px solid #759589;
   border-radius: 10px;
   background: rgb(255, 255, 255);
+  padding: 40px;
+}
+
+.cart__title {
+  text-align: center;
+}
+
+.cart__order-summary {
+  background-color: green;
 }
 
 .summary__card__img {

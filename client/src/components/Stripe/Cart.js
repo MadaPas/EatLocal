@@ -27,36 +27,40 @@ const Cart = () => {
   return (
     <div key={box[0]._id} className="cart">
       <div className="cart__cont">
-        <h1 className="cart__title">Cart</h1>
-        <p className="cart__txt">Your cart contains:</p>
-        <div className="summary__card">
-          <div className="summary__card__column">
-            <img className="summary__card__img img" src={box[0].img} alt="food" />
-          </div>
-          <div className="summary__card__column">
-            <p className="box__name">
-              {box[0].name}
-              {' '}
-              box
-            </p>
-            <p className="box__type">
-              {box[0].type}
-            </p>
-            <p className="box__people">
-              For
-              {' '}
-              {boxOption.people}
-              {' '}
-              people
-            </p>
-            <p className="box__text">
-              Delivery every Sunday.
-            </p>
-            <p className="box__price">
-              {boxOption.price}
-              {' '}
-              SEK
-            </p>
+        <h1 className="cart__title">Order Summary</h1>
+        <div className="cart__order-summary">
+          <div>
+            <p className="cart__txt">Subscription:</p>
+            <div className="summary__card">
+              <div className="summary__card__column">
+                <img className="summary__card__img img" src={box[0].img} alt="food" />
+              </div>
+              <div className="summary__card__column">
+                <p className="box__name">
+                  {box[0].name}
+                  {' '}
+                  box
+                </p>
+                <p className="box__type">
+                  {box[0].type}
+                </p>
+                <p className="box__people">
+                  r
+                  {' '}
+                  {boxOption.people}
+                  {' '}
+                  people
+                </p>
+                <p className="box__text">
+                  livery every Sunday.
+                </p>
+                <p className="box__price">
+                  {boxOption.price}
+                  {' '}
+                  SEK
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
