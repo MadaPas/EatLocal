@@ -16,7 +16,7 @@ const Navbar = () => {
   const [burger, setBurger] = useState(false);
   return (
     <header className="header">
-      <div className="header-content">
+      <div className="header-content" id="header-content">
         <div className="logo">
           <Link to="/">
             <span className="logo__eat">Eat</span>
@@ -24,8 +24,8 @@ const Navbar = () => {
           </Link>
         </div>
         <MediaQuery maxWidth={768}>
-          <div className="bars">
-            <FontAwesomeIcon className="bars-icon" icon={faBars} onMouseEnter={() => setBurger(true)} onMouseLeave={() => setBurger(false)} />
+          <div className="bars" onMouseEnter={() => setBurger(true)} onMouseLeave={() => setBurger(false)}>
+            <FontAwesomeIcon className="bars-icon" icon={faBars} />
             <div className={burger ? 'bars-burger' : 'bars-burger closed'}>
               <Link to="/boxes">Boxes</Link>
 
