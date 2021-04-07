@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { GeneralContext } from '../../context/General';
 
@@ -33,7 +34,7 @@ const Map = props => {
       window.removeEventListener('keydown', listener);
     };
   }, []);
-  console.log(farmersPage, selectedFarm);
+
   return (
     <>
       <section className="section map">
@@ -61,18 +62,18 @@ const Map = props => {
             </Marker>
           ))}
           {selectedFarm && selectedFarm.length > 0 && (
-          <Popup
-            className="map__popup"
-            latitude={selectedFarm[0].lat}
-            longitude={selectedFarm[0].lon}
-            closeButton={false}
-          >
-            <button className="map__popup_close btn" type="button" onClick={() => setSelectedFarm(null)}>x</button>
-            <p className="map__popup__title">
-              {selectedFarm[0].name}
-            </p>
-            {!farmersPage && (<button className="map__popup_btn btn" type="button" onClick={() => history.push(`/farmers/${selectedFarm[0]._id}`)}>See More</button>)}
-          </Popup>
+            <Popup
+              className="map__popup"
+              latitude={selectedFarm[0].lat}
+              longitude={selectedFarm[0].lon}
+              closeButton={false}
+            >
+              <button className="map__popup_close btn" type="button" onClick={() => setSelectedFarm(null)}>x</button>
+              <p className="map__popup__title">
+                {selectedFarm[0].name}
+              </p>
+              {!farmersPage && (<button className="map__popup_btn btn" type="button" onClick={() => history.push(`/farmers/${selectedFarm[0]._id}`)}>See More</button>)}
+            </Popup>
           )}
         </ReactMapGL>
       </section>
@@ -117,16 +118,16 @@ const Map = props => {
           </>
         )}
         {farmersPage && (
-        <section className="section farmer__cards card-container">
-          {allFarmers?.map(f => (
-            <div className="farmer__card column-three">
-              <div className="card__content">
-                <p className="card__name">{f.name}</p>
-                <p className="card__address">{f.address}</p>
+          <section className="section farmer__cards card-container">
+            {allFarmers?.map(f => (
+              <div className="farmer__card column-three" id={f._id}>
+                <div className="farmer__content card__content">
+                  <p className="card__name">{f.name}</p>
+                  <p className="card__address">{f.address}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
         )}
       </div>
     </>
