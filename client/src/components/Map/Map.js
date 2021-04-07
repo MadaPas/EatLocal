@@ -35,16 +35,16 @@ const Map = props => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   document.getElementById('map').classList.add('landing__map');
-  //   return () => {
-  //     document.getElementById('header-content').classList.remove('landing');
-  //   };
-  // }, []);
+  useEffect(() => {
+    !farmersPage && document.getElementById('map').classList.add('landing__map');
+    return () => {
+      !farmersPage &&  document.getElementById('map').classList.remove('landing__map');
+    };
+  }, []);
 
   return (
     <>
-      <section className="section map">
+      <section className="section map" id="map">
         <ReactMapGL
           latitude={viewport.latitude}
           longitude={viewport.longitude}

@@ -37,32 +37,32 @@ const Cart = () => {
             <p className="box__name">
               {box[0].name}
               {' '}
-            box
-          </p>
+              box
+            </p>
             <p className="box__type">
               {box[0].type}
             </p>
             <p className="box__people">
               For
-            {' '}
+              {' '}
               {boxOption.people}
               {' '}
-            people
-          </p>
+              people
+            </p>
             <p className="box__text">
               Delivery every Sunday.
-          </p>
+            </p>
             <p className="box__price">
               {boxOption.price}
               {' '}
-            SEK
-          </p>
+              SEK
+            </p>
           </div>
         </div>
       </div>
       <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>Remove</button>
-          <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
-        </div>
+      <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
+    </div>
   );
 };
 
