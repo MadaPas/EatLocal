@@ -251,40 +251,42 @@ const CheckoutForm = () => {
           </p>
         </div>
       </div>
-      <form className="checkout__form" onSubmit={e => handleSubmit(e)}>
-        <label className="form__label firstname" htmlFor="firstname">
-          First name
-          <input className="form__input firstname" type="text" id="firstname" defaultValue={userData[0].firstName} required />
-        </label>
-        <label className="form__label lastname" htmlFor="lastname">
-          Last name
-          <input className="form__input lastname" type="text" id="lastname" defaultValue={userData[0].lastName} required />
-        </label>
-        <label className="form__label street" htmlFor="street">
-          Street
-          <input className="form__input street" type="text" id="street" defaultValue={userData[0].street} required />
-        </label>
-        <label className="form__label postal_code" htmlFor="postal_code">
-          Postal Code
-          <input className="form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
-        </label>
-        <label className="form__label city" htmlFor="city">
-          City
-          <input className="form__input city" type="text" id="city" defaultValue={userData[0].city} required />
-        </label>
-        <label className="form__label save" htmlFor="save">
-          Save the address for future orders
-          <input className="form__input save" type="checkbox" id="save" defaultChecked="true" />
-        </label>
-        <label className="form__label terms" htmlFor="terms">
-          I accept
-          {' '}
-          <a href="#">Terms and Conditions</a>
-          <input className="form__input terms" type="checkbox" id="terms" required />
-        </label>
-        <CardElement />
-        <button className="form__btn btn btn-green" type="submit">Pay</button>
-      </form>
+      <div className="form__div">
+        <form className="checkout__form form" onSubmit={e => handleSubmit(e)}>
+          <label className="form__label firstname" htmlFor="firstname">
+            First name
+            <input className="form__field form__input firstname" type="text" id="firstname" defaultValue={userData[0].firstName} required />
+          </label>
+          <label className="form__label lastname" htmlFor="lastname">
+            Last name
+            <input className="form__field form__input lastname" type="text" id="lastname" defaultValue={userData[0].lastName} required />
+          </label>
+          <label className="form__label street" htmlFor="street">
+            Street
+            <input className="form__field form__input street" type="text" id="street" defaultValue={userData[0].street} required />
+          </label>
+          <label className="form__label postal_code" htmlFor="postal_code">
+            Postal Code
+            <input className="form__field form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+          </label>
+          <label className="form__label city" htmlFor="city">
+            City
+            <input className="form__field form__input city" type="text" id="city" defaultValue={userData[0].city} required />
+          </label>
+          <label className="form__label save" htmlFor="save">
+            Save the address for future orders
+            <input className="form__input save" type="checkbox" id="save" defaultChecked="true" />
+          </label>
+          <label className="form__label terms" htmlFor="terms">
+            I accept
+            {' '}
+            <a href="#">Terms and Conditions</a>
+            <input className="form__input terms" type="checkbox" id="terms" required />
+          </label>
+          <CardElement />
+          <button className="form__btn btn btn-green" type="submit">Pay</button>
+        </form>
+      </div>
       {fail && <p className="form__txt">{fail}</p>}
       {loading && <p className="form__txt">Loading...</p>}
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React, { useState, useContext, useEffect } from 'react';
@@ -38,7 +39,7 @@ const Map = props => {
   useEffect(() => {
     !farmersPage && document.getElementById('map').classList.add('landing__map');
     return () => {
-      !farmersPage &&  document.getElementById('map').classList.remove('landing__map');
+      !farmersPage && document.getElementById('map').classList.remove('landing__map');
     };
   }, []);
 
