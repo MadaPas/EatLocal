@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 .map {
-    padding-top: 85px;
+  padding-top: 85px;
 }
 
 /* Marker tweaks */
@@ -22,7 +22,7 @@
 }
 
 .map__popup__title {
-  margin: -17px 15px 15px 0;
+  margin: -19px 15px 15px 0;
 }
 
 .mapboxgl-popup-content-wrapper {
@@ -31,12 +31,22 @@
 
 .map__popup_close {
   margin-left: auto;
+  padding: 0px 0px;
+  // padding: 10px 10px;
 }
 
 .map__popup_btn {
   font-family: 'Lato';
   font-weight: 400;
+  // padding: 10px 10px;
+  padding: 0 0;
 }
+
+// .btn {
+//   padding: 10px 40px;
+//   border-radius: 50px;
+//   font-size: 20px;
+// }
 
 /* Farmer content */
 

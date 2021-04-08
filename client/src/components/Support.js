@@ -37,43 +37,57 @@ const Support = () => {
         <h2 className="faq">Frequently Asked Questions</h2>
         <div className="faq-drawer">
           <input className="faq-drawer__trigger" id="faq-drawer1" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer1">Question one </label>
+          <label className="faq-drawer__title" htmlFor="faq-drawer1">Why would I choose your food box instead of your competitor? </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
               <p className="faq__answer">
-                Although the phrase is nonsense, it does have a long history. The phrase has been used for several centuries by typographers to show the most distinctive features of their fonts. It is used because the letters involved and the letter spacing in those combinations reveal, at their best, the weight, design, and other important features of the typeface. A 1994 issue of Before & After to a jumbled Latin version of a passage from de Finibus Bonorum et Malorum, a treatise on the theory of ethics written by Cicero in 45 B.C. The passage is taken from text that reads, Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ..., which translates as, There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+                We want to give credit to Swedish farmers! They deserve to get a good price for their procuce. We make an effort to create tasty menus based only on Swedish products.
               </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
           <input className="faq-drawer__trigger" id="faq-drawer2" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer2">Question two </label>
+          <label className="faq-drawer__title" htmlFor="faq-drawer2">
+            Why can
+            {'\u0027'}
+            t I order a box for midsummer already?
+          </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
               <p className="faq__answer">
-                From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.
+                Since we use only Swedish prodcuts, we have to adapt our menus to the ingredients which are in season and available. We want to offer the best quality, so we don
+                {'\u0027'}
+                t publish our menus more than two weeks in advance.
               </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
           <input className="faq-drawer__trigger" id="faq-drawer3" type="checkbox" />
-          <label className="faq-drawer__title" htmlFor="faq-drawer3">Question three </label>
+          <label className="faq-drawer__title" htmlFor="faq-drawer3">
+            I
+            {'\u0027'}
+            m allergic to red vegetables but I want your vegan box. Can it be customised?
+          </label>
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
               <p className="faq__answer">
-                From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.
+                We are developing a more automatic system in the future, but for the moment you can send us a message in the contact page after you have bought your subscription and we will customise your boxes!
               </p>
             </div>
           </div>
         </div>
         <div className="faq-drawer">
           <input className="faq-drawer__trigger" id="faq-drawer4" type="checkbox" />
-          <label className="faq-drawer__title" id="faq-drawer4" htmlFor="faq-drawer4">Question four </label>
+          <label className="faq-drawer__title" id="faq-drawer4" htmlFor="faq-drawer4">
+            What
+            {'\u0027'}
+            s in it for you?
+          </label>
           <div className="faq-drawer__content-wrapper">
             <div className="ffaq-drawer__content">
-              <p className="faq__answer">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+              <p className="faq__answer">We take a little profit from selling out food boxes in order to cover our costs and pay our salaries.</p>
             </div>
           </div>
         </div>

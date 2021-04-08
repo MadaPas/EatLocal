@@ -63,7 +63,7 @@ const Profile = () => {
               {result}
               .
             </p>
-            <p className="box__price">
+            <p className="box__price profile__box__price">
               {o.price}
               {' '}
               SEK

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+
 .checkout {
   padding-top: 150px;
 }
@@ -15,4 +17,51 @@
 .form__label__terms {
   padding-bottom: 20px;
 
+}
+
+.summary__order__checkout {
+  text-align: center;
+}
+
+.table__invoice {
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 250px;
+}
+
+.table__invoice tr {
+  text-align: right;
+}
+
+.table__invoice td:first-child {
+  text-align: left;
+}
+
+.btn--remove--checkout {
+  background-color: white;
+  font-family: Lemon;
+  font-size: 25px;
+  border: 1px solid black;
+  border-radius: 50px;
+  height: fit-content;
+  padding: 7px 12px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.summary__title {
+  text-align: center;
+}
+
+.checkout__summary .summary__card__img {
+  margin: 0 auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .checkout__summary .summary__card__column {
+    margin: 0 auto;
+  }
 }

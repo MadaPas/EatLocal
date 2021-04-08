@@ -17,7 +17,7 @@ const Cart = () => {
       <div className="cart">
         <h1 className="cart__title">Cart</h1>
         <p className="cart__txt">Your cart is empty.</p>
-        <button className="btn box__btn btn--shop" type="button" value="/boxes" onClick={e => history.push(e.target.value)}>See Offers</button>
+        <button className="btn box__btn btn--shop" type="button" value="/boxes" onClick={e => history.push(e.target.value)}>See Boxes</button>
       </div>
     );
   }
@@ -26,17 +26,17 @@ const Cart = () => {
 
   return (
     <div key={box[0]._id} className="cart">
+      <h1 className="cart__title">Order Summary</h1>
       <div className="cart__cont">
-        <h1 className="cart__title">Order Summary</h1>
         <div className="cart__order-summary">
           <div>
             <h4 className="cart__txt">Subscription:</h4>
-            <div className="summary__card">
+            <div className="summary__card summary__card__cart">
               <div className="summary__card__column">
                 <img className="summary__card__img img" src={box[0].img} alt="food" />
               </div>
               <div className="summary__card__column summary-description">
-                <p className="box__name">
+                <p className="box__name box__name__incart">
                   {box[0].name}
                   {' '}
                   box
@@ -62,13 +62,12 @@ const Cart = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="btn--btn-remove">
-          <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>x</button>
+          <div className="btn-remove__container">
+            <button className="btn box__btn btn--remove" type="button" onClick={() => setOrder([])}>x</button>
+          </div>
         </div>
       </div>
-      <div className="btn--btn-checkout">
+      <div className="btn-checkout__container">
         <button className="btn box__btn btn--checkout" type="button" value="/checkout" onClick={e => history.push(e.target.value)}>Checkout</button>
       </div>
     </div>

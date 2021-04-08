@@ -22,7 +22,6 @@ const Home = () => {
   return (
     <>
       <section className="landing-page">
-        {/* <hr /> */}
         <section className="hero">
           <hr />
           <h1 className="hero__tagline">
@@ -40,8 +39,6 @@ const Home = () => {
       </section>
 
       <section className="boxes-page">
-
-        {/* <h2 className="content__title">Our Food Boxes</h2> */}
         <div className="section__content boxes__content card-container">
           <div className="column-three box-card vegeterian-box">
             <div className="box-content" id="/boxes/#Vegetarian" onClick={e => history.push(e.target.parentElement.id)}>
@@ -89,7 +86,7 @@ const Home = () => {
         <div className="section__content about__content">
           <h2 className="content__title">Our Mission</h2>
           <div className="content-container">
-            <p className="content__info-about">
+            <h3 className="content__info-about">
               We are
               {' '}
               <span className="accent">Mobsters 4 Justice</span>
@@ -101,7 +98,7 @@ const Home = () => {
               <span className="accent">Justice for Farmers</span>
               {' '}
               since only a few big companies buy their produce in bulk and dictate prices. We help regular consumers buy local produce in a convenient way and give more control over prices to the farmers.
-            </p>
+            </h3>
           </div>
         </div>
 
@@ -121,7 +118,9 @@ const Home = () => {
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/tomatoes.jpg" alt="tomatoes" />
               <p className="content__info__txt">Join our network and share your agricultural practices and experience in natural ecosystem management.</p>
-              <button type="button" className="btn btn--info btn-green content__info--btn" value="/apply" onClick={e => history.push(e.target.value)}>Become a Member</button>
+              <button type="button" className="btn btn--info btn-green content__info--btn" value="/apply" onClick={e => history.push(e.target.value)}>
+                Become a Member
+              </button>
             </div>
           </div>
         </div>

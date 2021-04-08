@@ -86,11 +86,46 @@
   flex-direction: row-reverse;
 }
 
+.box__name {
+  font-family: 'Ledger';
+  font-size: 30px;
+}
+
 .box__img__container {
   // flex: 1 1 40vw;
   // width: 100%;
   // max-width: 300px;
+  max-width:400px;
+  max-height:400px;
 }
+
+.box__img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.subscription__info__column {
+ padding-top: 40px;
+ margin: 0;
+}
+
+.box__desc {
+  max-width: 600px;
+  font-family: 'Libre Baskerville';
+}
+
+@media only screen and (max-width: 915px) {
+  .box__info__columnn {
+    padding-top: 0;
+  }
+
+  .box__img__container {
+    max-width: 600px;
+    max-height: 600px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .box__info {
     flex-direction: column;
@@ -126,7 +161,6 @@
 }
 
 .box__price {
-  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,3 +292,4 @@
 .box-toggle-slider:before {
   border-radius: 50px;
 }
+

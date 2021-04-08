@@ -8,7 +8,7 @@
   url('../../../public/images/home/landing-page.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 80vh;
+  // height: 80vh;
   mix-blend-mode: overlay;
 }
 .hero hr {
@@ -32,35 +32,52 @@ hr {
 .hero__tagline {
   text-transform: uppercase;
   font-family: "Lexend Deca";
+  font-size: 40px;
   color: white;
-  margin-top: 90px;
-  font-size: 30px;
+  margin: 75px 0;
   text-shadow: 2px 2px 4px #000000;
 }
 
 .hero__cta {
   background-color: rgba(255, 255, 255, 0.603);
   margin: auto;
-  margin-top: 5%;
-  padding: 30px 60px;
+  padding: 50px 20%;
+  font-family: "Lexend Deca";
+}
+
+.hero__cta__info {
+  font-size: 25px;
+  font-family: "Lexend Deca";
+  margin-bottom: 20px;
 }
 
 .btn {
   padding: 10px 40px;
   border-radius: 50px;
+  font-size: 20px;
+}
+.btn:focus {
+  outline: none;
+  background-color: rgb(45, 80, 67);
 }
 .btn-white {
   color: #000;
   background-color: #fff;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
 .btn-green {
   color: white;
   background-color: #3A6857;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
 .btn-green:hover {
   background-color: #749589;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
 .hero__btn--subscribe{
@@ -103,6 +120,10 @@ hr {
 .content__title {
   text-align: center;
   text-shadow: 2px 2px 4px #00000098;
+}
+
+.boxes-page {
+  padding-top: 70px;
 }
 
 .content-container {

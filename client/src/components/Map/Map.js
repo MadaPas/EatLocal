@@ -103,7 +103,7 @@ const Map = props => {
             <section className="section farmers">
               <div className="farm-container-name">
                 <div className="farm__content">
-                  <p className="farmers__name">{selectedFarm[0].name}</p>
+                  <h3 className="farmers__name">{selectedFarm[0].name}</h3>
                   <p className="farmers__address">{selectedFarm[0].address}</p>
                   {selectedFarm[0].organic && (
                     <p className="farmers__organic">
@@ -169,8 +169,8 @@ const Map = props => {
                 </div>
 
                 <div className="credit__link__container farmer__field__container">
-                  <a className="farmer__label credit__link" href={selectedFarm[0].credits} target="_blank" rel="noreferrer">
-                    Credit
+                  <a className="credit__link btn btn-green" href={selectedFarm[0].credits} target="_blank" rel="noreferrer">
+                    Learn More
                   </a>
                 </div>
 
@@ -183,7 +183,7 @@ const Map = props => {
             {allFarmers?.map(f => (
               <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
                 <div className="farmer__content card__content" onClick={() => scrollHandler(f)}>
-                  <p className="card__name">{f.name}</p>
+                  <h3 className="card__name">{f.name}</h3>
                   <p className="card__address">{f.address}</p>
                 </div>
               </div>

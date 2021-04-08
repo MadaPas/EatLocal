@@ -37,7 +37,6 @@ const AllBoxes = () => {
     setOrder([selectedBox, selectedPriceId]);
     history.push('/checkout');
   };
-  console.log(toggle);
   const boxes = allBoxes?.map((item, index) => (
     <article key={item._id} className="box" id={item.name}>
       <div className="box-container">
@@ -45,7 +44,7 @@ const AllBoxes = () => {
           <div className="box__info__columnn box__img__container">
             <img className="box__img img" src={item.img} alt="food" />
           </div>
-          <div className="box__info__columnn">
+          <div className="box__info__columnn subscription__info__column">
             <h3 className="box__name">{item.name}</h3>
             <p className="box__desc">{item.description}</p>
             <form className="box__price" onSubmit={e => handleSubmit(e)}>
@@ -60,7 +59,9 @@ const AllBoxes = () => {
                 </label>
               </div>
               <p>
-                Vegeterian box with 3 meals for
+                {item.name}
+                {' '}
+                box with 3 meals for
                 {' '}
                 {toggle[index] ? item.boxPrice.peopleTwo.people : item.boxPrice.peopleFour.people}
                 {' '}

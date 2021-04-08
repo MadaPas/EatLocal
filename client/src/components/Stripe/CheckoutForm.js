@@ -4,11 +4,13 @@
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { GeneralContext } from '../../context/General';
 
 const CheckoutForm = () => {
+  const history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
   const [fail, setFail] = useState();
@@ -17,7 +19,7 @@ const CheckoutForm = () => {
   const {
     allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
-
+  console.log(order, 'order');
   const now = new Date();
   const dateOffset = now.getDay() > 4 ? ((7 - now.getDay()) % 7) + 7 : ((7 - now.getDay()) % 7);
   const dateResult = new Date(
@@ -27,6 +29,10 @@ const CheckoutForm = () => {
   ).toLocaleDateString('en-GB');
   if (dateResult < now) dateResult.setDate(dateResult.getDate() + 7);
 
+  const removeHandler = () => {
+    setOrder([]);
+    history.push('/boxes');
+  };
   if (success) {
     console.log(success);
     return (
@@ -67,7 +73,7 @@ const CheckoutForm = () => {
   }
 
   if (!order || order.length === 0) {
-    window.location = '/';
+    return null;
   }
 
   if (!allBoxes || !userData || userData.length === 0) {
@@ -104,7 +110,6 @@ const CheckoutForm = () => {
         method: 'POST',
         body: JSON.stringify(newPayment),
       });
-      console.log(paymentResponse);
 
       if (!paymentResponse.ok) throw new Error('Payment failed. Please, try again.');
       const payment = await paymentResponse.json();
@@ -171,8 +176,8 @@ const CheckoutForm = () => {
       <div className="checkout__summary">
         <h1 className="summary__title">Order Summary</h1>
         <div className="summary__card">
-          <button className="form__btn btn btn--remove" type="button" onClick={() => setOrder([])}>x</button>
           <div className="summary__card__column">
+            <button className="btn--remove--checkout" type="button" onClick={() => removeHandler()}>x</button>
             <img className="summary__card__img img" src={box[0].img} alt="food" />
           </div>
           <div className="summary__card__column">
@@ -198,7 +203,7 @@ const CheckoutForm = () => {
             </p>
           </div>
         </div>
-        <div className="summary__table">
+        <div className="summary__table summary__order__checkout">
           <p className="table__title">Your order</p>
           <p className="table__box">
             {box[0].name}
@@ -253,23 +258,23 @@ const CheckoutForm = () => {
       </div>
       <div className="form__div">
         <form className="checkout__form form" onSubmit={e => handleSubmit(e)}>
-          <label className="form__label firstname" htmlFor="firstname">
+          <label className="user__label form__label firstname" htmlFor="firstname">
             First name
             <input className="form__field form__input firstname" type="text" id="firstname" defaultValue={userData[0].firstName} required />
           </label>
-          <label className="form__label lastname" htmlFor="lastname">
+          <label className="user__label form__label lastname" htmlFor="lastname">
             Last name
-            <input className="form__field form__input lastname" type="text" id="lastname" defaultValue={userData[0].lastName} required />
+            <input className="form__field__user form__field form__input lastname" type="text" id="lastname" defaultValue={userData[0].lastName} required />
           </label>
-          <label className="form__label street" htmlFor="street">
+          <label className="user__label form__label street" htmlFor="street">
             Street
             <input className="form__field form__input street" type="text" id="street" defaultValue={userData[0].street} required />
           </label>
-          <label className="form__label postal_code" htmlFor="postal_code">
+          <label className="user__label form__label postal_code" htmlFor="postal_code">
             Postal Code
             <input className="form__field form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
           </label>
-          <label className="form__label city" htmlFor="city">
+          <label className="user__label form__label city" htmlFor="city">
             City
             <input className="form__field form__input city" type="text" id="city" defaultValue={userData[0].city} required />
           </label>

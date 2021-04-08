@@ -110,6 +110,8 @@ $color-linkedin: #3A6857;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1rem;
   text-decoration: none;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
 
   &--linkedin {
@@ -122,5 +124,7 @@ $color-linkedin: #3A6857;
 }
 .social__icon--linkedin:hover, .social__icon--github:hover {
   background-color: #749589;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
