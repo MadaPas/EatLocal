@@ -34,7 +34,7 @@ const Home = () => {
           </h1>
           <div className="hero__cta">
             <p className="hero__cta__info">Contact-free delivery</p>
-            <button type="button" className="hero__btn--subscribe btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>Our Food Boxes</button>
+            <button type="button" className="hero__btn--subscribe btn btn-green" value="/boxes" onClick={e => history.push(e.target.value)}>Our Food Boxes</button>
           </div>
         </section>
       </section>
@@ -87,20 +87,22 @@ const Home = () => {
       <section className="section about-page">
 
         <div className="section__content about__content">
-          <h2 className="content__title">About Us</h2>
-          <p className="content__info-about">
-            We are
-            {' '}
-            <span className="accent">Mobsters 4 Justice</span>
-            {' '}
-            - team of talented & passionate web developers who want to connect busy professionals and local farm producers.
-            <br />
-            Our mission is
-            {' '}
-            <span className="accent">Justice for Farmers</span>
-            {' '}
-            who have to sell their produce for lower prices since only a few big companies buy the produce in bulk. We give regular consumers the possibility to buy directly from farmers and give more control over prices to the farmers.
-          </p>
+          <h2 className="content__title">Our Mission</h2>
+          <div className="content-container">
+            <p className="content__info-about">
+              We are
+              {' '}
+              <span className="accent">Mobsters 4 Justice</span>
+              {' '}
+              - a team of talented & passionate web developers who want to connect busy professionals and local farmers.
+              <br />
+              Our mission is to restore
+              {' '}
+              <span className="accent">Justice for Farmers</span>
+              {' '}
+              since only a few big companies buy their produce in bulk and dictate prices. We help regular consumers buy local produce in a convenient way and give more control over prices to the farmers.
+            </p>
+          </div>
         </div>
 
         <img className="about__img img" src="/images/home/artichokes.jpg" alt="artichokes" />
@@ -113,22 +115,20 @@ const Home = () => {
           <div className="content__info card-container">
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/farmer.jpg" alt="farmer" />
-              <h4 className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</h4>
-              <div className="column-two__info">
-                <a className="btn btn--info content__info--btn" href="/farmers">Meet Our Farmers</a>
-              </div>
+              <p className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</p>
+              <button type="button" className="btn btn--info btn-green content__info--btn" value="farmers" onClick={e => history.push(e.target.value)}>Meet Our Farmers</button>
             </div>
             <div className="column-two">
               <img className="content__info__img img-farm" src="/images/home/tomatoes.jpg" alt="tomatoes" />
-              <h4 className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</h4>
-              <div className="column-two__info">
-                <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
-              </div>
+              <p className="content__info__txt">Join our network and share your agricultural practices and experience in natural ecosystem management.</p>
+              <button type="button" className="btn btn--info btn-green content__info--btn" value="/apply" onClick={e => history.push(e.target.value)}>Become a Member</button>
             </div>
           </div>
         </div>
       </section>
-      <Map farmersPage={false} />
+      <div className="landing-map">
+        <Map farmersPage={false} />
+      </div>
       <section className="section authors">
         <div className="section__content authors_content">
           <h2 className="content__title developed-by__title">Developed By</h2>

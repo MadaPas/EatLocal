@@ -18,11 +18,12 @@ $white: #FFFFFF;
   border: 2px solid #759589;
   border-radius: 10px;
   background: rgb(255, 255, 255);
-  padding: 40px;
+  padding: 50px;
 }
 
 .cart__title {
   text-align: center;
+  font-family: 'Lexend Deca';
 }
 
 .summary__card {
@@ -78,5 +79,7 @@ $white: #FFFFFF;
   padding: 20px;
   border-radius: 50px;
   justify-content: center;
+  margin: auto;
+  margin-top: 30px;
 }
 

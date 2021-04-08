@@ -4,20 +4,22 @@
 // Landing section -------------------------------------------------------------------------------
 
 .landing-page {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 1)),
+  background: linear-gradient(to bottom, rgb(22 22 22 / 20%), white),
   url('../../../public/images/home/landing-page.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
   mix-blend-mode: overlay;
 }
+.hero hr {
+  width: 90%;
+}
 
 hr {
-  border-style: inset;
-  border-width: 1px;
-  color: white;
-  width: 90%;
-  top: 30px;
+  border:none;
+  border-bottom: 1px solid #fff;
+  margin-top: 10px;
+ 	width: 100%;
 }
 
 .hero {
@@ -43,100 +45,33 @@ hr {
   padding: 30px 60px;
 }
 
-.hero__btn--subscribe {
-  color: white;
-  background-color: #3A6857;
+.btn {
   padding: 10px 40px;
   border-radius: 50px;
+}
+.btn-white {
+  color: #000;
+  background-color: #fff;
+  transition: all 0.15s ease;
+}
+.btn-green {
+  color: white;
+  background-color: #3A6857;
+  transition: all 0.15s ease;
+}
+.btn-green:hover {
+  background-color: #749589;
+  transition: all 0.15s ease;
+}
+.hero__btn--subscribe{
   margin-top: 20px;
 }
 
 // Boxes section -------------------------------------------------------------------------------
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-@media only screen and (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-  }
-}
-
-.column-three {
-  flex: 1 1 30%;
-  text-align: center;
-}
-
-.box-content, .recipe-content, .farmer__content, .farm__content {
-  height: 170px;
-  background-color: rgba(255, 255, 255, 0.698);
-  margin: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-self: center;
-  flex-direction: column;
-}
-
-.box-content, .farmer__content, .farm__content {
-  padding: 15px;
-}
-
-.box-content:hover, .farmer__content:hover {
-  cursor: pointer;
-}
-
-.box-name {
-  margin-top: 15px;
-}
-
-.box-desc {
-  text-align: center;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  margin-top: -40px;
-}
-
-.card__address, .farmers__address {
-  text-align: center;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  margin-top: -40px;
-}
-
 .box__btn--info {
   padding-top: 10px;
   text-decoration: underline;
   text-underline-position: under;
-}
-.box-card, .menu-card, .farmer-card {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.vegeterian-box {
-  background-image: url('../../../public/images/boxes/vegetarian.jpg');
-}
-
-.family-box {
-  background-image: url('../../../public/images/boxes/family.jpg');
-}
-
-.vegan-box {
-  background-image: url('../../../public/images/boxes/vegan.jpg');
-}
-
-.boxes-page {
-  margin-top: 5%;
 }
 
 .img-box {
@@ -161,24 +96,23 @@ hr {
 
 // About section -------------------------------------------------------------------------------
 
-.about-page, .farmers-page, .developed-by__title {
-  margin-top: 50px;
-}
+// .about-page, .farmers-page, .developed-by__title {
+//   margin-top: 50px;
+// }
 
 .content__title {
   text-align: center;
-  margin-bottom: 5%;
-  font-size: 45px;
-  text-shadow: 2px 2px 3px #00000098;
-  font-family: "Lexend Deca";
+  text-shadow: 2px 2px 4px #00000098;
 }
 
-.content__info-about {
-  font-family: 'Libre Baskerville';
-  font-size: 20px;
+.content-container {
   background-color: #F7F9F6;
-  padding: 5%;
   text-align: center;
+}
+.content__info-about {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
 
 .accent {
@@ -187,40 +121,40 @@ hr {
 
 .about__img {
   width: 100%; 
-  height: 380px; 
+  height: 200px; 
   object-fit: cover;
 }
 
 // Farm section -------------------------------------------------------------------------------
 
 .column-two {
-  flex-basis: 50%;
-  font-family: 'Libre Baskerville';
-  background-color: #F7F9F6;
+  width: 40%;
+  margin: 0 20px;
   text-align: center;
-  display: inline-block;
+}
+
+@media only screen and (max-width: 768px) {
+  .column-two {
+    width: unset;
+    margin: 0 40px;
+  }
+  .farmers-page .column-two:first-child {
+    margin-bottom: 40px;
+  }
+}
+.farmers-page .card-container {
+  background-color: #F7F9F6;
+  padding: 60px 0;
 }
 
 .img-farm {
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
+  width: 100%;
 }
 
 .content__info__txt {
-  font-size: 15px;
-  max-width: 480px;
-  margin: auto;
-  margin-top: 2%;
+  margin: 30px 0;
 }
 
-.column-two__info {
-  margin: 50px;
-}
-
-.content__info--btn {
-  background-color: #3A6857;
-  padding: 10px 20px;
-  border-radius: 50px;
-  color: white;
+.landing-map .map {
+  padding-top: 0;
 }

@@ -13,6 +13,7 @@
 @import "./inputs";
 @import "./checkout";
 @import "./farmer";
+@import "./boxes";
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
@@ -35,16 +36,19 @@ h1 {
 }
 
 h2 {
-  font-size: 23px;
+  font-size: 25px;
+  padding: 40px 0;
+  font-family: "Lexend Deca";
 }
 
 h3 {
   font-size: 18px;
+  font-family: "Lexend Deca";
 }
 
 h4 {
-  font-size: 20px;
-  font-family: 'Ledger';
+  font-size: 18px;
+  font-family: "Lexend Deca";
 }
 
 p {
@@ -58,22 +62,22 @@ a {
   font-weight: 400;
 }
 
-.box__info {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-}
+// .box__info {
+//   display: flex;
+//   flex-wrap: wrap;
+//   flex-direction: row;
+//   justify-content: flex-start;
+// }
 
-.box__info__columnn {
-  // flex-basis: 50%;
-  padding: 20px;
-}
+// .box__info__columnn {
+//   // flex-basis: 50%;
+//   padding: 20px;
+// }
 
-.box__img__container {
-  width: 300px;
-  height: 250px;
-}
+// .box__img__container {
+//   width: 300px;
+//   height: 250px;
+// }
 
 .form {
   display: flex;

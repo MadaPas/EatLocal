@@ -29,17 +29,18 @@
     // display: flex;
     // flex-wrap: wrap;
     // flex-direction: row;
+  line-height: 2em;
   margin-left: auto;
-  padding: 10px 20px 0 0;
+  padding: 10px 40px 0 0;
   // pointer-events: all;
 }
 
 .navigation a, .nav-login {
   margin-left: 20px;
 }
-// .nav-cart {
-//   padding: 0 25px;
-// }
+.nav-login {
+  padding-top: 20px;
+}
 
 .nav-icon {
   font-size: 25px;

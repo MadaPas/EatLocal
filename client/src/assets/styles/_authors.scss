@@ -1,14 +1,12 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
 
-.developed-by__title {
-  margin-top: 50px;
+.authors .card-container {
+  padding: 0 20px;
 }
-
 .figure {
-  font-family: 'Raleway', Arial, sans-serif;
   position: relative;
-  margin: 5px;
+  // margin-bottom: 40px;
+  margin: 0 auto 40px;
   max-width: 300px;
   width: 90%;
   color: #333;
@@ -31,7 +29,7 @@
   display: block;
   border-radius: 8px;
   position: relative;
-  background-color: #fafafa;
+  background-color: #f7f9f6;
   padding: 25px 40px 55px 50px;
   font-size: 0.8em;
   font-weight: 500;
@@ -46,6 +44,7 @@
   content: "\201C";
   position: absolute;
   font-size: 40px;
+  color: #3A6857;
   opacity: 0.4;
   font-style: normal;
 }
@@ -82,8 +81,8 @@
 }
 
 /* Color Variables */
-$color-github: #4284c0;
-$color-linkedin: #006599;
+$color-github: #3A6857;
+$color-linkedin: #3A6857;
 
 /* Social Icon Mixin */
 @mixin social__icon($color) {
@@ -120,4 +119,8 @@ $color-linkedin: #006599;
   &--github {
     @include social__icon($color-github);
   }
+}
+.social__icon--linkedin:hover, .social__icon--github:hover {
+  background-color: #749589;
+  transition: all 0.15s ease;
 }
