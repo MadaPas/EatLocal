@@ -1,0 +1,33 @@
+$gray: #777777;
+$black: #070707;
+$green: #759589;
+$aqua: #35645f;
+
+// on label
+.farmer__label {
+  color: #272727;
+  width: 100%;
+  font-weight: 700;
+  // font-size: 20px;
+  padding: 10px 0;
+}
+
+// on text
+.farmer__field {
+  border-top: 0;
+  width: 100%;
+  // font-size: 1em;
+  color: $black;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.credit__link__container {
+  padding-top: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.farmers__organic svg{
+  color: green;
+}

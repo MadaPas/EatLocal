@@ -1,0 +1,100 @@
+$logo: #3DBB3D;
+$gray: #777777;
+$black: #070707;
+$green: #759589;
+$aqua: #35645f;
+$white: #FFFFFF;
+
+.profile {
+  padding-top: 130px;
+}
+
+.profile__column {
+  padding-bottom: 40px;
+}
+
+.user__cont {
+  margin: auto;
+  width: 50%;
+  height: 90%;
+  border: 2px solid #759589;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  padding: 40px;
+}
+
+.user__profile__title {
+  color: $green;
+  font-size: 1.5em;
+  padding-bottom: 10px;
+  text-decoration: underline;
+}
+
+.user__label {
+  color: $gray;
+  width: 100%;
+  font-size: 15px;
+  margin-left: 2px;
+  padding: 5px 0px 5px 0px;
+}
+
+.profile__field {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, $aqua, rgba($green, .5)) 1 0%;
+  border-top: 0;
+  width: 100%;
+  font-size: 1em;
+  color: $black;
+}
+
+.user__label__address {
+  margin-left: 20px;
+}
+
+.profile__field__address {
+  width: 100%;
+  font-size: 1em;
+  color: $black;
+  padding: 5px 0px 5px 20px;
+}
+
+.user__label__ad {
+  font-size: 20px;
+}
+
+.form__field__user {
+  border-top: 0;
+  width: 100%;
+  font-size: 1em;
+  color: #5a746a;
+  font-weight: 500;
+  padding: 15px;
+  margin-bottom: 5px;
+  width: 100%;
+  border-width: 1px;
+  border-image: linear-gradient(to right, $aqua, rgba($green, .5)) 1 0%;
+}
+
+.form__field__user:focus {
+  background: #fff;
+  box-shadow: 0;
+  border-radius: 10px;
+  color: #5a746a;
+  outline: none;
+  padding: 15px;
+}
+
+.form__field:hover {
+  background-color: #75958967;
+  border-radius: 10px;
+}
+
+.profile__box__price {
+  margin-top: 10px;
+  height: 20px;
+}
+
+.box__status {
+  text-align: center;
+}

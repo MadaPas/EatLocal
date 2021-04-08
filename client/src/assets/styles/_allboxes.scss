@@ -1,0 +1,295 @@
+.menu-risotto {
+  background-image: url('../../../public/images/subscriptions/risotto.jpg');
+}
+
+.menu-pastry {
+  background-image: url('../../../public/images/subscriptions/pastry.jpg');
+}
+
+.menu-melon {
+  background-image: url('../../../public/images/subscriptions/melonAndGrapes.jpg');
+}
+
+.recipe-content {
+  flex-direction: column;
+  // justify-content: space-between;
+  padding: 15px;
+}
+
+.recipe__ingredients {
+  display: none;
+}
+  
+.recipe-content:hover > * > .recipe__ingredients, .recipe-content:active > * > .recipe__ingredients {
+  display: block;
+}
+
+.recipe-content:hover > .recipe__day, .recipe-content:hover > * > .recipe__name, .recipe-content:active > .recipe__day, .recipe-content:active > * > .recipe__name {
+  display: none;
+}
+
+.recipe-content-txt {
+  // height: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-content: center;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// .recipe__name, .recipe__ingredients {
+//   text-align: center;
+//   position: relative;
+//   top: 50%;
+//   -ms-transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+//   transform: translateY(-50%);
+// }
+
+.recipe__name {
+  margin-top: -30px;
+}
+
+.recipe__day {
+  padding-top: 10px;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+/*-----------mobile---------*/
+
+.box {
+  background-color: #F7F9F6;
+  // margin-bottom: 40px;
+}
+.box-container hr {
+  border-bottom: 1px solid #000;
+  width: 90%;
+}
+.box__info {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 40px 20px;
+  // border-bottom: solid 1px black;
+  // padding-bottom: 15px;
+}
+
+#Vegeterian {
+  padding-top: 85px;
+}
+
+#Family .box__info {
+  flex-direction: row-reverse;
+}
+
+.box__name {
+  font-family: 'Ledger';
+  font-size: 30px;
+}
+
+.box__img__container {
+  // flex: 1 1 40vw;
+  // width: 100%;
+  // max-width: 300px;
+  max-width:400px;
+  max-height:400px;
+}
+
+.box__img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.subscription__info__column {
+ padding-top: 40px;
+ margin: 0;
+}
+
+.box__desc {
+  max-width: 600px;
+  font-family: 'Libre Baskerville';
+}
+
+@media only screen and (max-width: 915px) {
+  .box__info__columnn {
+    padding-top: 0;
+  }
+
+  .box__img__container {
+    max-width: 600px;
+    max-height: 600px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .box__info {
+    flex-direction: column;
+  }
+  .box__img {
+    width: unset;
+    height: 200px;
+  }
+  #Family .box__info {
+    flex-direction: column;
+  }
+}
+
+.box__info__columnn {
+  // flex-basis: 0 1 50vw;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  // justify-content: space-between;
+  margin: 20px;
+}
+.box__info__columnn > * {
+  flex: 1;
+}
+.box__info .box__info__columnn:last-child {
+  flex-grow: 3;
+}
+.box__img {
+  width: 100%;
+}
+
+.box__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box__info__columnn h2 {
+  padding-top: 0;
+}
+
+.box__menu__title {
+  margin: 20px;
+  text-align: center;
+}
+.box__desc {
+  margin: 20px 0;
+}
+// Custom checkbox starting here
+// .box__input {
+//   display: block;
+//   position: relative;
+//   padding-left: 35px;
+//   margin-bottom: 12px;
+//   cursor: pointer;
+//   font-size: 22px;
+//   // -webkit-user-select: none;
+//   // -moz-user-select: none;
+//   // -ms-user-select: none;
+//   user-select: none;
+// }
+
+
+// .box--toggle {
+//   position: absolute;
+//   opacity: 0;
+//   cursor: pointer;
+//   height: 0;
+//   width: 0;
+// }
+
+// .checkmark {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 100;
+//   height: 25px;
+//   width: 25px;
+//   background-color: black;
+// }
+// .box__price {
+//   position: relative;
+// }
+
+.box__price p:first-of-type {
+  margin-top: 20px;
+}
+.box__btn {
+  margin-top: 20px;
+}
+.box-kr {
+  font-weight: 700;
+  margin-top: 20px;
+}
+.box-toggle-container {
+  position: relative;
+  min-height: 38px;
+  width: 200px;
+}
+.box-toggle-btn {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 200px;
+  height: 38px;
+}
+
+.box-toggle-btn input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.box-toggle-slider {
+  color: #000;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(58, 104, 87, 0.3);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.box-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 100px;
+  left: 4px;
+  bottom: 4px;
+  border: solid 2px rgb(255, 255, 255);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.box-toggle-btn input:checked + .box-toggle-slider {
+  box-shadow: 0 0 20px #fff;
+}
+
+.box-toggle-btn input:focus + .box-toggle-slider {
+  box-shadow: 0 0 20px #fff;
+}
+
+.box-toggle-btn input:checked + .box-toggle-slider:before {
+  -webkit-transform: translateX(92px);
+  -ms-transform: translateX(92px);
+  transform: translateX(92px);
+}
+
+.box-toggle-slider {
+  border-radius: 50px;
+}
+
+.box-toggle-slider:before {
+  border-radius: 50px;
+}
+

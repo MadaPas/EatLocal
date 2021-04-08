@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+
+$logo: #3DBB3D;
+$gray: #777777;
+$black: #070707;
+$green: #759589;
+$aqua: #35645f;
+$white: #FFFFFF;
+
+.cart {
+  padding-top: 130px;
+  text-align: center;
+}
+
+.cart__cont {
+  margin: 0 20px;
+  height: 90%;
+  border: 2px solid #759589;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  padding: 50px;
+}
+
+.cart__title {
+  text-align: center;
+  font-family: 'Lexend Deca';
+  margin-bottom: 20px;
+}
+
+.summary__card {
+  display: flex;
+  margin: 20px auto;
+  max-width: 750px;
+}
+
+.cart__order-summary {
+  background-color: #EAEFE8;
+  padding: 20px;
+  margin: 40px;
+}
+
+.box__name__incart {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.summary__card__column {
+  width: 60%;
+  height: 150px;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.summary__card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.summary-description {
+  margin-left: auto;
+  text-align: center;
+  line-height: 25px;
+}
+
+.btn-remove__container {
+  max-width: fit-content;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: -20px;
+}
+
+.btn--remove {
+  background-color: $white;
+  font-family: Lemon;
+  font-size: 30px;
+  margin-top: -20px;
+  border: 1px solid black;
+  padding: 9px 15px;
+  border-radius: 50px;
+}
+
+.btn-checkout__container {
+  max-width: fit-content;
+  justify-content: center;
+  margin: 30px auto;
+  margin-bottom: 50px;
+}
+
+.btn--checkout {
+  background-color: $aqua;
+  border-radius: 50px;
+  padding: 20px 30px;
+  color: white;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .summary__card {
+    flex-direction: column;
+  }
+
+  .summary__card__column {
+    width: unset;
+    margin: 0;
+
+    height: unset;
+  }
+}

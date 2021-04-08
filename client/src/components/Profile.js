@@ -63,7 +63,7 @@ const Profile = () => {
               {result}
               .
             </p>
-            <p className="box__price">
+            <p className="box__price profile__box__price">
               {o.price}
               {' '}
               SEK
@@ -106,39 +106,55 @@ const Profile = () => {
   return (
     <div className="section profile">
       <div className="profile__column">
-        <p className="profile__firstname">
-          First name:
-          {userData[0].firstName}
-        </p>
-        <p className="profile__lastname">
-          Last name:
-          {userData[0].lastName}
-        </p>
-        <p className="profile__email">
-          Email:
-          {userData[0].email}
-        </p>
-        <form className="profile__form form" onSubmit={e => handleEdit(e)}>
-          <label className="form__label street" htmlFor="street">
-            Street
-            {editing ? (
-              <input className="form__input street" type="text" id="street" defaultValue={userData[0].street} required />
-            ) : <p className="profile__street" id="street">{userData[0].street}</p>}
-          </label>
-          <label className="form__label postal_code" htmlFor="postal_code">
-            Postal code
-            {editing ? (
-              <input className="form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
-            ) : <p className="profile__postal_code" id="postal_code">{userData[0].postalCode}</p>}
-          </label>
-          <label className="form__label city" htmlFor="city">
-            City
-            {editing ? (
-              <input className="form__input city" type="text" id="city" defaultValue={userData[0].city} required />
-            ) : <p className="profile__city" id="city">{userData[0].city}</p>}
-          </label>
-          <button className="profile__btn btn btn--green" type="submit">Edit address</button>
-        </form>
+        <div className="user__cont">
+          <p className="user__profile__title">Personal info</p>
+
+          <div className="firstname">
+            <p className="user__label">First name</p>
+            <p className="profile__firstname profile__field">
+              {userData[0].firstName}
+            </p>
+          </div>
+
+          <div className="lastname">
+            <p className="user__label">Last name</p>
+            <p className="profile__lastname profile__field">
+              {userData[0].lastName}
+            </p>
+          </div>
+
+          <div className="email">
+            <p className="user__label">Email</p>
+            <p className="profile__email profile__field">
+              {userData[0].email}
+            </p>
+          </div>
+
+          <div className="address">
+            <p className="user__label user__label__ad">Address:</p>
+          </div>
+          <form className="profile__form form" onSubmit={e => handleEdit(e)}>
+            <label className="form__label street" htmlFor="street">
+              <p className="user__label user__label__address">Street</p>
+              {editing ? (
+                <input className="form__field__user form__input street" type="text" id="street" defaultValue={userData[0].street} required />
+              ) : <p className="profile__street profile__field__address" id="street">{userData[0].street}</p>}
+            </label>
+            <label className="form__label postal_code" htmlFor="postal_code">
+              <p className="user__label user__label__address">Postal</p>
+              {editing ? (
+                <input className="form__field__user form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+              ) : <p className="profile__postal_code profile__field__address" id="postal_code">{userData[0].postalCode}</p>}
+            </label>
+            <label className="form__label city" htmlFor="city">
+              <p className="user__label user__label__address">City</p>
+              {editing ? (
+                <input className="form__field__user form__input city" type="text" id="city" defaultValue={userData[0].city} required />
+              ) : <p className="profile__city profile__field__address" id="city">{userData[0].city}</p>}
+            </label>
+            <button className="form__btn profile__btn btn btn--green" type="submit">Edit address</button>
+          </form>
+        </div>
       </div>
       <div className="profile__column">
         {historyHtml}

@@ -1,11 +1,17 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { GeneralContext } from '../../context/General';
 
@@ -20,8 +26,13 @@ const Map = props => {
     zoom: 4,
   });
   const { allFarmers } = useContext(GeneralContext);
-
+  const myRef = useRef(null);
   const [selectedFarm, setSelectedFarm] = useState(allFarmers ? allFarmers.filter(f => f._id === window.location.pathname.replace('/farmers/', '')) : null);
+
+  const scrollHandler = f => {
+    setSelectedFarm([f]);
+    myRef.current.scrollIntoView();
+  };
 
   useEffect(() => {
     const listener = e => {
@@ -33,10 +44,20 @@ const Map = props => {
       window.removeEventListener('keydown', listener);
     };
   }, []);
-  console.log(farmersPage, selectedFarm);
+
+  // useEffect(() => {
+  //   if (!farmersPage) {
+  //     document.getElementById('map').classList.add('landing__map');
+  //     return () => {
+  //       document.getElementById('map').classList.remove('landing__map');
+  //     };
+  //   }
+  //   return null;
+  // }, []);
+
   return (
     <>
-      <section className="section map">
+      <section className="section map" id="map">
         <ReactMapGL
           latitude={viewport.latitude}
           longitude={viewport.longitude}
@@ -61,69 +82,114 @@ const Map = props => {
             </Marker>
           ))}
           {selectedFarm && selectedFarm.length > 0 && (
-          <Popup
-            className="map__popup"
-            latitude={selectedFarm[0].lat}
-            longitude={selectedFarm[0].lon}
-            closeButton={false}
-          >
-            <button className="map__popup_close btn" type="button" onClick={() => setSelectedFarm(null)}>x</button>
-            <p className="map__popup__title">
-              {selectedFarm[0].name}
-            </p>
-            {!farmersPage && (<button className="map__popup_btn btn" type="button" onClick={() => history.push(`/farmers/${selectedFarm[0]._id}`)}>See More</button>)}
-          </Popup>
+            <Popup
+              className="map__popup"
+              latitude={selectedFarm[0].lat}
+              longitude={selectedFarm[0].lon}
+              closeButton={false}
+            >
+              <button className="map__popup_close btn" type="button" onClick={() => setSelectedFarm(null)}>x</button>
+              <p className="map__popup__title">
+                {selectedFarm[0].name}
+              </p>
+              {!farmersPage && (<button className="map__popup_btn btn" type="button" onClick={() => history.push(`/farmers/${selectedFarm[0]._id}`)}>See More</button>)}
+            </Popup>
           )}
         </ReactMapGL>
       </section>
-      <div>
+      <div ref={myRef}>
         {farmersPage && selectedFarm && selectedFarm.length > 0 && (
           <>
             <section className="section farmers">
-              <p className="farmers__name">{selectedFarm[0].name}</p>
-              <p className="farmers__address">{selectedFarm[0].address}</p>
-              <p className="farmers__organic">
-                Organic:
-                {selectedFarm[0].organic}
-              </p>
-              <p className="farmers__type">
-                Type:
-                {selectedFarm[0].type}
-              </p>
-              <p className="farmers__area">
-                Property Type:
-                {selectedFarm[0].propertyArea}
-              </p>
-              <p className="farmers__practices">
-                Practices:
-                {selectedFarm[0].practices}
-              </p>
-              <p className="farmers__animals">
-                Animals:
-                {selectedFarm[0].animals}
-              </p>
-              <p className="farmers__products">
-                Products:
-                {selectedFarm[0].products}
-              </p>
-              <p className="farmers__desc">{selectedFarm[0].description}</p>
-              <p className="farmers__credits">
-                Link:
-                {selectedFarm[0].credits}
-              </p>
+              <div className="farm-container-name">
+                <div className="farm__content">
+                  <h3 className="farmers__name">{selectedFarm[0].name}</h3>
+                  <p className="farmers__address">{selectedFarm[0].address}</p>
+                  {selectedFarm[0].organic && (
+                    <p className="farmers__organic">
+                      Organic
+                      <FontAwesomeIcon icon={faLeaf} />
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="farm-info">
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Type
+                  </p>
+                  <p className="farmer__field farmers__type">
+                    {selectedFarm[0].type}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Property Area
+                  </p>
+                  <p className="farmer__field farmers__area">
+                    {selectedFarm[0].propertyArea}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Practices
+                  </p>
+                  <p className="farmer__field farmers__practices">
+                    {selectedFarm[0].practices}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Animals
+                  </p>
+                  <p className="farmer__field farmers__animals">
+                    {selectedFarm[0].animals}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    Products
+                  </p>
+                  <p className="farmer__field farmers__products">
+                    {selectedFarm[0].products}
+                  </p>
+                </div>
+
+                <div className="farmer__field__container">
+                  <p className="farmer__label">
+                    About
+                  </p>
+                  <p className="farmer__field farmers__desc">
+                    {selectedFarm[0].description}
+                  </p>
+                </div>
+
+                <div className="credit__link__container farmer__field__container">
+                  <a className="credit__link btn btn-green" href={selectedFarm[0].credits} target="_blank" rel="noreferrer">
+                    Learn More
+                  </a>
+                </div>
+
+              </div>
             </section>
           </>
         )}
-        <section className="section farmer__cards card-container">
-          {allFarmers?.map(f => (
-            <div className="farmer__card column-three">
-              <div className="card__content">
-                <p className="card__name">{f.name}</p>
-                <p className="card__address">{f.address}</p>
+        {farmersPage && (
+          <section className="section farmer__cards card-container">
+            {allFarmers?.map(f => (
+              <div className="farmer__card column-three" id={f.name.split(' ')[0]}>
+                <div className="farmer__content card__content" onClick={() => scrollHandler(f)}>
+                  <h3 className="card__name">{f.name}</h3>
+                  <p className="card__address">{f.address}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
+        )}
       </div>
     </>
   );

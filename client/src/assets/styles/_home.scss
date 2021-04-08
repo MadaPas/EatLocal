@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Script&family=Ledger&family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+// Landing section -------------------------------------------------------------------------------
+
+.landing-page {
+  background: linear-gradient(to bottom, rgb(22 22 22 / 20%), white),
+  url('../../../public/images/home/landing-page.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  // height: 80vh;
+  mix-blend-mode: overlay;
+}
+.hero hr {
+  width: 90%;
+}
+
+hr {
+  border:none;
+  border-bottom: 1px solid #fff;
+  margin-top: 10px;
+ 	width: 100%;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 75px;
+}
+
+.hero__tagline {
+  text-transform: uppercase;
+  font-family: "Lexend Deca";
+  font-size: 40px;
+  color: white;
+  margin: 75px 0;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.hero__cta {
+  background-color: rgba(255, 255, 255, 0.603);
+  margin: auto;
+  padding: 50px 20%;
+  font-family: "Lexend Deca";
+}
+
+.hero__cta__info {
+  font-size: 25px;
+  font-family: "Lexend Deca";
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 40px;
+  border-radius: 50px;
+  font-size: 20px;
+}
+.btn:focus {
+  outline: none;
+  background-color: rgb(45, 80, 67);
+}
+.btn-white {
+  color: #000;
+  background-color: #fff;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+.btn-green {
+  color: white;
+  background-color: #3A6857;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+.btn-green:hover {
+  background-color: #749589;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+.hero__btn--subscribe{
+  margin-top: 20px;
+}
+
+// Boxes section -------------------------------------------------------------------------------
+.box__btn--info {
+  padding-top: 10px;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.img-box {
+  opacity: 0.85;
+}
+
+.landing__map {
+  margin-top: -80px;
+}
+
+// .content__info__img {
+//   width: 480px; 
+//   height: 380px; 
+//   object-fit: cover;
+// }
+
+// .box__btn--info {
+//   color: rgb(0, 0, 0);
+//   font-size: 30px;
+//   font-family: "Ledger";
+// }
+
+// About section -------------------------------------------------------------------------------
+
+// .about-page, .farmers-page, .developed-by__title {
+//   margin-top: 50px;
+// }
+
+.content__title {
+  text-align: center;
+  text-shadow: 2px 2px 4px #00000098;
+}
+
+.boxes-page {
+  padding-top: 70px;
+}
+
+.content-container {
+  background-color: #F7F9F6;
+  text-align: center;
+}
+.content__info-about {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.accent {
+  color: #CD883D;
+}
+
+.about__img {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover;
+}
+
+// Farm section -------------------------------------------------------------------------------
+
+.column-two {
+  width: 40%;
+  margin: 0 20px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .column-two {
+    width: unset;
+    margin: 0 40px;
+  }
+  .farmers-page .column-two:first-child {
+    margin-bottom: 40px;
+  }
+}
+.farmers-page .card-container {
+  background-color: #F7F9F6;
+  padding: 60px 0;
+}
+
+.img-farm {
+  width: 100%;
+}
+
+.content__info__txt {
+  margin: 30px 0;
+}
+
+.landing-map .map {
+  padding-top: 0;
+}

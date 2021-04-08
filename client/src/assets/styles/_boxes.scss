@@ -1,0 +1,83 @@
+.box-name {
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card-container hr {
+	border-bottom: 1px solid #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+  }
+}
+
+.column-three {
+  flex: 1 1 30%;
+  text-align: center;
+}
+
+.box-content, .recipe-content, .farmer__content, .farm__content {
+  height: 170px;
+  background-color: rgba(255, 255, 255, 0.698);
+  margin: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+  flex-direction: column;
+}
+
+.box-content, .farmer__content, .farm__content {
+  padding: 15px;
+}
+
+.box-content:hover, .farmer__content:hover {
+  cursor: pointer;
+}
+
+.box-desc {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -40px;
+}
+
+.card__address, .farmers__address {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -40px;
+}
+
+.box-card, .menu-card, .farmer-card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vegeterian-box {
+  background-image: url('../../../public/images/boxes/vegetarian.jpg');
+}
+
+.family-box {
+  background-image: url('../../../public/images/boxes/family.jpg');
+}
+
+.vegan-box {
+  background-image: url('../../../public/images/boxes/vegan.jpg');
+}
+
+.boxes-page {
+  margin-top: 5%;
+}

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.map {
+  padding-top: 85px;
+}
+
+/* Marker tweaks */
+.mapboxgl-popup-close-button {
+  // display: none;
+  background-color: red;
+}
+  
+.mapboxgl-popup-content {
+  // background-color: rgba(255, 255, 255, 0.603);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fafafa;
+  // font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+  padding: 10px;
+  width: 160px;
+}
+
+.map__popup__title {
+  margin: -19px 15px 15px 0;
+}
+
+.mapboxgl-popup-content-wrapper {
+  padding: 1%;
+}
+
+.map__popup_close {
+  margin-left: auto;
+  padding: 0px 0px;
+  // padding: 10px 10px;
+}
+
+.map__popup_btn {
+  font-family: 'Lato';
+  font-weight: 400;
+  // padding: 10px 10px;
+  padding: 0 0;
+}
+
+// .btn {
+//   padding: 10px 40px;
+//   border-radius: 50px;
+//   font-size: 20px;
+// }
+
+/* Farmer content */
+
+.farm-container-name {
+  display: flow-root;
+  background-image: url('../../../public/images/farms/farm-name-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Farmer cards */
+
+#Bäckdalens {
+  background-image: url('../../../public/images/farms/Bäckdalens.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Brödhultsgården {
+  background-image: url('../../../public/images/farms/Brödhultsgården.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Salthamn {
+  background-image: url('../../../public/images/farms/Salthamn.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Hållbar {
+  background-image: url('../../../public/images/farms/Hållbar.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Ladbackens {
+  background-image: url('../../../public/images/farms/Ladbackens.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card__name {
+  margin-top: 30px;
+}
+
+.farmers__name {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.farmers__organic {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.farm-info {
+  padding: 40px;
+}

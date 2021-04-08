@@ -8,7 +8,7 @@ import { GeneralContext } from '../../context/General';
 const AllBoxes = () => {
   const { allBoxes, setOrder } = useContext(GeneralContext);
   const history = useHistory();
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState([true, true, true]);
 
   if (!allBoxes || allBoxes.length === 0) {
     return null;
@@ -37,37 +37,48 @@ const AllBoxes = () => {
     setOrder([selectedBox, selectedPriceId]);
     history.push('/checkout');
   };
-
-  const boxes = allBoxes?.map(item => (
+  const boxes = allBoxes?.map((item, index) => (
     <article key={item._id} className="box" id={item.name}>
-      <div className="box__info">
-        <div className="box__info__columnn box__img__container">
-          <img className="box__img img" src={item.img} alt="place holder" />
+      <div className="box-container">
+        <div className="box__info">
+          <div className="box__info__columnn box__img__container">
+            <img className="box__img img" src={item.img} alt="food" />
+          </div>
+          <div className="box__info__columnn subscription__info__column">
+            <h3 className="box__name">{item.name}</h3>
+            <p className="box__desc">{item.description}</p>
+            <form className="box__price" onSubmit={e => handleSubmit(e)}>
+              <div className="box-toggle-container">
+                <label className="box-toggle-btn" htmlFor={item._id}>
+                  <input type="checkbox" className="box-toggle" id={item._id} value={toggle[index] ? item.boxPrice.peopleTwo.priceId : item.boxPrice.peopleFour.priceId} onChange={() => setToggle(toggle.map((t, i) => (i === index ? !t : t)))} />
+                  <span className="box-toggle-slider">
+                    2 people
+                    {'\u00a0\u00a0\u00a0\u00a0'}
+                    4 people
+                  </span>
+                </label>
+              </div>
+              <p>
+                {item.name}
+                {' '}
+                box with 3 meals for
+                {' '}
+                {toggle[index] ? item.boxPrice.peopleTwo.people : item.boxPrice.peopleFour.people}
+                {' '}
+                people
+              </p>
+              <p className="box-kr">
+                {toggle[index] ? item.boxPrice.peopleTwo.price : item.boxPrice.peopleFour.price}
+                {' '}
+                kr
+              </p>
+              <button className="btn box__btn btn-green" type="submit" value={item._id}>
+                Order
+              </button>
+            </form>
+          </div>
         </div>
-        <div className="box__info__columnn">
-          <h2 className="box__name">{item.name}</h2>
-          <p className="box__desc">{item.description}</p>
-          <form className="box__price" onSubmit={e => handleSubmit(e)}>
-            <label className="box__input" htmlFor="box--toggle">
-              <input type="checkbox" className="box--toggle" id="box--toggle" value={toggle ? item.boxPrice.peopleTwo.priceId : item.boxPrice.peopleFour.priceId} onChange={() => setToggle(!toggle)} />
-            </label>
-            <p>
-              Vegeterian box with 3 meals for
-              {' '}
-              {toggle ? item.boxPrice.peopleTwo.people : item.boxPrice.peopleFour.people}
-              {' '}
-              people
-            </p>
-            <p>
-              {toggle ? item.boxPrice.peopleTwo.price : item.boxPrice.peopleFour.price}
-              {' '}
-              kr
-            </p>
-            <button className="btn box__btn btn--white" type="submit" value={item._id}>
-              Order
-            </button>
-          </form>
-        </div>
+        <hr />
       </div>
       <div className="box__menu">
         <h3 className="box__menu__title">
@@ -78,25 +89,43 @@ const AllBoxes = () => {
           menu
         </h3>
         <div className="box__menu__recipe card-container">
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 1</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeOne.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-risotto">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 1
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeOne.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeOne.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 2</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeTwo.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeTwo.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-pastry">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 2
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeTwo.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeTwo.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
-          <div className="recipe column-three">
-            <div className="recipe__content">
-              <h4 className="recipe__day">Day 3</h4>
-              <p className="recipe__name">{item.menu.nextWeek.recipes.recipeThree.name}</p>
-              <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeThree.ingredients.map((i, index) => (<li key={index}>{i}</li>))}</p>
+          <div className="recipe column-three menu-card menu-melon">
+            <div className="recipe-content">
+              <h4 className="recipe__day">
+                {'\u00a0\u00a0'}
+                Day 3
+                {'\u00a0\u00a0'}
+              </h4>
+              <div className="recipe-content-txt">
+                <p className="recipe__name">{item.menu.nextWeek.recipes.recipeThree.name}</p>
+                <p className="recipe__ingredients">{item.menu.nextWeek.recipes.recipeThree.ingredients.join(', ')}</p>
+              </div>
             </div>
           </div>
         </div>
