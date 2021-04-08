@@ -17,7 +17,7 @@ const Cart = () => {
       <div className="cart">
         <h1 className="cart__title">Cart</h1>
         <p className="cart__txt">Your cart is empty.</p>
-        <button className="btn box__btn btn--shop" type="button" value="/boxes" onClick={e => history.push(e.target.value)}>See Boxes</button>
+        <button className="btn box__btn btn-green btn--shop" type="button" value="/boxes" onClick={e => history.push(e.target.value)}>See Boxes</button>
       </div>
     );
   }

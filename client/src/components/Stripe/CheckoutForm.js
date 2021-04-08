@@ -73,7 +73,7 @@ const CheckoutForm = () => {
   }
 
   if (!order || order.length === 0) {
-    return null;
+    history.push('/boxes');
   }
 
   if (!allBoxes || !userData || userData.length === 0) {
@@ -290,10 +290,10 @@ const CheckoutForm = () => {
           </label>
           <CardElement />
           <button className="form__btn btn btn-green" type="submit">Pay</button>
+          {fail && <p className="form__txt">{fail}</p>}
+          {loading && <p className="form__txt">Loading...</p>}
         </form>
       </div>
-      {fail && <p className="form__txt">{fail}</p>}
-      {loading && <p className="form__txt">Loading...</p>}
     </div>
   );
 };

@@ -25,9 +25,8 @@ $white: #FFFFFF;
 
 .user__profile__title {
   color: $green;
-  font-size: 1.5em;
+  text-align: center;
   padding-bottom: 10px;
-  text-decoration: underline;
 }
 
 .user__label {
@@ -97,4 +96,9 @@ $white: #FFFFFF;
 
 .box__status {
   text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .profile .summary__card__img {
+    width: unset;
+  }
 }

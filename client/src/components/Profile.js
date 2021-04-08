@@ -106,9 +106,8 @@ const Profile = () => {
   return (
     <div className="section profile">
       <div className="profile__column">
+        <h2 className="user__profile__title">Personal info</h2>
         <div className="user__cont">
-          <p className="user__profile__title">Personal info</p>
-
           <div className="firstname">
             <p className="user__label">First name</p>
             <p className="profile__firstname profile__field">
@@ -157,6 +156,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="profile__column">
+        <h2 className="user__profile__title">Order history</h2>
         {historyHtml}
       </div>
     </div>

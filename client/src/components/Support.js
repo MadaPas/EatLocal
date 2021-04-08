@@ -41,7 +41,7 @@ const Support = () => {
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
               <p className="faq__answer">
-                We want to give credit to Swedish farmers! They deserve to get a good price for their procuce. We make an effort to create tasty menus based only on Swedish products.
+                We want to give credit to Swedish farmers! They deserve to get a good price for their produce. We make an effort to create tasty menus based only on Swedish products.
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ const Support = () => {
           <div className="faq-drawer__content-wrapper">
             <div className="faq-drawer__content">
               <p className="faq__answer">
-                Since we use only Swedish prodcuts, we have to adapt our menus to the ingredients which are in season and available. We want to offer the best quality, so we don
+                Since we use only Swedish products, we have to adapt our menus to the ingredients which are in season and available. We want to offer the best quality, so we don
                 {'\u0027'}
                 t publish our menus more than two weeks in advance.
               </p>

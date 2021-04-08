@@ -2,3 +2,9 @@
   margin: 30px 40px;
   box-shadow: 0 2px 20px 0 #3333335e;
 }
+@media only screen and (max-width: 768px) {
+  #root {
+    margin: 0;
+    box-shadow: none;
+  }
+}

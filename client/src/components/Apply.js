@@ -30,7 +30,7 @@ const Apply = () => {
 
   return (
     <div className="apply__support">
-      <p className="apply__txt">Join us today!</p>
+      <h2 className="apply__txt">Join us today!</h2>
       <div className="form__div">
         <form className="apply__form support__form form" onSubmit={e => submitHandler(e)}>
           <label className="form__name label__name" htmlFor="name">
