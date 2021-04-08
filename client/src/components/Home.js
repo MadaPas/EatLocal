@@ -71,28 +71,7 @@ const Home = () => {
               <p className="content__info__txt">Share your agricultural practices that focus on growing food through natural ecosystem management by joining our network.</p>
               <a className="btn btn--info content__info--btn" href="/apply">Become Our Member</a>
             </div>
-          </div>
-        </div>
-      </section>
-      <Map farmersPage={false} />
-      <section className="section authors">
-        <div className="section__content authors_content">
-          <h2 className="content__title">Developed By</h2>
-          <div className="content__info card-container">
-            <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/juha.jpg" alt="juha" />
-              <div className="content__info__name">Juha Kemppinen</div>
-              <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/juhakemppinen/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/kemppi83"><FontAwesomeIcon icon={faGithub} /></a>
-              </div>
-            </div>
-            <div className="column__author column-four">
-              <img className="content__info__img img" src="/images/authors/anastasia.jpg" alt="anastasia" />
-              <div className="content__info__name">Anastasia Ponomarenko</div>
-              <div className="content__info__socials">
-                <a href="https://www.linkedin.com/in/ana-ponomarenko/"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
+agit                <a href="https://github.com/anastasia-pon"><FontAwesomeIcon icon={faGithub} /></a>
               </div>
             </div>
             <div className="column__author column-four">
