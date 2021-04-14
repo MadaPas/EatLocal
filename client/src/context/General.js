@@ -26,7 +26,7 @@ export const GeneralProvider = props => {
   useEffect(() => {
     if (!allBoxes) {
       const fetchData = async () => {
-        const response = await fetch('https://server-eatlocal.herokuapp.com/api/boxes/');
+        const response = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/boxes/');
         const allBoxesJson = await response.json();
         setAllBoxes(allBoxesJson);
       };
@@ -37,7 +37,7 @@ export const GeneralProvider = props => {
   useEffect(() => {
     if (!allFarmers) {
       const fetchData = async () => {
-        const response = await fetch('https://server-eatlocal.herokuapp.com/api/farmers/');
+        const response = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/farmers/');
         const allFarmersJson = await response.json();
         setAllFarmers(allFarmersJson);
       };
@@ -48,7 +48,7 @@ export const GeneralProvider = props => {
   useEffect(() => {
     if (loggedIn) {
       const fetchData = async () => {
-        const response = await fetch('https://server-eatlocal.herokuapp.com/api/orders/user', {
+        const response = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/orders/user', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -75,7 +75,7 @@ export const GeneralProvider = props => {
       };
       const fetchData = async () => {
         try {
-          const userResponse = await fetch('https://server-eatlocal.herokuapp.com/api/users/user', {
+          const userResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/users/user', {
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -85,7 +85,7 @@ export const GeneralProvider = props => {
           });
           const user = await userResponse.json();
           if (userResponse.status === 404) {
-            const userRegistration = await fetch('https://server-eatlocal.herokuapp.com/api/users/register', {
+            const userRegistration = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/users/register', {
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
