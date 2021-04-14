@@ -64,6 +64,10 @@ app.get('/', async (req, res) => {
   res.send('Our API is running...');
 });
 
+app.get('/test', async (req, res) => {
+  res.send('Test page');
+});
+
 app.use('/api/users', authenticationRequired, usersRoutes);
 app.use('/api/orders', authenticationRequired, ordersRoutes);
 app.use('/api/boxes', boxesRoutes);
@@ -263,3 +267,5 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
+
+// git subtree push --prefix server heroku master
