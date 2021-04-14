@@ -95,7 +95,7 @@ const Profile = () => {
           postalCode: e.target[1].value,
           city: e.target[2].value,
         };
-        const updateResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com//api/users', {
+        const updateResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/users', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
