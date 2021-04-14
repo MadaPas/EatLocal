@@ -6,6 +6,10 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { GeneralContext } from '../../context/General';
 
+import vegetarianImg from '../../images/boxes/vegetarian.jpg';
+import veganImg from '../../images/boxes/vegan.jpg';
+import familyImg from '../../images/boxes/family.jpg';
+
 const Cart = () => {
   const history = useHistory();
   const {
@@ -24,6 +28,8 @@ const Cart = () => {
   const box = allBoxes.filter(b => b._id === order[0]);
   const boxOption = box[0].boxPrice.peopleFour.priceId === order[1] ? box[0].boxPrice.peopleFour : box[0].boxPrice.peopleTwo;
 
+  const imgArray = [vegetarianImg, familyImg, veganImg];
+  const imagePath = imgArray.filter(i => i.search(box[0].img) !== -1);
   return (
     <div key={box[0]._id} className="cart">
       <h1 className="cart__title">Order Summary</h1>
@@ -33,7 +39,7 @@ const Cart = () => {
             <h4 className="cart__txt">Subscription:</h4>
             <div className="summary__card summary__card__cart">
               <div className="summary__card__column">
-                <img className="summary__card__img img" src={box[0].img} alt="food" />
+                <img className="summary__card__img img" src={imagePath} alt="food" />
               </div>
               <div className="summary__card__column summary-description">
                 <p className="box__name box__name__incart">
@@ -73,5 +79,5 @@ const Cart = () => {
     </div>
   );
 };
-
+//
 export default Cart;

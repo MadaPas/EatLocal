@@ -1,5 +1,5 @@
-const CLIENT_ID = process.env.CLIENT_ID || '{clientId}';
-const ISSUER = process.env.ISSUER || 'https://{yourOktaDomain}.com/oauth2/default';
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID || '{clientId}';
+const ISSUER = process.env.REACT_APP_ISSUER || 'https://{yourOktaDomain}.com/oauth2/default';
 const OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 const REDIRECT_URI = `${window.location.origin}/login/callback`;
 
@@ -15,4 +15,4 @@ export default {
   resourceServer: {
     messagesUrl: 'http://localhost:8001/api/messages',
   },
-};
+};//

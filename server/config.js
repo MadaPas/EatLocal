@@ -19,12 +19,11 @@ const OKTA_TESTING_DISABLEHTTPSCHECK = !!process.env.OKTA_TESTING_DISABLEHTTPSCH
 
 module.exports = {
   webServer: {
-    port: 8081,
     oidc: {
       clientId: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       issuer: ISSUER,
-      appBaseUrl: 'http://localhost:8081',
+      appBaseUrl: 'https://eat-local-m4j.netlify.app/',
       scope: 'openid profile email',
       testing: {
         disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,

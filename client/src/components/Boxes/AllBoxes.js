@@ -5,6 +5,10 @@ import { useHistory } from 'react-router-dom';
 
 import { GeneralContext } from '../../context/General';
 
+import vegetarianImg from '../../images/boxes/vegetarian.jpg';
+import veganImg from '../../images/boxes/vegan.jpg';
+import familyImg from '../../images/boxes/family.jpg';
+
 const AllBoxes = () => {
   const { allBoxes, setOrder } = useContext(GeneralContext);
   const history = useHistory();
@@ -13,6 +17,8 @@ const AllBoxes = () => {
   if (!allBoxes || allBoxes.length === 0) {
     return null;
   }
+
+  const imgArray = [vegetarianImg, familyImg, veganImg];
 
   const weekNo = dt => {
     const tdt = new Date(dt.valueOf());
@@ -42,7 +48,7 @@ const AllBoxes = () => {
       <div className="box-container">
         <div className="box__info">
           <div className="box__info__columnn box__img__container">
-            <img className="box__img img" src={item.img} alt="food" />
+            <img className="box__img img" src={imgArray[index]} alt="food" />
           </div>
           <div className="box__info__columnn subscription__info__column">
             <h3 className="box__name">{item.name}</h3>
