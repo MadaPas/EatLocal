@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-expressions */
@@ -12,8 +13,11 @@ import { faMapMarkerAlt, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
+import mapboxgl from 'mapbox-gl';
 import { GeneralContext } from '../../context/General';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const Map = props => {
   const { farmersPage } = props;
@@ -44,16 +48,6 @@ const Map = props => {
       window.removeEventListener('keydown', listener);
     };
   }, []);
-
-  // useEffect(() => {
-  //   if (!farmersPage) {
-  //     document.getElementById('map').classList.add('landing__map');
-  //     return () => {
-  //       document.getElementById('map').classList.remove('landing__map');
-  //     };
-  //   }
-  //   return null;
-  // }, []);
 
   return (
     <>

@@ -4,6 +4,10 @@
 import React, { useContext, useState } from 'react';
 import { GeneralContext } from '../context/General';
 
+import vegetarianImg from '../images/boxes/vegetarian.jpg';
+import veganImg from '../images/boxes/vegan.jpg';
+import familyImg from '../images/boxes/family.jpg';
+
 const Profile = () => {
   const {
     userData, loggedIn, setUserData, orderHistory, allBoxes,
@@ -17,6 +21,8 @@ const Profile = () => {
       </div>
     );
   }
+  const imgArray = [vegetarianImg, familyImg, veganImg];
+
   const now = new Date();
   const dateOffset = now.getDay() > 4 ? ((7 - now.getDay()) % 7) + 7 : ((7 - now.getDay()) % 7);
   const result = new Date(
@@ -30,10 +36,11 @@ const Profile = () => {
   if (orderHistory.length > 0) {
     historyHtml = orderHistory.map(o => {
       const box = allBoxes.filter(b => b._id === o.boxId);
+      const imagePath = imgArray.filter(i => i.search(box[0].img) !== -1);
       return (
         <div className="summary__card">
           <div className="summary__card__column">
-            <img className="summary__card__img img" src={box[0].img} alt="food" />
+            <img className="summary__card__img img" src={imagePath} alt="food" />
           </div>
           <div className="summary__card__column">
             <p className="box__name">
@@ -88,7 +95,7 @@ const Profile = () => {
           postalCode: e.target[1].value,
           city: e.target[2].value,
         };
-        const updateResponse = await fetch('http://localhost:8001/api/users', {
+        const updateResponse = await fetch('https://server-eatlocal.herokuapp.com/api/users', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,

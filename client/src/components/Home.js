@@ -7,6 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useHistory } from 'react-router-dom';
 
+import artichokes from '../images/home/artichokes.jpg';
+import farmerImg from '../images/home/farmer.jpg';
+import tomatosImg from '../images/home/tomatoes.jpg';
+
+import juha from '../images/authors/juha.jpg';
+import anastasia from '../images/authors/anastasia.jpg';
+import madalina from '../images/authors/madalina.jpg';
+import valentina from '../images/authors/valentina.jpg';
+
 import Map from './Map/Map';
 
 const Home = () => {
@@ -102,7 +111,7 @@ const Home = () => {
           </div>
         </div>
 
-        <img className="about__img img" src="/images/home/artichokes.jpg" alt="artichokes" />
+        <img className="about__img img" src={artichokes} alt="artichokes" />
 
       </section>
 
@@ -111,12 +120,12 @@ const Home = () => {
           <h2 className="content__title">Swedish Farms</h2>
           <div className="content__info card-container">
             <div className="column-two">
-              <img className="content__info__img img-farm" src="/images/home/farmer.jpg" alt="farmer" />
+              <img className="content__info__img img-farm" src={farmerImg} alt="farmer" />
               <p className="content__info__txt">We work with some of the best independent farmers and fishermen of Sweden. Find out more about them here.</p>
               <button type="button" className="btn btn--info btn-green content__info--btn" value="farmers" onClick={e => history.push(e.target.value)}>Meet Our Farmers</button>
             </div>
             <div className="column-two">
-              <img className="content__info__img img-farm" src="/images/home/tomatoes.jpg" alt="tomatoes" />
+              <img className="content__info__img img-farm" src={tomatosImg} alt="tomatoes" />
               <p className="content__info__txt">Join our network and share your agricultural practices and experience in natural ecosystem management.</p>
               <button type="button" className="btn btn--info btn-green content__info--btn" value="/apply" onClick={e => history.push(e.target.value)}>
                 Become a Member
@@ -135,7 +144,7 @@ const Home = () => {
             <figure className="column__author column-four figure">
               <blockquote className="author__desc">If you have seen my profile, you must have noticed my CERN nuclear power. Web development is very nuclear fusion. I am really after french and CERN.</blockquote>
               <div className="author">
-                <img className="content__info__img img img_author" src="/images/authors/juha.jpg" alt="juha" />
+                <img className="content__info__img img img_author" src={juha} alt="juha" />
                 <h5 className="content__info__name">
                   Juha Kemppinen
                   {' '}
@@ -154,7 +163,7 @@ const Home = () => {
             <figure className="column__author column-four figure">
               <blockquote className="author__desc">I am told I am a very good board game professional. It is one of my favourite pastimes. If you have seen my profile, you will know that I am all about board games.</blockquote>
               <div className="author">
-                <img className="content__info__img img img_author" src="/images/authors/anastasia.jpg" alt="anastasia" />
+                <img className="content__info__img img img_author" src={anastasia} alt="anastasia" />
                 <h5 className="content__info__name">
                   Anastasia Ponomarenko
                   {' '}
@@ -173,7 +182,7 @@ const Home = () => {
             <figure className="column__author column-four figure">
               <blockquote className="author__desc">I am a fairy kind of person. The first thing people usually notice about me is my fairy personality. I work as a web dev, helping fairy. My ideal world would involve fairies.</blockquote>
               <div className="author">
-                <img className="content__info__img img img_author" src="/images/authors/madalina.jpg" alt="madalina" />
+                <img className="content__info__img img img_author" src={madalina} alt="madalina" />
                 <h5 className="content__info__name">
                   Madalina Andreea
                   {' '}
@@ -196,7 +205,7 @@ const Home = () => {
                 - My cat once said.
               </blockquote>
               <div className="author">
-                <img className="content__info__img img img_author" src="/images/authors/valentina.jpg" alt="valentina" />
+                <img className="content__info__img img img_author" src={valentina} alt="valentina" />
                 <h5 className="content__info__name">
                   Valentina Kochegarova
                   {' '}

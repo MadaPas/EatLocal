@@ -9,6 +9,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { GeneralContext } from '../../context/General';
 
+import vegetarianImg from '../../images/boxes/vegetarian.jpg';
+import veganImg from '../../images/boxes/vegan.jpg';
+import familyImg from '../../images/boxes/family.jpg';
+
 const CheckoutForm = () => {
   const history = useHistory();
   const stripe = useStripe();
@@ -19,7 +23,9 @@ const CheckoutForm = () => {
   const {
     allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
-  console.log(order, 'order');
+
+  const imgArray = [vegetarianImg, familyImg, veganImg];
+
   const now = new Date();
   const dateOffset = now.getDay() > 4 ? ((7 - now.getDay()) % 7) + 7 : ((7 - now.getDay()) % 7);
   const dateResult = new Date(
@@ -34,13 +40,13 @@ const CheckoutForm = () => {
     history.push('/boxes');
   };
   if (success) {
-    console.log(success);
+    const imagePath = imgArray.filter(i => i.search(success[0]) !== -1);
     return (
       <div className="checkout__success checkout">
         <p className="success__txt">Your payment was successful</p>
         <div className="summary__card">
           <div className="summary__card__column">
-            <img className="summary__card__img img" src={success[0]} alt="food" />
+            <img className="summary__card__img img" src={imagePath} alt="food" />
           </div>
           <div className="summary__card__column">
             <p className="box__name">
@@ -102,7 +108,7 @@ const CheckoutForm = () => {
         priceId: boxOption.priceId,
         stripeId: userData[0].stripeId,
       };
-      const paymentResponse = await fetch('http://localhost:8001/api/payment', {
+      const paymentResponse = await fetch('https://server-eatlocal.herokuapp.com/api/payment', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -125,7 +131,7 @@ const CheckoutForm = () => {
         updateUser.postalCode = e.target[3].value;
         updateUser.city = e.target[4].value;
       }
-      const updateUserResponse = await fetch('http://localhost:8001/api/users', {
+      const updateUserResponse = await fetch('https://server-eatlocal.herokuapp.com/api/users', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -154,7 +160,7 @@ const CheckoutForm = () => {
         priceId: boxOption.priceId,
         date: new Date().toLocaleDateString('en-GB'),
       };
-      const saveOrder = await fetch('http://localhost:8001/api/orders', {
+      const saveOrder = await fetch('https://server-eatlocal.herokuapp.com/api/orders', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -171,6 +177,8 @@ const CheckoutForm = () => {
     }
   };
 
+  const imagePath = imgArray.filter(i => i.search(box[0].img) !== -1);
+
   return (
     <div key={box[0]._id} className="checkout">
       <div className="checkout__summary">
@@ -178,7 +186,7 @@ const CheckoutForm = () => {
         <div className="summary__card">
           <div className="summary__card__column">
             <button className="btn--remove--checkout" type="button" onClick={() => removeHandler()}>x</button>
-            <img className="summary__card__img img" src={box[0].img} alt="food" />
+            <img className="summary__card__img img" src={imagePath} alt="food" />
           </div>
           <div className="summary__card__column">
             <p className="box__name">
