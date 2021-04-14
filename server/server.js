@@ -251,8 +251,8 @@ app.post(
 );
 
 connectDB().then(async () => {
-  app.listen(config.resourceServer.port, () => {
-    console.log(`Resource Server Ready on port ${config.resourceServer.port}`);
+  app.listen(process.env.PORT, () => {
+    console.log(`Resource Server Ready on port ${process.env.PORT}`);
   });
 });
 
