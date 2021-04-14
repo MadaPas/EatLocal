@@ -1,4 +1,9 @@
 /* eslint-disable consistent-return */
+/*
+  In order to deploy on heroku run in the main folder:
+  git subtree push --prefix server heroku master
+*/
+
 require('dotenv').config();
 const express = require('express');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
@@ -267,5 +272,3 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
-
-// git subtree push --prefix server heroku master
