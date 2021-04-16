@@ -65,3 +65,8 @@
     margin: 0 auto;
   }
 }
+
+[type=checkbox], [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
