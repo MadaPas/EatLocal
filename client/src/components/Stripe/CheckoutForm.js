@@ -110,7 +110,7 @@ const CheckoutForm = () => {
         priceId: boxOption.priceId,
         stripeId: userData[0].stripeId,
       };
-      const paymentResponse = await fetch('http://localhost:8001/api/payment', {
+      const paymentResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/payment', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -133,7 +133,7 @@ const CheckoutForm = () => {
         updateUser.postalCode = e.target[3].value.replaceAll(' ', '');
         updateUser.city = e.target[4].value;
       }
-      const updateUserResponse = await fetch('http://localhost:8001/api/users', {
+      const updateUserResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/users', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
@@ -162,7 +162,7 @@ const CheckoutForm = () => {
         priceId: boxOption.priceId,
         date: new Date().toLocaleDateString('en-GB'),
       };
-      const saveOrder = await fetch('http://localhost:8001/api/orders', {
+      const saveOrder = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/orders', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${loggedIn.accessToken.accessToken}`,
