@@ -13,6 +13,6 @@ export default {
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   },
   resourceServer: {
-    messagesUrl: 'http://localhost:8001/api/messages',
+    messagesUrl: 'https://server-eatlocal-m4j.herokuapp.com/api/messages',
   },
 };//

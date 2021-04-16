@@ -20,6 +20,7 @@ const CheckoutForm = () => {
   const [fail, setFail] = useState();
   const [success, setSuccess] = useState();
   const [loading, setLoading] = useState();
+  const [fetching, setFetching] = useState(false);
   const {
     allBoxes, order, setOrder, loggedIn, userData, setUserData,
   } = useContext(GeneralContext);
@@ -91,6 +92,7 @@ const CheckoutForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setFetching(true);
     setLoading(true);
     setFail(false);
 
@@ -128,7 +130,7 @@ const CheckoutForm = () => {
       }
       if (e.target[5].value) {
         updateUser.street = e.target[2].value;
-        updateUser.postalCode = e.target[3].value;
+        updateUser.postalCode = e.target[3].value.replaceAll(' ', '');
         updateUser.city = e.target[4].value;
       }
       const updateUserResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/users', {
@@ -139,9 +141,9 @@ const CheckoutForm = () => {
         method: 'PUT',
         body: JSON.stringify(updateUser),
       });
-
       if (!updateUserResponse.ok) throw new Error('Something went wrong. Please, contact our support team.');
       const updatedUser = await updateUserResponse.json();
+
       setUserData([updatedUser]);
 
       const newOrder = {
@@ -152,7 +154,7 @@ const CheckoutForm = () => {
         firstName: e.target[0].value,
         lastName: e.target[1].value,
         street: e.target[2].value,
-        postalCode: e.target[3].value,
+        postalCode: e.target[3].value.replaceAll(' ', ''),
         city: e.target[4].value,
         boxId: order[0],
         people: boxOption.people,
@@ -171,9 +173,11 @@ const CheckoutForm = () => {
       if (!saveOrder.ok) throw new Error('Something went wrong. Please, contact our support team.');
       setSuccess([box[0].img, box[0].name, box[0].type, boxOption.people, boxOption.price]);
       setOrder([]);
+      setFetching(false);
     } catch (err) {
       setLoading(false);
       setFail(err.message);
+      setFetching(false);
     }
   };
 
@@ -280,7 +284,7 @@ const CheckoutForm = () => {
           </label>
           <label className="user__label form__label postal_code" htmlFor="postal_code">
             Postal Code
-            <input className="form__field form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+            <input className="form__field form__input postal_code" type="text" pattern="^[0-9,\s]+$" id="postal_code" defaultValue={userData[0].postalCode} required />
           </label>
           <label className="user__label form__label city" htmlFor="city">
             City
@@ -297,7 +301,7 @@ const CheckoutForm = () => {
             <input className="form__input terms" type="checkbox" id="terms" required />
           </label>
           <CardElement />
-          <button className="form__btn btn btn-green" type="submit">Pay</button>
+          <button className="form__btn btn btn-green" type="submit" disabled={fetching}>Pay</button>
           {fail && <p className="form__txt">{fail}</p>}
           {loading && <p className="form__txt">Loading...</p>}
         </form>

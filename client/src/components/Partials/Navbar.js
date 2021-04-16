@@ -39,9 +39,7 @@ const Navbar = () => {
                 </span>
               )}
 
-              {authState.isAuthenticated && (
-                <Link className="nav-cart" to="/cart">Cart</Link>
-              )}
+              <Link className="nav-cart" to="/cart">Cart</Link>
               {authState.isAuthenticated && (
                 <>
                   <Link to="/profile">Profile</Link>
@@ -65,9 +63,8 @@ const Navbar = () => {
               </span>
             )}
 
-            {authState.isAuthenticated && (
-              <Link className="nav-cart" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
-            )}
+            <Link className="nav-cart" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
+
             {authState.isAuthenticated && (
               <div className="nav-person" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
                 <div className="nav-person-content">

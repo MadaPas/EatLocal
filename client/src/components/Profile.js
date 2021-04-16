@@ -86,13 +86,13 @@ const Profile = () => {
     e.preventDefault();
     if (editing) {
       const street = userData[0].street !== e.target[0].value;
-      const postalCode = `${userData[0].postalCode}` !== e.target[1].value;
+      const postalCode = `${userData[0].postalCode}` !== e.target[1].value.replaceAll(' ', '');
       const city = userData[0].city !== e.target[2].value;
       if (street || postalCode || city) {
         const updateFields = {
           oktaId: loggedIn.accessToken.claims.uid,
           street: e.target[0].value,
-          postalCode: e.target[1].value,
+          postalCode: e.target[1].value.replaceAll(' ', ''),
           city: e.target[2].value,
         };
         const updateResponse = await fetch('https://server-eatlocal-m4j.herokuapp.com/api/users', {
@@ -147,9 +147,9 @@ const Profile = () => {
               ) : <p className="profile__street profile__field__address" id="street">{userData[0].street}</p>}
             </label>
             <label className="form__label postal_code" htmlFor="postal_code">
-              <p className="user__label user__label__address">Postal</p>
+              <p className="user__label user__label__address">Postal Code</p>
               {editing ? (
-                <input className="form__field__user form__input postal_code" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
+                <input className="form__field__user form__input postal_code" pattern="^[0-9,\s]+$" type="text" id="postal_code" defaultValue={userData[0].postalCode} required />
               ) : <p className="profile__postal_code profile__field__address" id="postal_code">{userData[0].postalCode}</p>}
             </label>
             <label className="form__label city" htmlFor="city">

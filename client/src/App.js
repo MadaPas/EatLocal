@@ -37,9 +37,9 @@ const App = () => {
             <SecureRoute path="/checkout">
               <StripeContainer />
             </SecureRoute>
-            <SecureRoute path="/cart">
+            <Route path="/cart">
               <Cart />
-            </SecureRoute>
+            </Route>
             <Route path="/login/callback" component={LoginCallback} />
             <Route path="/farmers" component={Map} />
             <Route path="/contact" component={Support} />
